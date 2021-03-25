@@ -9,7 +9,7 @@ const IndexPage = ({ data }) => {
     <Link key={node.id} to={node.frontmatter.slug}>
       <div>
         <h1>{node.frontmatter.title}</h1>
-        <div>{node.frontmatter.date}</div>
+        <div>{node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}</div>
         <div>{node.excerpt}</div>
       </div>
     </Link>
@@ -37,6 +37,7 @@ export const query = graphql`
             title
             date(formatString: "YYYY-MM-DD")
             slug
+            keywords
           }
           excerpt(truncate: true)
         }

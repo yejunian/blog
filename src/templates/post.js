@@ -13,6 +13,10 @@ const BlogPost = ({ data }) => {
       <SEO title={frontmatter.title} />
       <article>
         <h1>{frontmatter.title}</h1>
+        <section>
+          <div>{frontmatter.date}</div>
+          <div>키워드: {frontmatter.keywords.join(', ')}</div>
+        </section>
         <section dangerouslySetInnerHTML={{ __html: html }} />
       </article>
     </Layout>
@@ -29,6 +33,7 @@ export const query = graphql`
         title
         date(formatString: "YYYY-MM-DD")
         slug
+        keywords
       }
     }
   }
