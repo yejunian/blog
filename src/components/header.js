@@ -1,42 +1,38 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-);
+import logo from '../images/logo.png';
+import blogTitle from '../images/blog-title.svg';
+
+const Header = ({ siteTitle, menuOpened, onMenuClick }) => {
+  return (
+    <header>
+      <Link to="/">
+        <img src={logo} alt="logo" width={32} height={32} />
+        <h1>
+          <img src={blogTitle} alt={siteTitle} width={83} height={24} />
+        </h1>
+      </Link>
+      <div>
+        <button type="button" onClick={onMenuClick}>
+          {menuOpened ? '^' : 'v'}
+        </button>
+      </div>
+    </header>
+  );
+};
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  menuOpened: PropTypes.bool,
+  onMenuClick: PropTypes.func,
 };
 
 Header.defaultProps = {
   siteTitle: ``,
+  menuOpened: false,
+  onMenuClick: () => {},
 };
 
 export default Header;

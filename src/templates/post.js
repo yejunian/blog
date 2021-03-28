@@ -3,22 +3,32 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import LicenseSummary from '../components/license-summary';
 
 const BlogPost = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
+  const { license } = frontmatter;
 
   return (
     <Layout>
       <SEO title={frontmatter.title} />
+
       <article>
         <h1>{frontmatter.title}</h1>
         <section>
           <div>{frontmatter.date}</div>
           <div>키워드: {frontmatter.keywords.join(', ')}</div>
         </section>
+        {/* FIXME - Use hast instead of dangerouslySetInnerHTML */}
         <section dangerouslySetInnerHTML={{ __html: html }} />
       </article>
+
+      <LicenseSummary {...license} />
+
+      <div>{/* TODO */}다음 글, 이전 글 링크 영역</div>
+
+      <div>{/* TODO */}댓글 영역</div>
     </Layout>
   );
 };
@@ -30,9 +40,13 @@ export const query = graphql`
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        title
-        date(formatString: "YYYY-MM-DD")
         slug
+        date(formatString: "YYYY-MM-DD")
+        title
+        license {
+          post
+          code
+        }
         keywords
       }
     }

@@ -9,7 +9,9 @@ const IndexPage = ({ data }) => {
     <Link key={node.id} to={node.frontmatter.slug}>
       <div>
         <h1>{node.frontmatter.title}</h1>
-        <div>{node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}</div>
+        <div>
+          {node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}
+        </div>
         <div>{node.excerpt}</div>
       </div>
     </Link>
@@ -17,11 +19,11 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Blog" />
       <div>전체 게시물 {data.allMarkdownRemark.totalCount}개</div>
       <div>{posts}</div>
     </Layout>
-  )
+  );
 };
 
 export default IndexPage;
