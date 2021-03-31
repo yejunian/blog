@@ -10,7 +10,7 @@ const getYears = () => {
   return `${year > 2021 ? '2021-' : ''}${year}`;
 };
 
-const Layout = ({ children }) => {
+const Layout = ({ children, sidebar }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -33,8 +33,11 @@ const Layout = ({ children }) => {
         menuOpened={menuOpened}
         onMenuClick={onMenuClick}
       />
+
       <main>{children}</main>
-      <aside>sidebar area</aside>
+
+      {sidebar && <aside>sidebar area</aside>}
+
       <footer>
         <ul>
           <li>
