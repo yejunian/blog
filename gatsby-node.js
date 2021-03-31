@@ -7,6 +7,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         edges {
           node {
             frontmatter {
+              published
               slug
             }
           }
@@ -21,12 +22,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: node.frontmatter.slug,
-      component: blogPostTemplate,
-      context: {
-        slug: node.frontmatter.slug,
-      },
-    });
+    if (node.frontmatter.published) {
+      createPage({
+        path: node.frontmatter.slug,
+        component: blogPostTemplate,
+        context: {
+          slug: node.frontmatter.slug,
+        },
+      });
+    }
   });
 };

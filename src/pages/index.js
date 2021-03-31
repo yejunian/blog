@@ -5,22 +5,24 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const IndexPage = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges.map(({ node }) => (
-    <Link key={node.id} to={node.frontmatter.slug}>
-      <div>
-        <h1>{node.frontmatter.title}</h1>
+  const posts = data.allMarkdownRemark.edges
+    .filter(({ node }) => node.frontmatter.published)
+    .map(({ node }) => (
+      <Link key={node.id} to={node.frontmatter.slug}>
         <div>
-          {node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}
+          <h1>{node.frontmatter.title}</h1>
+          <div>
+            {node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}
+          </div>
+          <div>{node.excerpt}</div>
         </div>
-        <div>{node.excerpt}</div>
-      </div>
-    </Link>
-  ));
+      </Link>
+    ));
 
   return (
     <Layout>
       <SEO title="Blog" />
-      <div>전체 게시물 {data.allMarkdownRemark.totalCount}개</div>
+      <div>전체 게시물 {posts.length}개</div>
       <div>{posts}</div>
     </Layout>
   );
@@ -36,6 +38,7 @@ export const query = graphql`
         node {
           id
           frontmatter {
+            published
             title
             date(formatString: "YYYY-MM-DD")
             slug
