@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import logo from '../images/logo.png';
-import blogTitle from '../images/blog-title.svg';
+import blogTitle from '../images/blog-title';
+import Svg from './svg';
 
 const Header = ({ siteTitle, menuOpened, onMenuClick }) => {
   return (
@@ -11,7 +12,7 @@ const Header = ({ siteTitle, menuOpened, onMenuClick }) => {
       <Link to="/">
         <img src={logo} alt="logo" width={32} height={32} />
         <h1>
-          <img src={blogTitle} alt={siteTitle} width={83} height={24} />
+          <Svg { ...blogTitle } />
         </h1>
       </Link>
       <div>

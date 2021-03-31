@@ -2,8 +2,9 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import ccby from '../images/license/cc-by.svg';
-import pd from '../images/license/pd.svg';
+import ccby from '../images/license/cc-by';
+import pd from '../images/license/pd';
+import Svg from './svg';
 
 const license = {
   'CC-BY 4.0': {
@@ -12,14 +13,14 @@ const license = {
         크리에이티브 커먼즈 저작자표시 4.0 국제 라이선스
       </a>
     ),
-    image: ccby,
+    svgProps: ccby,
   },
   MIT: {
     markup: <Link to="/license/mit/">MIT 라이선스</Link>,
   },
   'The Unlicense': {
     markup: <a href="https://unlicense.org/">The Unlicense</a>,
-    image: pd,
+    svgProps: pd,
   },
 };
 
@@ -30,8 +31,8 @@ const getLicenseMarkup = (strings, licenseKey) => {
 
   return (
     <div>
-      {license[licenseKey] && license[licenseKey].image && (
-        <img src={license[licenseKey].image} alt={licenseKey} height="32" />
+      {license[licenseKey] && license[licenseKey].svgProps && (
+        <Svg { ...license[licenseKey].svgProps } />
       )}
       <p>
         {strings[0]}
