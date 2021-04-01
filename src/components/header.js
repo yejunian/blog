@@ -12,7 +12,7 @@ const Header = ({ siteTitle, menuOpened, onMenuClick }) => {
       <Link to="/">
         <img src={logo} alt="logo" width={32} height={32} />
         <h1>
-          <Svg { ...blogTitle } />
+          <Svg {...blogTitle} />
         </h1>
       </Link>
       <div>
@@ -31,7 +31,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteTitle: '',
   menuOpened: false,
   onMenuClick: () => {},
 };
