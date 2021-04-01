@@ -32,7 +32,7 @@ const getLicenseMarkup = (strings, licenseKey) => {
   return (
     <div>
       {license[licenseKey] && license[licenseKey].svgProps && (
-        <Svg { ...license[licenseKey].svgProps } />
+        <Svg {...license[licenseKey].svgProps} />
       )}
       <p>
         {strings[0]}
