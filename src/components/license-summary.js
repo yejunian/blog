@@ -3,17 +3,26 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import ccby from '../images/license/cc-by';
+import ccbync from '../images/license/cc-by-nc';
 import pd from '../images/license/pd';
 import Svg from './svg';
 
 const license = {
-  'CC-BY 4.0': {
+  'CC BY 4.0': {
     markup: (
       <a href="https://creativecommons.org/licenses/by/4.0/deed.ko">
         크리에이티브 커먼즈 저작자표시 4.0 국제 라이선스
       </a>
     ),
     svgProps: ccby,
+  },
+  'CC BY-NC 4.0': {
+    markup: (
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.ko">
+        크리에이티브 커먼즈 저작자표시-비영리 4.0 국제 라이선스
+      </a>
+    ),
+    svgProps: ccbync,
   },
   MIT: {
     markup: <Link to="/license/mit/">MIT 라이선스</Link>,
