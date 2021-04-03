@@ -1,0 +1,138 @@
+@layer components {
+  .post {
+    @apply flex flex-col flex-nowrap;
+  }
+
+  .post-header ul {
+    @apply mt-2;
+    @apply text-sm text-gray-700;
+  }
+
+  .post-body {
+    @apply mt-6 mb-10;
+  }
+
+  .post-body > :first-child {
+    @apply mt-0;
+  }
+
+  .post-body > :last-child {
+    @apply mb-0;
+  }
+
+  .post-body code:not(pre > code) {
+    @apply mx-px;
+    @apply px-1 py-px;
+    @apply rounded;
+    @apply bg-green-100;
+    @apply text-green-900;
+  }
+
+  .post-body pre > code {
+    @apply block;
+    @apply p-2;
+  }
+
+  .post-body em {
+    @apply italic;
+    @apply text-green-800;
+  }
+
+  .post-body kbd {
+    @apply mx-px;
+    @apply px-1 py-px;
+    @apply border-2 border-t border-b-4 border-gray-300 rounded;
+    @apply bg-gray-100;
+    @apply text-sm text-gray-800;
+    @apply align-text-bottom;
+  }
+
+  .post-body mark {
+    @apply -mx-px;
+    @apply px-1 py-px;
+    @apply rounded-full;
+    @apply bg-green-200;
+  }
+
+  .post-body strong {
+    @apply font-bold;
+    @apply text-green-800;
+  }
+
+  .post-body blockquote,
+  .post-body h1,
+  .post-body h2,
+  .post-body h3,
+  .post-body h4,
+  .post-body h5,
+  .post-body h6,
+  .post-body p {
+    @apply my-4;
+    @apply leading-relaxed;
+  }
+
+  .post-body blockquote {
+    @apply px-4 py-2;
+    @apply bg-gray-100;
+    @apply border-l-4 border-gray-300;
+    @apply text-gray-800;
+  }
+
+  .post-body blockquote > :first-child {
+    @apply mt-0;
+  }
+
+  .post-body blockquote > :last-child {
+    @apply mb-0;
+  }
+
+  .post-body h1 {
+    @apply mt-10;
+  }
+
+  .post-body h2 {
+    @apply mt-8;
+  }
+
+  .post-body h3 {
+    @apply mt-6;
+  }
+
+  .post-body li {
+    @apply my-1;
+  }
+
+  .post-body li > p {
+    @apply my-0;
+  }
+
+  .post-body ol,
+  .post-body ul {
+    @apply my-1;
+    @apply pl-5;
+    @apply list-disc;
+  }
+
+  .post-body > ol,
+  .post-body > ul {
+    @apply my-4;
+    @apply leading-relaxed;
+  }
+
+  .post-body ol {
+    @apply list-decimal;
+  }
+
+  .post-body ul {
+    @apply list-disc;
+  }
+
+  .post-body pre {
+    @apply my-4;
+    @apply bg-gray-200;
+    @apply rounded;
+    @apply text-xs;
+    @apply leading-snug;
+    @apply whitespace-pre-wrap;
+  }
+}
