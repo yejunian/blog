@@ -13,6 +13,7 @@
 @layer components {
   .root {
     @apply flex flex-col flex-nowrap;
+    @apply items-center;
   }
 
   .root > * {
