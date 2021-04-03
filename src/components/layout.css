@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    /* https://codepen.io/naradesign/pen/Evadoy */
+    @apply break-words;
+    word-break: keep-all;
+  }
+}
+
+@layer components {
+  .root {
+    @apply flex flex-col flex-nowrap;
+  }
+
+  .root > * {
+    @apply p-4;
+    @apply w-full;
+    @apply max-w-sm;
+  }
+
+  .root > main {
+    @apply flex flex-col flex-nowrap;
+  }
+
+  .root > main h1 {
+    @apply text-2xl font-bold;
+  }
+
+  .root > main h2 {
+    @apply text-xl font-bold;
+  }
+
+  .root > main h3 {
+    @apply text-lg font-bold;
+  }
+
+  .root > main hr {
+    @apply border-gray-300;
+    @apply mx-auto my-10;
+    @apply w-3/4;
+  }
+
+  .root > main p:not(article p) {
+    @apply text-base;
+  }
+
+  .root > main a {
+    @apply text-blue-600;
+    @apply underline;
+  }
+
+  .root > main a:hover {
+    @apply no-underline;
+  }
+}
