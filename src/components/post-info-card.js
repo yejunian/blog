@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import logo from '../images/logo.png';
 import ccby from '../images/license/cc-by';
 import ccbync from '../images/license/cc-by-nc';
 import pd from '../images/license/pd';
@@ -54,11 +55,14 @@ const getLicenseMarkup = (strings, licenseKey) => {
   );
 };
 
-const LicenseSummary = ({ post, code }) => {
+const PostInfoCard = ({ post, code }) => {
   return (
     <section>
       <div>
-        작성자: <a href="https://github.com/leeye51456">leeye51456</a>
+        <img src={logo} alt="로고" width={32} height={32} />
+        <p>
+          <a href="https://github.com/leeye51456">leeye51456</a>
+        </p>
       </div>
       {getLicenseMarkup`이 저작물은 ${post}에 따라 이용할 수 있습니다.`}
       {getLicenseMarkup`게시물 내 별도 라이선스 표기가 없는 코드는 ${code}에 따라 이용할 수 있습니다.`}
@@ -66,14 +70,14 @@ const LicenseSummary = ({ post, code }) => {
   );
 };
 
-LicenseSummary.propTypes = {
+PostInfoCard.propTypes = {
   post: PropTypes.string,
   code: PropTypes.string,
 };
 
-LicenseSummary.defaultProps = {
+PostInfoCard.defaultProps = {
   post: '',
   code: '',
 };
 
-export default LicenseSummary;
+export default PostInfoCard;
