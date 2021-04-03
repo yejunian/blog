@@ -9,7 +9,7 @@
   }
 
   .post-body {
-    @apply mt-6 mb-10;
+    @apply my-6;
   }
 
   .post-body > :first-child {

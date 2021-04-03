@@ -1,0 +1,32 @@
+@layer components {
+  .post-footer {
+    @apply my-4;
+  }
+
+  .post-footer-item {
+    @apply flex flex-col flex-nowrap;
+    @apply mb-4;
+    @apply py-4 pt-0;
+    @apply border-b border-gray-300;
+  }
+
+  .post-footer-item:first-child {
+    @apply mt-0;
+    @apply pt-4;
+    @apply border-t;
+  }
+
+  .post-footer-item:last-child {
+    @apply mb-0;
+  }
+
+  .post-footer-item > img,
+  .post-footer-item > svg {
+    @apply flex-grow-0 flex-shrink-0;
+    @apply mb-1;
+  }
+
+  .post-footer-item > p {
+    @apply text-sm;
+  }
+}

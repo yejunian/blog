@@ -7,6 +7,7 @@ import ccby from '../images/license/cc-by';
 import ccbync from '../images/license/cc-by-nc';
 import pd from '../images/license/pd';
 import Svg from './svg';
+import './post-info-card.css';
 
 const license = {
   'CC BY 4.0': {
