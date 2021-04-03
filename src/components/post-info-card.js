@@ -40,7 +40,7 @@ const getLicenseMarkup = (strings, licenseKey) => {
   }
 
   return (
-    <div>
+    <footer>
       {license[licenseKey] && license[licenseKey].svgProps && (
         <Svg {...license[licenseKey].svgProps} />
       )}
@@ -51,7 +51,7 @@ const getLicenseMarkup = (strings, licenseKey) => {
           : `${licenseKey} 라이선스`}
         {strings[1]}
       </p>
-    </div>
+    </footer>
   );
 };
 

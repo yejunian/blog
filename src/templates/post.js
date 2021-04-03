@@ -9,28 +9,46 @@ const BlogPost = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   const { license } = frontmatter;
+  const date = {
+    publish: frontmatter.date[0],
+    modify:
+      frontmatter.date.length > 1
+        ? frontmatter.date[frontmatter.date.length - 1]
+        : null,
+  };
 
   return (
     <Layout>
       <SEO title={frontmatter.title} />
 
-      <article>
-        <header>
+      <article className="post">
+        <header className="post-header">
           <h1>{frontmatter.title}</h1>
           <ul>
-            <li>{frontmatter.date}</li>
+            <li>
+              최초 게시: <time dateTime={date.publish}>{date.publish}</time>
+            </li>
+            {date.modify && (
+              <li>
+                최종 수정: <time dateTime={date.modify}>{date.modify}</time>
+              </li>
+            )}
             <li>키워드: {frontmatter.keywords.join(', ')}</li>
           </ul>
         </header>
+
         {/* FIXME - Use hast instead of dangerouslySetInnerHTML */}
-        <section dangerouslySetInnerHTML={{ __html: html }} />
+        <main
+          className="post-body"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+
+        <PostInfoCard {...license} />
       </article>
 
-      <PostInfoCard {...license} />
+      <section>{/* TODO */}다음 글, 이전 글 링크 영역</section>
 
-      <div>{/* TODO */}다음 글, 이전 글 링크 영역</div>
-
-      <div>{/* TODO */}댓글 영역</div>
+      <section>{/* TODO */}댓글 영역</section>
     </Layout>
   );
 };

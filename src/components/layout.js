@@ -23,7 +23,7 @@ const Layout = ({ children, sidebar }) => {
   };
 
   return (
-    <>
+    <div className="root">
       <Header
         siteTitle={data.site.siteMetadata?.title || `Title`}
         menuOpened={menuOpened}
@@ -35,7 +35,7 @@ const Layout = ({ children, sidebar }) => {
       {sidebar && <aside>sidebar area</aside>}
 
       <Footer />
-    </>
+    </div>
   );
 };
 
