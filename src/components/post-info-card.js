@@ -40,7 +40,7 @@ const getLicenseMarkup = (strings, licenseKey) => {
   }
 
   return (
-    <footer>
+    <section className="post-footer-item">
       {license[licenseKey] && license[licenseKey].svgProps && (
         <Svg {...license[licenseKey].svgProps} />
       )}
@@ -51,22 +51,26 @@ const getLicenseMarkup = (strings, licenseKey) => {
           : `${licenseKey} 라이선스`}
         {strings[1]}
       </p>
-    </footer>
+    </section>
   );
 };
 
 const PostInfoCard = ({ post, code }) => {
   return (
-    <section>
-      <div>
+    <footer className="post-footer">
+      <section className="post-footer-item">
         <img src={logo} alt="로고" width={32} height={32} />
         <p>
-          <a href="https://github.com/leeye51456">leeye51456</a>
+          leeye51456
+          <br />
+          <a href="https://github.com/leeye51456">GitHub 프로필</a>
+          {' | '}
+          <a href="https://leeye51456.github.io/blog/">블로그</a>
         </p>
-      </div>
+      </section>
       {getLicenseMarkup`이 저작물은 ${post}에 따라 이용할 수 있습니다.`}
       {getLicenseMarkup`게시물 내 별도 라이선스 표기가 없는 코드는 ${code}에 따라 이용할 수 있습니다.`}
-    </section>
+    </footer>
   );
 };
 
