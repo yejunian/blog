@@ -20,6 +20,10 @@
     @apply mb-0;
   }
 
+  .post-footer-item .logo {
+    @apply rounded-full;
+  }
+
   .post-footer-item > img,
   .post-footer-item > svg {
     @apply flex-grow-0 flex-shrink-0;

@@ -60,7 +60,7 @@ const PostInfoCard = ({ post, code }) => {
   return (
     <footer className="post-footer">
       <section className="post-footer-item">
-        <img src={logo} alt="로고" width={32} height={32} />
+        <img className="logo" src={logo} alt="로고" width={32} height={32} />
         <p>
           leeye51456
           <br />
