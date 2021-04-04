@@ -17,13 +17,13 @@
   }
 
   .root > * {
-    @apply p-4;
     @apply w-full;
-    @apply max-w-sm;
   }
 
   .root > main {
     @apply flex flex-col flex-nowrap;
+    @apply p-4;
+    @apply max-w-sm;
   }
 
   .root > main h1 {

@@ -5,22 +5,29 @@ import { Link } from 'gatsby';
 import logo from '../images/logo.png';
 import blogTitle from '../images/blog-title';
 import Svg from './svg';
+import './header.css';
 
 const Header = ({ siteTitle, menuOpened, onMenuClick }) => {
   return (
-    <header>
-      <Link to="/">
-        <img src={logo} alt="logo" width={32} height={32} />
-        <h1>
-          <Svg {...blogTitle} />
+    <div className="site-header-wrapper">
+      <header className="site-header">
+        <div className="logo-wrapper">
+          <Link to="/">
+            <img className="logo" src={logo} alt="logo" width={32} height={32} />
+          </Link>
+        </div>
+        <h1 className="title">
+          <Link to="/">
+            <Svg {...blogTitle} />
+          </Link>
         </h1>
-      </Link>
-      <div>
-        <button type="button" onClick={onMenuClick}>
-          {menuOpened ? '^' : 'v'}
-        </button>
-      </div>
-    </header>
+        <div className="menu">
+          <button type="button" onClick={onMenuClick}>
+            {menuOpened ? '^' : 'v'}
+          </button>
+        </div>
+      </header>
+    </div>
   );
 };
 
