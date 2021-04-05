@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import PostInfoCard from '../components/post-info-card';
 import SEO from '../components/seo';
-import './post.css';
+import * as css from './post.module.css';
 
 const BlogPost = ({ data }) => {
   const { markdownRemark } = data;
@@ -22,8 +22,8 @@ const BlogPost = ({ data }) => {
     <Layout>
       <SEO title={frontmatter.title} />
 
-      <article className="post">
-        <header className="post-header">
+      <article className={css.post}>
+        <header className={css.postHeader}>
           <h1>{frontmatter.title}</h1>
           <ul>
             <li>
@@ -40,7 +40,7 @@ const BlogPost = ({ data }) => {
 
         {/* FIXME - Use hast instead of dangerouslySetInnerHTML */}
         <main
-          className="post-body"
+          className={css.postBody}
           dangerouslySetInnerHTML={{ __html: html }}
         />
 

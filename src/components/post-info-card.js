@@ -7,7 +7,7 @@ import ccby from '../images/license/cc-by';
 import ccbync from '../images/license/cc-by-nc';
 import pd from '../images/license/pd';
 import Svg from './svg';
-import './post-info-card.css';
+import * as css from './post-info-card.module.css';
 
 const license = {
   'CC BY 4.0': {
@@ -41,7 +41,7 @@ const getLicenseMarkup = (strings, licenseKey) => {
   }
 
   return (
-    <section className="post-footer-item">
+    <section className={css.postFooterItem}>
       {license[licenseKey] && license[licenseKey].svgProps && (
         <Svg {...license[licenseKey].svgProps} />
       )}
@@ -58,9 +58,15 @@ const getLicenseMarkup = (strings, licenseKey) => {
 
 const PostInfoCard = ({ post, code }) => {
   return (
-    <footer className="post-footer">
-      <section className="post-footer-item">
-        <img className="logo" src={logo} alt="로고" width={32} height={32} />
+    <footer className={css.postFooter}>
+      <section className={css.postFooterItem}>
+        <img
+          className={css.logo}
+          src={logo}
+          alt="로고"
+          width={32}
+          height={32}
+        />
         <p>
           leeye51456
           <br />
