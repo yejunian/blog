@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-import logo from '../images/logo.png';
+import logo from '../images/logo-3x.png';
 import blogTitle from '../images/blog-title';
 import Svg from './svg';
 import * as css from './header.module.css';

@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import logo from '../images/logo.png';
+import logo from '../images/logo-3x.png';
 import ccby from '../images/license/cc-by';
 import ccbync from '../images/license/cc-by-nc';
 import pd from '../images/license/pd';
