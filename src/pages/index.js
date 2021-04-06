@@ -3,27 +3,28 @@ import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import * as css from './index.module.css';
 
 const IndexPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges
     .filter(({ node }) => node.frontmatter.published)
     .map(({ node }) => (
-      <Link key={node.id} to={node.frontmatter.slug}>
-        <div>
+      <div className={css.item}>
+        <Link className={css.link} key={node.id} to={node.frontmatter.slug}>
           <h1>{node.frontmatter.title}</h1>
-          <div>
-            {node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}
-          </div>
-          <div>{node.excerpt}</div>
+        </Link>
+        <div className={css.frontmatter}>
+          {node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}
         </div>
-      </Link>
+        <div className={css.description}>{node.excerpt}</div>
+      </div>
     ));
 
   return (
     <Layout>
       <SEO title="Blog" />
       <div>전체 게시물 {posts.length}개</div>
-      <div>{posts}</div>
+      <div className={css.postList}>{posts}</div>
     </Layout>
   );
 };
