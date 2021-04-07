@@ -10,28 +10,25 @@ const BlogPost = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   const { license } = frontmatter;
-  const date = {
-    publish: frontmatter.date[0],
-    modify:
-      frontmatter.date.length > 1
-        ? frontmatter.date[frontmatter.date.length - 1]
-        : null,
-  };
 
   return (
     <Layout>
-      <SEO title={frontmatter.title} />
+      <SEO title={frontmatter.title} description={frontmatter.description} />
 
       <article className={css.post}>
         <header className={css.postHeader}>
           <h1>{frontmatter.title}</h1>
           <ul>
             <li>
-              최초 게시: <time dateTime={date.publish}>{date.publish}</time>
+              최초 게시:{' '}
+              <time dateTime={frontmatter.date}>{frontmatter.date}</time>
             </li>
-            {date.modify && (
+            {frontmatter.revisions && (
               <li>
-                최종 수정: <time dateTime={date.modify}>{date.modify}</time>
+                최종 수정:{' '}
+                <time dateTime={frontmatter.revisions}>
+                  {frontmatter.revisions[frontmatter.revisions.length - 1]}
+                </time>
               </li>
             )}
             <li>키워드: {frontmatter.keywords.join(', ')}</li>
@@ -63,7 +60,9 @@ export const query = graphql`
       frontmatter {
         slug
         date(formatString: "YYYY-MM-DD")
+        revisions(formatString: "YYYY-MM-DD")
         title
+        description
         license {
           post
           code
