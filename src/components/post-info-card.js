@@ -76,7 +76,12 @@ const PostInfoCard = ({ post, code }) => {
         </p>
       </section>
       {getLicenseMarkup`이 저작물은 ${post}에 따라 이용할 수 있습니다.`}
-      {getLicenseMarkup`게시물 내 별도 라이선스 표기가 없는 코드는 ${code}에 따라 이용할 수 있습니다.`}
+      {getLicenseMarkup`게시물 내 별도 라이선스 표기가 없는 컴퓨터프로그램저작물은 ${code}에 따라 이용할 수 있습니다.`}
+      <section className={css.postFooterItem}>
+        <p>
+          명시한 라이선스 범위 밖의 이용은 별도 문의 바랍니다.
+        </p>
+      </section>
     </footer>
   );
 };
