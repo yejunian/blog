@@ -14,7 +14,7 @@ const getPostList = (edges) => {
         <div className={css.frontmatter}>
           {node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}
         </div>
-        <div className={css.description}>{node.excerpt}</div>
+        <div className={css.description}>{node.frontmatter.description || node.excerpt}</div>
       </div>
     ));
 };

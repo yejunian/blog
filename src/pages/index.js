@@ -6,7 +6,6 @@ import PostList from '../components/post-list';
 import SEO from '../components/seo';
 
 const IndexPage = ({ data }) => {
-
   return (
     <Layout>
       <SEO title="Blog" />
@@ -27,6 +26,7 @@ export const query = graphql`
           frontmatter {
             published
             title
+            description
             date(formatString: "YYYY-MM-DD")
             slug
             keywords
