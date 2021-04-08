@@ -1,5 +1,6 @@
 @layer components {
   .site-footer-wrapper {
+    @apply flex-none;
     @apply flex flex-col flex-nowrap;
     @apply items-center;
     @apply sticky;

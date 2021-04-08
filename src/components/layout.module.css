@@ -2,6 +2,7 @@
   .root {
     @apply flex flex-col flex-nowrap;
     @apply items-center;
+    @apply min-h-screen;
   }
 
   .root > * {
@@ -9,6 +10,7 @@
   }
 
   .root > main {
+    @apply flex-auto;
     @apply flex flex-col flex-nowrap;
     @apply p-4;
     @apply max-w-sm;
