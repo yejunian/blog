@@ -1,49 +1,47 @@
-@layer components {
-  .root {
-    @apply flex flex-col flex-nowrap;
-    @apply items-center;
-    @apply min-h-screen;
-  }
+.root {
+  @apply flex flex-col flex-nowrap;
+  @apply items-center;
+  @apply min-h-screen;
+}
 
-  .root > * {
-    @apply w-full;
-  }
+.root > * {
+  @apply w-full;
+}
 
-  .root > main {
-    @apply flex-auto;
-    @apply flex flex-col flex-nowrap;
-    @apply p-4;
-    @apply max-w-sm;
-  }
+.root > main {
+  @apply flex-auto;
+  @apply flex flex-col flex-nowrap;
+  @apply p-4;
+  @apply max-w-sm;
+}
 
-  .root > main h1 {
-    @apply text-2xl font-bold;
-  }
+.root > main h1 {
+  @apply text-2xl font-bold;
+}
 
-  .root > main h2 {
-    @apply text-xl font-bold;
-  }
+.root > main h2 {
+  @apply text-xl font-bold;
+}
 
-  .root > main h3 {
-    @apply text-lg font-bold;
-  }
+.root > main h3 {
+  @apply text-lg font-bold;
+}
 
-  .root > main hr {
-    @apply border-gray-300;
-    @apply mx-auto my-10;
-    @apply w-3/4;
-  }
+.root > main hr {
+  @apply border-gray-300;
+  @apply mx-auto my-10;
+  @apply w-3/4;
+}
 
-  .root > main p:not(article p) {
-    @apply text-base;
-  }
+.root > main p:not(article p) {
+  @apply text-base;
+}
 
-  .root > main a {
-    @apply text-blue-600;
-    @apply underline;
-  }
+.root > main a {
+  @apply text-blue-600;
+  @apply underline;
+}
 
-  .root > main a:hover {
-    @apply no-underline;
-  }
+.root > main a:hover {
+  @apply no-underline;
 }

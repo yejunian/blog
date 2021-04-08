@@ -1,36 +1,34 @@
-@layer components {
-  .post-list {
-    @apply leading-normal;
-  }
+.post-list {
+  @apply leading-normal;
+}
 
-  .post-list .item {
-    @apply my-4;
-  }
+.post-list .item {
+  @apply my-4;
+}
 
-  .post-list .item:last-child {
-    @apply mb-0;
-  }
+.post-list .item:last-child {
+  @apply mb-0;
+}
 
-  .post-list .item .link {
-    @apply block;
-    @apply text-black;
-    @apply no-underline;
-  }
+.post-list .item .link {
+  @apply block;
+  @apply text-black;
+  @apply no-underline;
+}
 
-  .post-list .frontmatter {
-    @apply text-sm;
-    @apply text-gray-700;
-  }
+.post-list .frontmatter {
+  @apply text-sm;
+  @apply text-gray-700;
+}
 
-  .post-list .frontmatter .link {
-    color: inherit;
-  }
+.post-list .frontmatter .link {
+  color: inherit;
+}
 
-  .post-list .description {
-    @apply text-gray-900;
-  }
+.post-list .description {
+  @apply text-gray-900;
+}
 
-  .post-list .item > * {
-    @apply my-1;
-  }
+.post-list .item > * {
+  @apply my-1;
 }
