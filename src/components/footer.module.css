@@ -22,6 +22,7 @@
 }
 
 .site-footer a:hover {
+  @apply text-blue-600;
   @apply no-underline;
 }
 

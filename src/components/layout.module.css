@@ -43,5 +43,6 @@
 }
 
 .root > main a:hover {
+  @apply text-blue-500;
   @apply no-underline;
 }
