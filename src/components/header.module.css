@@ -14,7 +14,7 @@
   @apply items-center;
   @apply p-4;
   @apply w-full;
-  @apply max-w-sm;
+  @apply max-w-screen-md;
 }
 
 .site-header .logo-wrapper {

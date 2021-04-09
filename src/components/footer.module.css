@@ -13,7 +13,7 @@
   @apply items-start;
   @apply p-4 pb-8;
   @apply w-full;
-  @apply max-w-sm;
+  @apply max-w-screen-md;
 }
 
 .site-footer a {
