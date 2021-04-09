@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  /* https://codepen.io/naradesign/pen/Evadoy */
   body {
-    /* https://codepen.io/naradesign/pen/Evadoy */
     @apply break-words;
+
     word-break: keep-all;
   }
 }

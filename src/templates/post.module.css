@@ -19,17 +19,17 @@
   @apply mb-0;
 }
 
+.post-body pre > code {
+  @apply block;
+  @apply p-2;
+}
+
 .post-body code:not(pre > code) {
   @apply mx-px;
   @apply px-1 py-px;
   @apply rounded;
   @apply bg-green-100;
   @apply text-green-900;
-}
-
-.post-body pre > code {
-  @apply block;
-  @apply p-2;
 }
 
 .post-body em {
