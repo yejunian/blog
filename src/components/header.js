@@ -27,11 +27,11 @@ const Header = ({ siteTitle, menuOpened, onMenuClick }) => {
             <Svg {...blogTitle} />
           </Link>
         </h1>
-        <div className={css.menu}>
+        {/* <div className={css.menu}>
           <button type="button" onClick={onMenuClick}>
             {menuOpened ? '^' : 'v'}
           </button>
-        </div>
+        </div> */}
       </header>
     </div>
   );
