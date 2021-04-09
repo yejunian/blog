@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/atom-one-light.css';
 
 import Layout from '../components/layout';
 import PostInfoCard from '../components/post-info-card';
@@ -10,6 +12,10 @@ const BlogPost = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   const { license } = frontmatter;
+
+  useEffect(() => {
+    hljs.highlightAll();
+  }, [html]);
 
   return (
     <Layout>
