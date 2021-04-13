@@ -16,13 +16,16 @@
   @apply max-w-screen-md;
 }
 
+.site-footer li {
+  @apply mb-1;
+}
+
 .site-footer a {
-  @apply text-blue-800;
   @apply underline;
 }
 
 .site-footer a:hover {
-  @apply text-blue-600;
+  @apply text-gray-500;
   @apply no-underline;
 }
 
