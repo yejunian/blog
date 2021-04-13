@@ -3,7 +3,12 @@
 }
 
 .post-list .item {
-  @apply my-4;
+  @apply my-6;
+  @apply p-4 py-3;
+  @apply border border-gray-200;
+  @apply rounded;
+  @apply bg-white;
+  @apply shadow;
 }
 
 .post-list .item:last-child {
@@ -17,6 +22,7 @@
 }
 
 .post-list .frontmatter {
+  @apply mb-1;
   @apply text-sm;
   @apply text-gray-700;
 }
@@ -26,9 +32,6 @@
 }
 
 .post-list .description {
+  @apply mt-2;
   @apply text-gray-900;
-}
-
-.post-list .item > * {
-  @apply my-1;
 }

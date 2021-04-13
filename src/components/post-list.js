@@ -8,15 +8,15 @@ const getPostList = (edges) => {
     .filter(({ node }) => node.frontmatter.published)
     .map(({ node }) => (
       <div className={css.item} key={node.id}>
-        <Link className={css.link} to={node.frontmatter.slug}>
-          <h1>{node.frontmatter.title}</h1>
-        </Link>
         <div className={css.frontmatter}>
           {node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}
         </div>
-        <div className={css.description}>
-          {node.frontmatter.description || node.excerpt}
-        </div>
+        <Link className={css.link} to={node.frontmatter.slug}>
+          <h1>{node.frontmatter.title}</h1>
+          <div className={css.description}>
+            {node.frontmatter.description || node.excerpt}
+          </div>
+        </Link>
       </div>
     ));
 };
