@@ -11,7 +11,7 @@
 .root > main {
   @apply flex-auto;
   @apply flex flex-col flex-nowrap;
-  @apply p-4;
+  @apply px-4 py-5;
   @apply max-w-screen-md;
 }
 
