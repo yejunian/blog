@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/blog`,
   siteMetadata: {
     title: `&#51456;`,
     description: `A blog of leeye51456`,
@@ -30,7 +31,7 @@ module.exports = {
       options: {
         name: `&#51456;`,
         short_name: `&#51456;`,
-        start_url: `/`,
+        start_url: `/blog/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
