@@ -21,9 +21,9 @@ const Footer = () => (
             (<a href="https://github.com/leeye51456/blog">Repository</a>)
           </small>
         </li>
-        <li>
+        {/* <li>
           <a href="https://leeye51456.github.io/portfolio/">Portfolio</a>
-        </li>
+        </li> */}
         <li>
           <a href="https://github.com/leeye51456">GitHub Profile</a>
         </li>
