@@ -26,7 +26,7 @@ const PostList = ({ edges }) => {
 
   return (
     <>
-      <div>전체 게시물 {posts.length}개</div>
+      <div className={css.postCount}>전체 게시물 {posts.length}개</div>
       <div className={css.postList}>{posts}</div>
     </>
   );

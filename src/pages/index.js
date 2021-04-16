@@ -9,6 +9,9 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Blog" />
+      <p>
+        leeye51456의 블로그입니다. 아직은 뭘 올릴까 생각하면서 아무거나 쓰는 중입니다.
+      </p>
       <PostList edges={data.allMarkdownRemark.edges} />
     </Layout>
   );
