@@ -3,13 +3,15 @@ import { Link } from 'gatsby';
 
 import * as css from './post-list.module.css';
 
-const getPostList = (edges) => {
-  return edges
+const getPostList = (edges) =>
+  edges
     .filter(({ node }) => node.frontmatter.published)
     .map(({ node }) => (
       <div className={css.item} key={node.id}>
         <div className={css.frontmatter}>
-          {node.frontmatter.date} | {node.frontmatter.keywords.join(', ')}
+          {node.frontmatter.date}
+          {' | '}
+          {node.frontmatter.keywords.length > 0 ? node.frontmatter.keywords.join(', ') : '키워드 없음'}
         </div>
         <Link className={css.link} to={node.frontmatter.slug}>
           <h1>{node.frontmatter.title}</h1>
@@ -17,7 +19,6 @@ const getPostList = (edges) => {
         </Link>
       </div>
     ));
-};
 
 const PostList = ({ edges }) => {
   const posts = getPostList(edges);
