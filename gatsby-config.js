@@ -2,7 +2,7 @@ module.exports = {
   pathPrefix: `/blog`,
   siteMetadata: {
     title: `&#51456;`,
-    description: `A blog of leeye51456`,
+    description: `Blog of leeye51456`,
     author: `leeye51456`,
   },
   plugins: [
