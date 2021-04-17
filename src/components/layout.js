@@ -24,11 +24,7 @@ const Layout = ({ children, sidebar }) => {
 
   return (
     <div className={css.root}>
-      <Header
-        siteTitle={data.site.siteMetadata?.title || `Title`}
-        menuOpened={menuOpened}
-        onMenuClick={onMenuClick}
-      />
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} menuOpened={menuOpened} onMenuClick={onMenuClick} />
 
       <main>{children}</main>
 

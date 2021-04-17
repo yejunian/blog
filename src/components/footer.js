@@ -29,8 +29,7 @@ const Footer = () => (
         </li>
       </ul>
       <p>
-        © {years} leeye51456, Built with{' '}
-        <a href="https://www.gatsbyjs.com/">Gatsby</a>
+        © {years} leeye51456, Built with <a href="https://www.gatsbyjs.com/">Gatsby</a>
       </p>
     </footer>
   </div>

@@ -12,9 +12,7 @@ import * as css from './post-info-card.module.css';
 const license = {
   'CC BY 4.0': {
     markup: (
-      <a href="https://creativecommons.org/licenses/by/4.0/deed.ko">
-        크리에이티브 커먼즈 저작자표시 4.0 국제 라이선스
-      </a>
+      <a href="https://creativecommons.org/licenses/by/4.0/deed.ko">크리에이티브 커먼즈 저작자표시 4.0 국제 라이선스</a>
     ),
     svgProps: ccby,
   },
@@ -42,14 +40,10 @@ const getLicenseMarkup = (strings, licenseKey) => {
 
   return (
     <section className={css.postFooterItem}>
-      {license[licenseKey] && license[licenseKey].svgProps && (
-        <Svg {...license[licenseKey].svgProps} />
-      )}
+      {license[licenseKey] && license[licenseKey].svgProps && <Svg {...license[licenseKey].svgProps} />}
       <p>
         {strings[0]}
-        {license[licenseKey] && license[licenseKey].markup
-          ? license[licenseKey].markup
-          : `${licenseKey} 라이선스`}
+        {license[licenseKey] && license[licenseKey].markup ? license[licenseKey].markup : `${licenseKey} 라이선스`}
         {strings[1]}
       </p>
     </section>
@@ -60,13 +54,7 @@ const PostInfoCard = ({ post, code }) => {
   return (
     <footer className={css.postFooter}>
       <section className={css.postFooterItem}>
-        <img
-          className={css.logo}
-          src={logo}
-          alt="로고"
-          width={32}
-          height={32}
-        />
+        <img className={css.logo} src={logo} alt="로고" width={32} height={32} />
         <p>
           leeye51456
           <br />

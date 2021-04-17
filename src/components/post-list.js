@@ -13,9 +13,7 @@ const getPostList = (edges) => {
         </div>
         <Link className={css.link} to={node.frontmatter.slug}>
           <h1>{node.frontmatter.title}</h1>
-          <div className={css.description}>
-            {node.frontmatter.description || node.excerpt}
-          </div>
+          <div className={css.description}>{node.frontmatter.description || node.excerpt}</div>
         </Link>
       </div>
     ));

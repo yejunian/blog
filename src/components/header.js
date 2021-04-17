@@ -13,13 +13,7 @@ const Header = ({ siteTitle, menuOpened, onMenuClick }) => {
       <header className={css.siteHeader}>
         <div className={css.logoWrapper}>
           <Link to="/">
-            <img
-              className={css.logo}
-              src={logo}
-              alt="logo"
-              width={32}
-              height={32}
-            />
+            <img className={css.logo} src={logo} alt="logo" width={32} height={32} />
           </Link>
         </div>
         <h1 className={css.title}>

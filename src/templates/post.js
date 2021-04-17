@@ -35,8 +35,7 @@ const BlogPost = ({ data }) => {
           <h1>{frontmatter.title}</h1>
           <ul>
             <li>
-              최초 게시:{' '}
-              <time dateTime={frontmatter.date}>{frontmatter.date}</time>
+              최초 게시: <time dateTime={frontmatter.date}>{frontmatter.date}</time>
             </li>
             {revisions}
             {keywords}
@@ -44,10 +43,7 @@ const BlogPost = ({ data }) => {
         </header>
 
         {/* FIXME - Use hast instead of dangerouslySetInnerHTML */}
-        <main
-          className={css.postBody}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <main className={css.postBody} dangerouslySetInnerHTML={{ __html: html }} />
 
         <PostInfoCard {...license} />
       </article>
