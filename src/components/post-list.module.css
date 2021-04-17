@@ -1,0 +1,45 @@
+.post-count {
+  @apply mt-4;
+}
+
+.post-list {
+  @apply leading-normal;
+}
+
+.post-list .item {
+  @apply my-6;
+  @apply p-4 py-3;
+  @apply border border-gray-200;
+  @apply rounded;
+  @apply bg-white;
+  @apply shadow;
+}
+
+.post-list .item:first-child {
+  @apply mt-4;
+}
+
+.post-list .item:last-child {
+  @apply mb-0;
+}
+
+.post-list .item .link {
+  @apply block;
+  @apply text-black;
+  @apply no-underline;
+}
+
+.post-list .frontmatter {
+  @apply mb-1;
+  @apply text-sm;
+  @apply text-gray-700;
+}
+
+.post-list .frontmatter .link {
+  color: inherit;
+}
+
+.post-list .description {
+  @apply mt-2;
+  @apply text-gray-900;
+}

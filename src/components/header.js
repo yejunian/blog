@@ -1,42 +1,46 @@
-import * as React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+import logo from '../images/logo-3x.png';
+import blogTitle from '../images/blog-title';
+import Svg from './svg';
+import * as css from './header.module.css';
+
+const Header = ({ siteTitle, menuOpened, onMenuClick }) => {
+  return (
+    <div className={css.siteHeaderWrapper}>
+      <header className={css.siteHeader}>
+        <div className={css.logoWrapper}>
+          <Link to="/">
+            <img className={css.logo} src={logo} alt="logo" width={32} height={32} />
+          </Link>
+        </div>
+        <h1 className={css.title}>
+          <Link to="/">
+            <Svg {...blogTitle} />
+          </Link>
+        </h1>
+        {/* <div className={css.menu}>
+          <button type="button" onClick={onMenuClick}>
+            {menuOpened ? '^' : 'v'}
+          </button>
+        </div> */}
+      </header>
     </div>
-  </header>
-)
+  );
+};
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+  menuOpened: PropTypes.bool,
+  onMenuClick: PropTypes.func,
+};
 
 Header.defaultProps = {
-  siteTitle: ``,
-}
+  siteTitle: '',
+  menuOpened: false,
+  onMenuClick: () => {},
+};
 
-export default Header
+export default Header;

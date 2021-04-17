@@ -1,0 +1,36 @@
+.site-header-wrapper {
+  @apply flex-none;
+  @apply flex flex-col flex-nowrap;
+  @apply items-center;
+  @apply sticky;
+  @apply top-0;
+  @apply bg-gray-50 bg-opacity-60;
+  @apply shadow-sm;
+  @apply backdrop-filter backdrop-blur-sm;
+}
+
+.site-header {
+  @apply flex flex-row flex-nowrap;
+  @apply items-center;
+  @apply p-4;
+  @apply w-full;
+  @apply max-w-screen-md;
+}
+
+.site-header .logo-wrapper {
+  @apply flex-grow-0 flex-shrink-0;
+}
+
+.site-header .logo {
+  @apply rounded-full;
+}
+
+.site-header .title {
+  @apply flex-grow;
+  @apply mx-4;
+}
+
+.site-header .menu button {
+  width: 32px;
+  height: 32px;
+}

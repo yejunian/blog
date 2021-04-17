@@ -1,10 +1,12 @@
 module.exports = {
+  pathPrefix: `/blog`,
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `&#51456;`,
+    description: `leeye51456의 블로그입니다. 아직은 뭘 올릴까 생각하면서 아무거나 쓰는 중입니다.`,
+    author: `leeye51456`,
   },
   plugins: [
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
@@ -17,20 +19,24 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        name: `posts`,
+        path: `${__dirname}/src/posts`,
       },
     },
-    `gatsby-plugin-gatsby-cloud`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `&#51456;`,
+        short_name: `&#51456;`,
+        start_url: `/blog/`,
+        background_color: `#6da39f`,
+        theme_color: `#6da39f`,
+        display: `minimal-ui`,
+        icon: `src/images/logo.png`,
+      },
+    },
   ],
-}
+};
