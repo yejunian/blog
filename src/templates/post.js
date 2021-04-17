@@ -6,6 +6,7 @@ import 'highlight.js/styles/atom-one-light.css';
 import Layout from '../components/layout';
 import PostInfoCard from '../components/post-info-card';
 import SEO from '../components/seo';
+import Utterances from '../components/utterances';
 import * as css from './post.module.css';
 
 const BlogPost = ({ data }) => {
@@ -51,6 +52,7 @@ const BlogPost = ({ data }) => {
       {/* TODO - 다음 글, 이전 글 링크 영역 */}
 
       {/* TODO - 댓글 영역 */}
+      <Utterances />
     </Layout>
   );
 };
