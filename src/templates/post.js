@@ -48,9 +48,9 @@ const BlogPost = ({ data }) => {
         <PostInfoCard {...license} />
       </article>
 
-      <section>{/* TODO */}다음 글, 이전 글 링크 영역</section>
+      {/* TODO - 다음 글, 이전 글 링크 영역 */}
 
-      <section>{/* TODO */}댓글 영역</section>
+      {/* TODO - 댓글 영역 */}
     </Layout>
   );
 };
