@@ -13,6 +13,15 @@ const BlogPost = ({ data }) => {
   const { frontmatter, html } = markdownRemark;
   const { license } = frontmatter;
 
+  const revisions = frontmatter.revisions.length > 0 && (
+    <li>
+      최종 수정: <time dateTime={frontmatter.revisions}>{frontmatter.revisions[frontmatter.revisions.length - 1]}</time>
+    </li>
+  );
+
+  const keywords =
+    frontmatter.keywords.length > 0 ? <li>키워드: {frontmatter.keywords.join(', ')}</li> : <li>키워드 없음</li>;
+
   useEffect(() => {
     hljs.highlightAll();
   }, [html]);
@@ -29,15 +38,8 @@ const BlogPost = ({ data }) => {
               최초 게시:{' '}
               <time dateTime={frontmatter.date}>{frontmatter.date}</time>
             </li>
-            {frontmatter.revisions && (
-              <li>
-                최종 수정:{' '}
-                <time dateTime={frontmatter.revisions}>
-                  {frontmatter.revisions[frontmatter.revisions.length - 1]}
-                </time>
-              </li>
-            )}
-            <li>키워드: {frontmatter.keywords.join(', ')}</li>
+            {revisions}
+            {keywords}
           </ul>
         </header>
 
