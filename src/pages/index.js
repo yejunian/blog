@@ -8,7 +8,7 @@ import SEO from '../components/seo';
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO />
       <p>{data.site.siteMetadata.description}</p>
       <PostList edges={data.allMarkdownRemark.edges} />
     </Layout>

@@ -26,8 +26,8 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      title={title || defaultTitle}
+      titleTemplate={title ? `%s | ${defaultTitle}` : defaultTitle}
       meta={[
         {
           name: `description`,
@@ -76,7 +76,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default SEO;
