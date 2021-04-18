@@ -1,6 +1,6 @@
 import React, { createRef, useLayoutEffect } from 'react';
 
-const Utterances = () => {
+const Utterances = React.memo(() => {
   const containerRef = createRef();
 
   useLayoutEffect(() => {
@@ -21,11 +21,11 @@ const Utterances = () => {
     });
 
     containerRef.current.appendChild(script);
-  }, []);
+  }, [containerRef]);
 
   return (
     <section ref={containerRef} />
   )
-};
+});
 
 export default Utterances;
