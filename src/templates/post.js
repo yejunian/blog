@@ -51,7 +51,6 @@ const BlogPost = ({ data }) => {
 
       {/* TODO - 다음 글, 이전 글 링크 영역 */}
 
-      {/* TODO - 댓글 영역 */}
       <Utterances />
     </Layout>
   );

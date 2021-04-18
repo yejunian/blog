@@ -2,7 +2,7 @@
   "name": "blog",
   "private": true,
   "description": "Blog of leeye51456",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "leeye51456",
   "dependencies": {
     "gatsby": "^3.1.1",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "gatsby-plugin-postcss": "^4.1.0",
+    "gh-pages": "^3.1.0",
     "postcss": "^8.2.8",
     "prettier": "2.2.1",
     "stylelint": "^13.12.0",
@@ -36,6 +37,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build --prefix-paths",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d public -m \"Deploy $npm_package_version\"",
+    "postdeploy": "git tag $npm_package_version && git push origin $npm_package_version",
     "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "yarn develop",
