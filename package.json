@@ -37,7 +37,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build --prefix-paths",
-    "predeploy": "yarn run build",
+    "predeploy": "yarn run clean && yarn run build",
     "deploy": "gh-pages -d public -m \"Deploy $npm_package_version\"",
     "postdeploy": "git tag $npm_package_version && git push origin $npm_package_version",
     "develop": "gatsby develop -H 0.0.0.0",
