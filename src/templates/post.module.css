@@ -24,6 +24,7 @@
   @apply p-2;
   @apply rounded-md;
   @apply bg-gray-100;
+  @apply break-normal;
 }
 
 .post-body code:not(pre > code) {
