@@ -16,6 +16,7 @@
   kbd,
   samp,
   pre {
-    font-family: 'Cascadia Mono', ui-monospace, Menlo, 'Apple SD Gothic Neo', D2Coding, Consolas, monospace;
+    font-family: 'Cascadia Mono', ui-monospace, Menlo, 'Apple SD Gothic Neo', D2Coding, Consolas, 'Malgun Gothic',
+      monospace;
   }
 }
