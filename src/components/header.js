@@ -16,11 +16,11 @@ const Header = ({ siteTitle, menuOpened, onMenuClick }) => {
             <img className={css.logo} src={logo} alt="logo" width={32} height={32} />
           </Link>
         </div>
-        <h1 className={css.title}>
+        <h2 className={css.title}>
           <Link to="/">
             <Svg {...blogTitle} />
           </Link>
-        </h1>
+        </h2>
         {/* <div className={css.menu}>
           <button type="button" onClick={onMenuClick}>
             {menuOpened ? '^' : 'v'}

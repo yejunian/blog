@@ -3,10 +3,20 @@
 @tailwind utilities;
 
 @layer base {
-  /* https://codepen.io/naradesign/pen/Evadoy */
+  /* .break-words, word-break: https://codepen.io/naradesign/pen/Evadoy */
   body {
     @apply break-words;
 
     word-break: keep-all;
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', NanumBarunGothic,
+      'Malgun Gothic', sans-serif;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: 'Cascadia Mono', ui-monospace, Menlo, 'Apple SD Gothic Neo', D2Coding, Consolas, 'Malgun Gothic',
+      monospace;
   }
 }

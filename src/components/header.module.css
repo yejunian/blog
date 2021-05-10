@@ -4,8 +4,7 @@
   @apply items-center;
   @apply sticky;
   @apply top-0;
-  @apply bg-gray-50 bg-opacity-60;
-  @apply shadow-sm;
+  @apply bg-white bg-opacity-60;
   @apply backdrop-filter backdrop-blur-sm;
 }
 
