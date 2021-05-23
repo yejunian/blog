@@ -2,7 +2,7 @@
   "name": "blog",
   "private": true,
   "description": "Blog of leeye51456",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "leeye51456",
   "dependencies": {
     "gatsby": "^3.1.1",
