@@ -31,8 +31,18 @@
   @apply mx-px;
   @apply px-1 py-px;
   @apply rounded;
-  @apply bg-green-100;
-  @apply text-green-900;
+  @apply bg-gray-200;
+  @apply text-gray-800;
+
+  font-size: 0.875em;
+}
+
+.post-body a code:not(pre > code) {
+  @apply text-blue-700;
+}
+
+.post-body a:hover code:not(pre > code) {
+  @apply text-blue-600;
 }
 
 .post-body em {
@@ -51,7 +61,7 @@
 
 .post-body mark {
   @apply -mx-px;
-  @apply px-1 py-px;
+  @apply px-1 pb-px;
   @apply rounded-full;
   @apply bg-green-200;
 }
@@ -132,4 +142,5 @@
 .post-body pre {
   @apply my-4;
   @apply text-xs;
+  @apply leading-normal;
 }
