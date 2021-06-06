@@ -9,7 +9,7 @@ const Utterances = React.memo(() => {
     const attributes = {
       src: 'https://utteranc.es/client.js',
       repo: 'leeye51456/blog-comment',
-      'issue-term': "pathname",
+      'issue-term': 'pathname',
       label: 'comment',
       theme: 'github-light',
       crossorigin: 'anonymous',
@@ -23,9 +23,7 @@ const Utterances = React.memo(() => {
     containerRef.current.appendChild(script);
   }, [containerRef]);
 
-  return (
-    <section ref={containerRef} />
-  )
+  return <section ref={containerRef} />;
 });
 
 export default Utterances;
