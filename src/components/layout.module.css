@@ -16,15 +16,19 @@
 }
 
 .root > main h1 {
-  @apply text-2xl font-bold;
+  @apply text-3xl font-bold;
 }
 
 .root > main h2 {
-  @apply text-xl font-bold;
+  @apply text-2xl font-bold;
 }
 
 .root > main h3 {
-  @apply text-lg font-bold;
+  @apply text-xl font-bold;
+}
+
+.root > main h4 {
+  @apply text-base font-bold;
 }
 
 .root > main hr {
