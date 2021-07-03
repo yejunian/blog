@@ -99,14 +99,18 @@
 }
 
 .post-body h1 {
-  @apply mt-10;
+  @apply mt-12;
 }
 
 .post-body h2 {
-  @apply mt-8;
+  @apply mt-10;
 }
 
 .post-body h3 {
+  @apply mt-8;
+}
+
+.post-body h4 {
   @apply mt-6;
 }
 

@@ -28,6 +28,13 @@ function SEO({ description, lang, meta, title }) {
       }}
       title={title || defaultTitle}
       titleTemplate={title ? `%s | ${defaultTitle}` : defaultTitle}
+      link={[
+        {
+          rel: `stylesheet`,
+          type: `text/css`,
+          href: `https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css`,
+        }
+      ]}
       meta={[
         {
           name: `description`,
