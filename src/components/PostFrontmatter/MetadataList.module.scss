@@ -1,0 +1,32 @@
+@use 'sass:math';
+@use '../../size';
+@use '../../theme-color';
+
+.root {
+  margin: (2 * size.$gap-unit) 0 0;
+  color: theme-color.$text-bright-1;
+  font-size: 14px;
+
+  > .pair {
+    display: grid;
+    grid-template-columns: size.column-width(6, false) 1fr;
+    gap: 0 size.$column-gap;
+
+    margin-bottom: size.$gap-unit;
+
+    > .key {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    > .value {
+      grid-column: 2;
+
+      margin: 0;
+
+      + .value {
+        color: theme-color.$text-bright-2;
+      }
+    }
+  }
+}
