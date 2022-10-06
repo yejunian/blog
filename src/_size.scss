@@ -1,0 +1,31 @@
+$gap-unit: 8px;
+$gap-section: 5 * $gap-unit;
+
+// $column-gap: 2 * $gap-unit;
+$column-gap: 3 * $gap-unit;
+
+$content-width-max: 744px;
+
+$text-base: 16px;
+$text-h1: 24px;
+$text-h2: 22px;
+$text-h3: 20px;
+$text-h4: 18px;
+$text-h5: 16px;
+$text-h6: 15px; // Intended not to use
+
+@function column-width($column-count, $is-margin-included: true) {
+  $width: 100%;
+
+  @if $is-margin-included == false {
+    $width: calc(100% + $column-gap);
+  } @else {
+    $width: calc(100% - $column-gap);
+  }
+
+  @return calc($width / $column-count - $column-gap);
+}
+
+@function line-height-as-base($font-size: 16px, $factor: 1.8) {
+  @return $font-size + ($factor - 1) * $text-base;
+}
