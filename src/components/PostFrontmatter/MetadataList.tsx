@@ -30,9 +30,9 @@ const MetadataList = ({ metadata }: PostRestFrontmatterProps) => {
           <div key={key} className={styles.pair}>
             <dt className={styles.key}>{key}</dt>
             {valueArray.map((value) => (
-              <dt key={value} className={styles.value}>
+              <dd key={value} className={styles.value}>
                 {value}
-              </dt>
+              </dd>
             ))}
           </div>
         )
