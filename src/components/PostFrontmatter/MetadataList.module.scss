@@ -9,7 +9,7 @@
   > .pair {
     display: grid;
     grid-template-columns: size.column-width(6, false) 1fr;
-    gap: 0 size.$column-gap;
+    gap: 0 size.$gap-column;
 
     margin-bottom: size.$gap-unit;
 

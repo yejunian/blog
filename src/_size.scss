@@ -1,8 +1,8 @@
 $gap-unit: 8px;
 $gap-section: 5 * $gap-unit;
 
-// $column-gap: 2 * $gap-unit;
-$column-gap: 3 * $gap-unit;
+// $gap-column: 2 * $gap-unit;
+$gap-column: 3 * $gap-unit;
 
 $content-width-max: 744px;
 
@@ -18,12 +18,12 @@ $text-h6: 15px; // Intended not to use
   $width: 100%;
 
   @if $is-margin-included == false {
-    $width: calc(100% + $column-gap);
+    $width: calc(100% + $gap-column);
   } @else {
-    $width: calc(100% - $column-gap);
+    $width: calc(100% - $gap-column);
   }
 
-  @return calc($width / $column-count - $column-gap);
+  @return calc($width / $column-count - $gap-column);
 }
 
 @function line-height-as-base($font-size: 16px, $factor: 1.8) {
