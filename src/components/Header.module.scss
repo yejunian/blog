@@ -1,0 +1,56 @@
+@use 'sass:color';
+@use '../size';
+@use '../theme-color';
+
+.root {
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 52px;
+
+  background-color: color.change(theme-color.$bg-base, $alpha: 0.8);
+  box-shadow: 0 2px 2px color.change(theme-color.$gray-15, $alpha: 0.15);
+  backdrop-filter: blur(4px);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .contents {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: size.$gap-column;
+
+    box-sizing: border-box;
+    padding: 0 size.$gap-column;
+    width: min(100%, size.$content-width-max);
+  }
+
+  .title {
+    margin: 0;
+
+    line-height: 1;
+    font-size: 16px;
+    font-weight: 400;
+
+    .logo {
+      display: block;
+      object-fit: contain;
+    }
+  }
+
+  .nav-sub {
+    color: theme-color.$text-bright-2;
+    font-size: 14px;
+  }
+}
