@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $gap-unit: 8px;
 $gap-section: 5 * $gap-unit;
 
@@ -5,6 +7,16 @@ $gap-section: 5 * $gap-unit;
 $gap-column: 3 * $gap-unit;
 
 $content-width-max: 744px;
+
+$text-sizes: (
+  base: 16px,
+  h1: 24px,
+  h2: 22px,
+  h3: 20px,
+  h4: 18px,
+  h5: 16px,
+  h6: 15px, // Intended not to use
+);
 
 $text-base: 16px;
 $text-h1: 24px;
@@ -28,4 +40,8 @@ $text-h6: 15px; // Intended not to use
 
 @function line-height-as-base($font-size: 16px, $factor: 1.8) {
   @return $font-size + ($factor - 1) * $text-base;
+}
+
+@function font-heading($heading-level: 2) {
+  @return map.get($text-sizes, h#{$heading-level});
 }
