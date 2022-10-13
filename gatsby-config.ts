@@ -1,14 +1,42 @@
-import type { GatsbyConfig } from 'gatsby'
+import { GatsbyConfig } from 'gatsby'
 
 const config: GatsbyConfig = {
+  // NOTE - Uncomment below when debugging build error
+  // flags: {
+  //   DEV_SSR: true,
+  // },
+
   pathPrefix: '/blog',
   siteMetadata: {
+    siteUrl: 'https://yejunian.github.io/',
     title: 'yejunian/blog',
-    siteUrl: 'https://yejunian.github.io/blog/',
+    description: '',
+    keywords: 'yejunian',
   },
+
   graphqlTypegen: true,
+
   plugins: [
-    'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: './src/pages/',
+      },
+      __key: 'pages',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'blog-post',
+        path: './src/blog-post/src/',
+      },
+      __key: 'blog-post',
+    },
+
+    'gatsby-transformer-sharp',
+
+    'gatsby-plugin-image',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -19,20 +47,20 @@ const config: GatsbyConfig = {
         theme_color: '#ffffff',
         display: 'minimal-ui',
         icon: 'src/images/icon.png',
+        icon_options: {
+          purpose: 'maskable',
+        },
+        legacy: false,
       },
     },
-    'gatsby-plugin-mdx',
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        name: 'pages',
-        path: './src/pages/',
+        gatsbyRemarkPlugins: ['gatsby-remark-images'],
       },
-      __key: 'pages',
     },
-    'gatsby-plugin-image',
+    'gatsby-plugin-sass',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
   ],
 }
 
