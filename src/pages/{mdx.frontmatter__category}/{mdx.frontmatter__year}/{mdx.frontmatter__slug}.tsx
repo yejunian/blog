@@ -5,7 +5,6 @@ import Layout from '../../../components/Layout'
 import PostFrontmatter from '../../../components/PostFrontmatter'
 import { PostMetadataItem } from '../../../components/PostFrontmatter/MetadataList'
 import Seo from '../../../components/head/Seo'
-import useSiteMetadata from '../../../hooks/useSiteMetadata'
 
 import * as styles from './PostPage.module.scss'
 
@@ -82,8 +81,6 @@ export const Head: HeadFC<PostPageDataType> = ({
   data,
   location,
 }: HeadProps<PostPageDataType>) => {
-  const siteMetadata = useSiteMetadata()
-
   const keywords = useMemo(
     () =>
       [
@@ -99,21 +96,13 @@ export const Head: HeadFC<PostPageDataType> = ({
     []
   )
 
-  const canonicalUrl = siteMetadata?.siteUrl
-    ? `${siteMetadata?.siteUrl}${location.pathname}`
-    : ''
-  const thumbnail =
-    siteMetadata?.siteUrl && data.mdx.frontmatter?.thumbnail?.publicURL
-      ? `${siteMetadata?.siteUrl}${data.mdx.frontmatter?.thumbnail?.publicURL}`
-      : ''
-
   return (
     <Seo
       canonicalPath={location.pathname}
       title={data.mdx.frontmatter?.title?.trim()}
       description={data.mdx.frontmatter?.description?.trim()}
       keywords={keywords}
-      thumbnail={thumbnail}
+      thumbnailPath={data.mdx.frontmatter?.thumbnail?.publicURL}
     />
   )
 }

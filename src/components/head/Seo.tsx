@@ -8,7 +8,7 @@ type SeoProps = {
   title?: string | null
   description?: string | null
   keywords?: string[] | null
-  thumbnail?: string | null
+  thumbnailPath?: string | null
 }
 
 const Seo = ({
@@ -16,7 +16,7 @@ const Seo = ({
   title: givenTitle,
   description: givenDescription,
   keywords: givenKeywords,
-  thumbnail: givenThumbnail,
+  thumbnailPath: givenThumbnailPath,
 }: SeoProps) => {
   const siteMetadata = useSiteMetadata()
 
@@ -36,8 +36,9 @@ const Seo = ({
   const actualKeywords =
     (givenKeywords && givenKeywords.join(',')) || defaultKeywords
 
-  const defaultThumbnail = `${siteUrl}${fallbackThumbnail}`
-  const actualThumbnail = givenThumbnail || defaultThumbnail
+  const defaultThumbnailPath = fallbackThumbnail
+  const thumbnailPath = givenThumbnailPath || defaultThumbnailPath
+  const actualThumbnail = `${siteUrl}${thumbnailPath}`
 
   return (
     <>
