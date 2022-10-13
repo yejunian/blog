@@ -4,11 +4,11 @@ import MetadataList, { PostMetadataItem } from './MetadataList'
 import * as styles from './PostFrontmatter.module.scss'
 
 type PostFrontmatterProps = {
-  thumbnail?: string
+  thumbnail?: string | null
   title: string
-  subtitle?: string
-  description?: string
-  rest: PostMetadataItem[]
+  subtitle?: string | null
+  description?: string | null
+  rest?: PostMetadataItem[] | null
 }
 
 const PostFrontmatter = ({
@@ -19,13 +19,15 @@ const PostFrontmatter = ({
   rest,
 }: PostFrontmatterProps) => (
   <div className={styles.root}>
-    <img
-      className={styles.thumbnail}
-      role="presentation"
-      src={thumbnail}
-      width={1200}
-      height={630}
-    />
+    {thumbnail && (
+      <img
+        className={styles.thumbnail}
+        role="presentation"
+        src={thumbnail}
+        width={1200}
+        height={630}
+      />
+    )}
 
     <div className={styles.text}>
       <header className={styles.titleGroup}>
@@ -33,9 +35,9 @@ const PostFrontmatter = ({
         {subtitle && <p className={styles.subtitle}>&mdash; {subtitle}</p>}
       </header>
 
-      <p className={styles.description}>{description}</p>
+      {description && <p className={styles.description}>{description}</p>}
 
-      <MetadataList metadata={rest} />
+      {rest && <MetadataList metadata={rest} />}
     </div>
   </div>
 )
