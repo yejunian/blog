@@ -58,7 +58,8 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
     <Layout mainClassName={styles.root}>
       <article className={styles.post}>
         <PostFrontmatter
-          thumbnail={frontmatter?.thumbnail?.publicURL}
+          thumbnail={frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData}
+          thumbnailAlt={frontmatter?.thumbnailAlt}
           title={frontmatter?.title ?? defaultTitle}
           subtitle={frontmatter?.subtitle}
           description={frontmatter?.description}
@@ -115,7 +116,16 @@ export const query = graphql`
         slug
         thumbnail {
           publicURL
+          childImageSharp {
+            gatsbyImageData(
+              width: 1200
+              height: 630
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+            )
+          }
         }
+        thumbnailAlt
         title
         subtitle
         description

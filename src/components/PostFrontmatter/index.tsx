@@ -1,10 +1,12 @@
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
 import MetadataList, { PostMetadataItem } from './MetadataList'
 import * as styles from './PostFrontmatter.module.scss'
 
 type PostFrontmatterProps = {
-  thumbnail?: string | null
+  thumbnail?: IGatsbyImageData | null
+  thumbnailAlt?: string | null
   title: string
   subtitle?: string | null
   description?: string | null
@@ -13,6 +15,7 @@ type PostFrontmatterProps = {
 
 const PostFrontmatter = ({
   thumbnail,
+  thumbnailAlt,
   title,
   subtitle,
   description,
@@ -20,12 +23,11 @@ const PostFrontmatter = ({
 }: PostFrontmatterProps) => (
   <div className={styles.root}>
     {thumbnail && (
-      <img
+      <GatsbyImage
         className={styles.thumbnail}
         role="presentation"
-        src={thumbnail}
-        width={1200}
-        height={630}
+        alt={thumbnailAlt ?? ''}
+        image={thumbnail}
       />
     )}
 
