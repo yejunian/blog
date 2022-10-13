@@ -1,0 +1,36 @@
+@use '../../../post-body';
+@use '../../../size';
+@use '../../../theme-color';
+
+.root {
+  margin-bottom: size.$gap-section;
+
+  .post {
+    line-height: 1.8;
+    font-size: 16px;
+    font-weight: 400;
+
+    hr {
+      margin: size.$gap-section size.$gap-column;
+      border: none;
+      height: 1px;
+
+      background-color: theme-color.$line-bright;
+    }
+
+    .post-body {
+      margin: (5 * size.$gap-unit) size.$gap-column;
+
+      @include post-body.base;
+    }
+  }
+
+  .comment {
+    margin: (2 * size.$gap-section) size.$gap-column 0;
+
+    .placeholder {
+      background-color: theme-color.$image-placeholder;
+      min-height: 716;
+    }
+  }
+}
