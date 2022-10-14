@@ -7,13 +7,13 @@
   .thumbnail {
     display: block;
 
-    margin-bottom: size.$gap-column;
+    margin-bottom: var(--gap-column);
     width: 100%;
     height: auto;
   }
 
   .text {
-    margin: size.$gap-column size.$gap-column size.$gap-section;
+    margin: var(--gap-column) var(--gap-column) size.$gap-section;
 
     .title-group {
       margin: 0 0 (2 * size.$gap-unit);

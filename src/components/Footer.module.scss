@@ -11,7 +11,7 @@
   box-sizing: border-box;
   margin: 0;
   width: min(100%, size.$content-width-max);
-  padding: 0 size.$gap-column;
+  padding: 0 var(--gap-column);
 
   line-height: 1.4;
   color: theme-color.$text-bright-1;
@@ -30,7 +30,7 @@
 
   .title-line {
     display: flex;
-    gap: size.$gap-column;
+    gap: var(--gap-column);
 
     margin: 0 0 (2 * size.$gap-unit);
   }

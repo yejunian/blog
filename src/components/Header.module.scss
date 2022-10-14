@@ -30,10 +30,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: size.$gap-column;
+    gap: var(--gap-column);
 
     box-sizing: border-box;
-    padding: 0 size.$gap-column;
+    padding: 0 var(--gap-column);
     width: min(100%, size.$content-width-max);
   }
 
