@@ -5,16 +5,6 @@ $gap-section: 5 * $gap-unit;
 
 $content-width-max: 744px;
 
-$text-sizes: (
-  base: 16px,
-  h1: 24px,
-  h2: 22px,
-  h3: 20px,
-  h4: 18px,
-  h5: 16px,
-  h6: 15px, // Intended not to use
-);
-
 $text-base: 16px;
 $text-h1: 24px;
 $text-h2: 22px;
@@ -22,6 +12,16 @@ $text-h3: 20px;
 $text-h4: 18px;
 $text-h5: 16px;
 $text-h6: 15px; // Intended not to use
+
+$text-sizes: (
+  base: $text-base,
+  h1: $text-h1,
+  h2: $text-h2,
+  h3: $text-h3,
+  h4: $text-h4,
+  h5: $text-h5,
+  h6: $text-h6,
+);
 
 @function column-width($column-count, $is-margin-included: true) {
   $width: 100%;
