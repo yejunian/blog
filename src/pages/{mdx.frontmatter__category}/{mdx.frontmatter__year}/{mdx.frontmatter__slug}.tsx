@@ -117,12 +117,7 @@ export const query = graphql`
         thumbnail {
           publicURL
           childImageSharp {
-            gatsbyImageData(
-              width: 1200
-              height: 630
-              layout: FULL_WIDTH
-              placeholder: BLURRED
-            )
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         thumbnailAlt

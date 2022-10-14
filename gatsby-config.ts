@@ -56,11 +56,44 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        gatsbyRemarkPlugins: ['gatsby-remark-images'],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 696,
+              quality: 80,
+              srcSetBreakpoints: [552, 696, 1104, 1392],
+              withAvif: {
+                quailty: 60,
+              },
+              withWebp: {
+                quailty: 80,
+              },
+            },
+          },
+        ],
       },
     },
     'gatsby-plugin-sass',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          formats: ['auto', 'avif', 'webp'],
+          placeholder: 'blurred',
+          breakpoints: [600, 744, 1200, 1488],
+          jpgOptions: {
+            quality: 80,
+          },
+          webpOptions: {
+            quality: 80,
+          },
+          avifOptions: {
+            quality: 60,
+          },
+        },
+      },
+    },
   ],
 }
 
