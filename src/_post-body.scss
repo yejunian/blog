@@ -146,7 +146,17 @@
 
     line-height: 1.4;
     font-family: font.$monospace;
-    font-size: 14px;
+    font-size: 12px;
+
+    overflow-x: auto;
+
+    @media (min-width: size.$breakpoint-md) {
+      font-size: 12.6px;
+    }
+
+    @media (min-width: size.$breakpoint-lg) {
+      font-size: 13px;
+    }
   }
 
   table {
@@ -191,13 +201,14 @@
 
   code {
     font-family: font.$monospace;
-    font-size: 14px;
   }
 
   :not(pre) > code {
     border-radius: 0.5 * size.$gap-unit;
     padding: (0.25 * size.$gap-unit) (0.5 * size.$gap-unit);
     background-color: theme-color.$bg-code-inline;
+
+    font-size: 13px;
   }
 
   em {

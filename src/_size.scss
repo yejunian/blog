@@ -1,5 +1,8 @@
 @use 'sass:map';
 
+$breakpoint-md: 600px;
+$breakpoint-lg: 744px;
+
 $gap-unit: 8px;
 $gap-section: 5 * $gap-unit;
 
@@ -46,7 +49,7 @@ $text-sizes: (
 @mixin declare-css-variables {
   --gap-column: #{2 * $gap-unit};
 
-  @media (min-width: 600px) {
+  @media (min-width: $breakpoint-md) {
     --gap-column: #{3 * $gap-unit};
   }
 }
