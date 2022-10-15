@@ -111,8 +111,15 @@ export const Head: HeadFC<PostPageDataType> = ({
 export const query = graphql`
   query ($id: String) {
     mdx(id: { eq: $id }) {
+      fields {
+        date {
+          path
+          year
+          month
+          date
+        }
+      }
       frontmatter {
-        year
         slug
         thumbnail {
           publicURL
