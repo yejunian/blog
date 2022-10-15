@@ -110,14 +110,6 @@
     }
   }
 
-  hr {
-    margin: size.$gap-section 0;
-    border: none;
-    height: 1px;
-
-    background-color: theme-color.$line-bright;
-  }
-
   > ol,
   > ul {
     @extend %block-style-base;

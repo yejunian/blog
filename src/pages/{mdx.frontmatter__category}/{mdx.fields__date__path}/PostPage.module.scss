@@ -10,12 +10,8 @@
     font-size: 16px;
     font-weight: 400;
 
-    hr {
+    > hr {
       margin: size.$gap-section var(--gap-column);
-      border: none;
-      height: 1px;
-
-      background-color: theme-color.$line-bright;
     }
 
     .post-body {
