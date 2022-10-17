@@ -1,0 +1,39 @@
+@use '../size';
+@use '../theme-color';
+
+.root {
+  .title-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    line-height: 1;
+
+    .title {
+      margin: 0;
+
+      font-size: 20px;
+      font-weight: 400;
+
+      .logo {
+        display: block;
+        object-fit: contain;
+      }
+    }
+
+    .more {
+      color: theme-color.$gray-08;
+      font-size: 14px;
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+
+  .description {
+    margin: (2 * size.$gap-unit) 0 0;
+
+    line-height: 1.6;
+  }
+}
