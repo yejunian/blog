@@ -9,6 +9,7 @@ type SeoProps = {
   description?: string | null
   keywords?: string[] | null
   thumbnailPath?: string | null
+  noindex?: boolean | null
 }
 
 const Seo = ({
@@ -17,6 +18,7 @@ const Seo = ({
   description: givenDescription,
   keywords: givenKeywords,
   thumbnailPath: givenThumbnailPath,
+  noindex: givenNoindex,
 }: SeoProps) => {
   const siteMetadata = useSiteMetadata()
 
@@ -40,6 +42,8 @@ const Seo = ({
   const thumbnailPath = givenThumbnailPath || defaultThumbnailPath
   const actualThumbnail = `${siteUrl}${thumbnailPath}`
 
+  const actualNoindex = givenNoindex ?? false
+
   return (
     <>
       <link rel="canonical" href={actualCanonicalUrl} />
@@ -58,6 +62,8 @@ const Seo = ({
       )}
       <meta property="og:image" content={actualThumbnail} />
       <meta property="og:locale" content="ko_KR" />
+
+      {actualNoindex && <meta name="robots" content="noindex" />}
     </>
   )
 }

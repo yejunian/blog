@@ -94,7 +94,7 @@ export const Head: HeadFC<PostPageDataType> = ({
         }
         return acc
       }, []),
-    []
+    [data.mdx.frontmatter?.keywords]
   )
 
   return (
@@ -104,6 +104,7 @@ export const Head: HeadFC<PostPageDataType> = ({
       description={data.mdx.frontmatter?.description?.trim()}
       keywords={keywords}
       thumbnailPath={data.mdx.frontmatter?.thumbnail?.publicURL}
+      noindex={data.mdx.frontmatter?.noindex}
     />
   )
 }
@@ -141,6 +142,7 @@ export const query = graphql`
           sub
           misc
         }
+        noindex
       }
     }
   }
