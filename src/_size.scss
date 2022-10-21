@@ -70,6 +70,14 @@ $text-post-sizes: (
   @return map.get($text-post-sizes, h#{$heading-level});
 }
 
+@mixin text-ellipsis($visible-line-count) {
+  display: -webkit-box;
+  -webkit-line-clamp: $visible-line-count;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 @mixin declare-css-variables {
   --gap-column: #{2 * $gap-unit};
 
