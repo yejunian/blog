@@ -1,0 +1,51 @@
+@use '../../size';
+
+.root {
+  line-height: 1.4;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .title {
+    margin: 0;
+
+    font-size: size.$text-general-h2-sm;
+    font-weight: 700;
+
+    @media (min-width: size.$breakpoint-md) {
+      font-size: size.$text-general-h2;
+    }
+  }
+
+  .list {
+    margin: (2 * size.$gap-unit) 0 0;
+
+    .item-group {
+      margin: (2 * size.$gap-unit) 0 0;
+
+      cursor: pointer;
+
+      dt {
+        margin: size.$gap-unit 0 (0.5 * size.$gap-unit);
+        font-size: size.$text-general-h3-sm;
+        font-weight: 700;
+
+        @media (min-width: size.$breakpoint-md) {
+          font-size: size.$text-general-h3;
+        }
+      }
+
+      dd {
+        margin: (0.5 * size.$gap-unit) 0;
+
+        font-size: 14px;
+      }
+    }
+  }
+}
