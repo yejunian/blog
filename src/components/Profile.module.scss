@@ -12,8 +12,12 @@
     .title {
       margin: 0;
 
-      font-size: 20px;
+      font-size: size.$text-general-h1-sm;
       font-weight: 400;
+
+      @media (min-width: size.$breakpoint-md) {
+        font-size: size.$text-general-h1;
+      }
 
       .logo {
         display: block;
@@ -23,7 +27,11 @@
 
     .more {
       color: theme-color.$gray-08;
-      font-size: 14px;
+      font-size: 13px;
+
+      @media (min-width: size.$breakpoint-md) {
+        font-size: 14px;
+      }
 
       a {
         color: inherit;
@@ -35,5 +43,10 @@
     margin: (2 * size.$gap-unit) 0 0;
 
     line-height: 1.6;
+    font-size: 14px;
+
+    @media (min-width: size.$breakpoint-md) {
+      font-size: 16px;
+    }
   }
 }
