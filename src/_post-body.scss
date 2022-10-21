@@ -13,8 +13,8 @@
 
   margin-top: (math.clamp(2, 7 - $level, 6) * size.$gap-unit);
 
-  line-height: size.line-height-as-base(size.font-heading($level));
-  font-size: size.font-heading($level);
+  line-height: size.line-height-as-base(size.font-post-heading($level));
+  font-size: size.font-post-heading($level);
   font-weight: 700;
 }
 

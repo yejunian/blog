@@ -9,21 +9,37 @@ $gap-section: 5 * $gap-unit;
 $content-width-max: 744px;
 
 $text-base: 16px;
-$text-h1: 24px;
-$text-h2: 22px;
-$text-h3: 20px;
-$text-h4: 18px;
-$text-h5: 16px;
-$text-h6: 15px; // Intended not to use
 
-$text-sizes: (
-  base: $text-base,
-  h1: $text-h1,
-  h2: $text-h2,
-  h3: $text-h3,
-  h4: $text-h4,
-  h5: $text-h5,
-  h6: $text-h6,
+$text-general-h1: 28px;
+$text-general-h2: 24px;
+$text-general-h3: 18px;
+$text-general-h4: 16px;
+$text-general-h5: 15px; // Intended not to use
+$text-general-h6: 14px; // Intended not to use
+
+$text-post-h1: 24px;
+$text-post-h2: 22px;
+$text-post-h3: 20px;
+$text-post-h4: 18px;
+$text-post-h5: 16px;
+$text-post-h6: 15px; // Intended not to use
+
+$text-general-sizes: (
+  h1: $text-general-h1,
+  h2: $text-general-h2,
+  h3: $text-general-h3,
+  h4: $text-general-h4,
+  h5: $text-general-h5,
+  h6: $text-general-h6,
+);
+
+$text-post-sizes: (
+  h1: $text-post-h1,
+  h2: $text-post-h2,
+  h3: $text-post-h3,
+  h4: $text-post-h4,
+  h5: $text-post-h5,
+  h6: $text-post-h6,
 );
 
 @function column-width($column-count, $is-margin-included: true) {
@@ -42,8 +58,12 @@ $text-sizes: (
   @return $font-size + ($factor - 1) * $text-base;
 }
 
-@function font-heading($heading-level: 2) {
-  @return map.get($text-sizes, h#{$heading-level});
+@function font-general-heading($heading-level: 2) {
+  @return map.get($text-general-sizes, h#{$heading-level});
+}
+
+@function font-post-heading($heading-level: 2) {
+  @return map.get($text-post-sizes, h#{$heading-level});
 }
 
 @mixin declare-css-variables {
