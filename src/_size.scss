@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:math';
 
 $breakpoint-md: 600px;
 $breakpoint-lg: 744px;
@@ -9,6 +10,13 @@ $gap-section: 5 * $gap-unit;
 $content-width-max: 744px;
 
 $text-base: 16px;
+
+$text-general-h1-sm: 24px;
+$text-general-h2-sm: 20px;
+$text-general-h3-sm: 16px;
+$text-general-h4-sm: 15px;
+$text-general-h5-sm: 14px; // Intended not to use
+$text-general-h6-sm: 13px; // Intended not to use
 
 $text-general-h1: 28px;
 $text-general-h2: 24px;
@@ -42,7 +50,7 @@ $text-post-sizes: (
   h6: $text-post-h6,
 );
 
-@function column-width($column-count, $is-margin-included: true) {
+@function column-width($column-count, $spanning: 1, $is-margin-included: true) {
   $width: 100%;
 
   @if $is-margin-included == false {
@@ -51,15 +59,11 @@ $text-post-sizes: (
     $width: calc(100% - var(--gap-column));
   }
 
-  @return calc($width / $column-count - var(--gap-column));
+  @return calc($width * $spanning / $column-count - var(--gap-column));
 }
 
 @function line-height-as-base($font-size: 16px, $factor: 1.8) {
   @return $font-size + ($factor - 1) * $text-base;
-}
-
-@function font-general-heading($heading-level: 2) {
-  @return map.get($text-general-sizes, h#{$heading-level});
 }
 
 @function font-post-heading($heading-level: 2) {

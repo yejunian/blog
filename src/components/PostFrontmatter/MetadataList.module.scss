@@ -8,13 +8,13 @@
 
   > .pair {
     display: grid;
-    grid-template-columns: size.column-width(4, false) 1fr;
+    grid-template-columns: size.column-width(4, 1, false) 1fr;
     gap: 0 var(--gap-column);
 
     margin-bottom: size.$gap-unit;
 
     @media (min-width: size.$breakpoint-md) {
-      grid-template-columns: size.column-width(6, false) 1fr;
+      grid-template-columns: size.column-width(6, 1, false) 1fr;
     }
 
     > .key {
