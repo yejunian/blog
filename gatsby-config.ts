@@ -75,6 +75,7 @@ const config: GatsbyConfig = {
       },
     },
     'gatsby-plugin-sass',
+    'gatsby-plugin-minify-classnames',
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
