@@ -60,7 +60,7 @@ const PostListItem = ({
         ) : (
           <StaticImage
             className={styles.imageRoot}
-            src="../images/thumbnail-fallback.png"
+            src="../../images/thumbnail-fallback.png"
             alt=""
             layout="fullWidth"
             breakpoints={[216, 432]}
