@@ -29,6 +29,10 @@
     gap: var(--gap-column);
 
     margin-top: var(--gap-column);
+
+    .empty {
+      color: theme-color.$text-bright-2;
+    }
   }
 
   .more {

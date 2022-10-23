@@ -44,7 +44,13 @@ const PostList = ({ heading, categoryId, items }: PostListProps) => {
         <a href="#">{heading ?? `${fallbackHeadingPrefix}무엇을 끄적였나`}</a>
       </h2>
 
-      <div className={styles.list}>{postListItems}</div>
+      <div className={styles.list}>
+        {postListItems.length > 0 ? (
+          postListItems
+        ) : (
+          <div className={styles.empty}>// 앗, 여기에는 글이 없어요!</div>
+        )}
+      </div>
 
       <div className={styles.more}>
         <a href="#">‘{categoryLabel}’ 카테고리의 모든 글 보기 &gt;</a>
