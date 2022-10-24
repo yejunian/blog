@@ -1,3 +1,4 @@
+@use '../../font';
 @use '../../size';
 @use '../../theme-color';
 
@@ -23,7 +24,7 @@
 
         line-height: size.line-height-as-base(size.$text-post-h1, 1.6);
         font-size: size.$text-post-h1;
-        font-weight: 700;
+        font-weight: font.$weight-sans-bold;
       }
 
       .subtitle {
@@ -31,7 +32,6 @@
 
         color: theme-color.$text-bright-2;
         font-size: size.$text-base;
-        font-weight: 400;
       }
     }
 

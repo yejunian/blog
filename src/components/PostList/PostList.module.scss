@@ -1,3 +1,4 @@
+@use '../../font';
 @use '../../size';
 @use '../../theme-color';
 
@@ -7,7 +8,7 @@
 
     line-height: 1.4;
     font-size: size.$text-general-h2-sm;
-    font-weight: 700;
+    font-weight: font.$weight-sans-bold;
 
     @media (min-width: size.$breakpoint-md) {
       font-size: size.$text-general-h2;

@@ -15,7 +15,7 @@
 
   line-height: size.line-height-as-base(size.font-post-heading($level));
   font-size: size.font-post-heading($level);
-  font-weight: 700;
+  font-weight: font.$weight-sans-bold;
 }
 
 @mixin _block-elements {
@@ -81,7 +81,7 @@
     dt {
       margin: (0.5 * size.$gap-unit) 0;
 
-      font-weight: 700;
+      font-weight: font.$weight-sans-bold;
     }
 
     dd {
@@ -248,7 +248,7 @@
   }
 
   strong {
-    font-weight: 700;
+    font-weight: font.$weight-sans-bold;
   }
 }
 

@@ -1,6 +1,11 @@
-$sans-serif: 'Pretendard', -apple-system, BlinkMacSystemFont,
+$sans-serif: 'Pretendard Variable', -apple-system, BlinkMacSystemFont,
   'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 
-$monospace: 'Cascadia Mono', 'Cascadia Code', 'Menlo', 'Consolas',
-  'Courier New', 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic',
-  monospace;
+$monospace: 'Cascadia Mono', 'Cascadia Code', 'Menlo', 'Consolas', 'Courier New',
+  'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', monospace;
+
+$weight-sans-regular: 450;
+$weight-sans-bold: 700;
+
+$weight-mono-regular: 400;
+$weight-mono-bold: 700;

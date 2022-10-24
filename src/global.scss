@@ -2,7 +2,7 @@
 @use './size';
 @use './theme-color';
 
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-dynamic-subset.css');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');
 
 :root {
   @include size.declare-css-variables;
@@ -20,9 +20,28 @@ body {
   font-feature-settings: 'ss10';
   font-size: 16px;
   text-size-adjust: none;
+  font-weight: font.$weight-sans-regular;
 
   word-break: keep-all;
   overflow-wrap: break-word;
+}
+
+pre,
+code {
+  font-weight: font.$weight-mono-regular;
+
+  dt &,
+  h1 &,
+  h2 &,
+  h3 &,
+  h4 &,
+  h5 &,
+  h6 &,
+  th &,
+  b &,
+  strong & {
+    font-weight: font.$weight-mono-bold;
+  }
 }
 
 hr {

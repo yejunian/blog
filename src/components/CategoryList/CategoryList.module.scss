@@ -1,3 +1,4 @@
+@use '../../font';
 @use '../../size';
 
 .root {
@@ -16,7 +17,7 @@
     margin: 0;
 
     font-size: size.$text-general-h2-sm;
-    font-weight: 700;
+    font-weight: font.$weight-sans-bold;
 
     @media (min-width: size.$breakpoint-md) {
       font-size: size.$text-general-h2;
@@ -34,7 +35,7 @@
       dt {
         margin: size.$gap-unit 0 (0.5 * size.$gap-unit);
         font-size: size.$text-general-h3-sm;
-        font-weight: 700;
+        font-weight: font.$weight-sans-bold;
 
         @media (min-width: size.$breakpoint-md) {
           font-size: size.$text-general-h3;
