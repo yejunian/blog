@@ -20,23 +20,20 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'pages',
-        path: './src/pages/',
-      },
-      __key: 'pages',
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         name: 'blog-post',
         path: './src/blog-post/src/',
       },
       __key: 'blog-post',
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: './src/pages/',
+      },
+      __key: 'pages',
+    },
 
-    'gatsby-transformer-sharp',
-
-    'gatsby-plugin-image',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -53,6 +50,10 @@ const config: GatsbyConfig = {
         legacy: false,
       },
     },
+
+    'gatsby-plugin-sass',
+    'gatsby-plugin-minify-classnames',
+
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -74,8 +75,9 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    'gatsby-plugin-sass',
-    'gatsby-plugin-minify-classnames',
+
+    'gatsby-plugin-image',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
