@@ -134,7 +134,8 @@
     border: 1px solid theme-color.$line-base;
     border-radius: size.$gap-unit;
     padding: (1.5 * size.$gap-unit) (2 * size.$gap-unit);
-    background-color: theme-color.$bg-base;
+    // NOTE - Match `prism-themes/themes/prism-one-light.css`
+    background-color: hsl(230, 1%, 98%);
 
     line-height: 1.4;
     font-family: font.$monospace;
