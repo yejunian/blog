@@ -61,14 +61,12 @@ const config: GatsbyConfig = {
           {
             resolve: 'gatsby-remark-images',
             options: {
+              disableBgImage: true,
               maxWidth: 696,
               quality: 80,
-              srcSetBreakpoints: [552, 696, 1104, 1392],
+              srcSetBreakpoints: [696, 1392],
               withAvif: {
                 quailty: 60,
-              },
-              withWebp: {
-                quailty: 80,
               },
             },
           },
@@ -82,13 +80,9 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaults: {
-          formats: ['auto', 'avif', 'webp'],
-          placeholder: 'blurred',
-          breakpoints: [600, 744, 1200, 1488],
+          formats: ['auto', 'avif'],
+          breakpoints: [744, 1488],
           jpgOptions: {
-            quality: 80,
-          },
-          webpOptions: {
             quality: 80,
           },
           avifOptions: {
