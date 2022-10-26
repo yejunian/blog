@@ -59,6 +59,22 @@ const config: GatsbyConfig = {
       options: {
         gatsbyRemarkPlugins: [
           {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static',
+              ignoreFileExtensions: [
+                'avif',
+                'webp',
+                'png',
+                'jpg',
+                'jpeg',
+                'bmp',
+                'tiff',
+                'tga',
+              ],
+            },
+          },
+          {
             resolve: 'gatsby-remark-images',
             options: {
               disableBgImage: true,
