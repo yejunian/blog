@@ -9,7 +9,7 @@
   }
 
   > :first-child {
-    margin-top: var(--gap-column);
+    margin-top: calc(1.5 * var(--gap-column));
   }
 
   > :last-child {

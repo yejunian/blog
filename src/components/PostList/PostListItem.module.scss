@@ -38,10 +38,10 @@
       margin: 0;
 
       line-height: 1.4;
-      font-size: size.$text-general-h3-sm;
+      font-size: size.$text-list-item-title;
 
       @media (min-width: size.$breakpoint-md) {
-        font-size: size.$text-general-h3;
+        font-size: size.$text-list-item-title-md;
       }
 
       a {

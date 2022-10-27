@@ -8,13 +8,13 @@
   margin: (2 * size.$gap-unit) 0;
 }
 
-@mixin _heading-style($level: 2) {
-  @extend %block-style-base;
+@mixin _heading-style($level: 2, $prefix: null) {
+  $font-size: size.font-post-heading($level, $prefix);
 
-  margin-top: (math.clamp(2, 7 - $level, 6) * size.$gap-unit);
+  margin-top: (1.5 * math.clamp(2, 7 - $level, 6) * size.$gap-unit);
 
-  line-height: size.line-height-as-base(size.font-post-heading($level));
-  font-size: size.font-post-heading($level);
+  line-height: size.line-height-as-base($font-size);
+  font-size: $font-size;
   font-weight: var(--font-weight-sans-bold);
 }
 
@@ -106,7 +106,14 @@
   // <h2>-<h6> elements
   @for $level from 2 through 6 {
     h#{$level} {
+      @extend %block-style-base;
       @include _heading-style($level);
+    }
+
+    @media (min-width: size.$breakpoint-md) {
+      h#{$level} {
+        @include _heading-style($level, md);
+      }
     }
   }
 
@@ -133,7 +140,7 @@
 
     border: 1px solid theme-color.$line-base;
     border-radius: size.$gap-unit;
-    padding: (1.5 * size.$gap-unit) (2 * size.$gap-unit);
+    padding: (1 * size.$gap-unit) (1.5 * size.$gap-unit);
     // NOTE - Match `prism-themes/themes/prism-one-light.css`
     background-color: hsl(230, 1%, 98%);
 
@@ -144,11 +151,13 @@
     overflow-x: auto;
 
     @media (min-width: size.$breakpoint-md) {
-      font-size: 12.6px;
+      padding: (1.5 * size.$gap-unit) (2 * size.$gap-unit);
+
+      font-size: 13px;
     }
 
     @media (min-width: size.$breakpoint-lg) {
-      font-size: 13px;
+      font-size: 13.6px;
     }
   }
 
@@ -194,14 +203,19 @@
 
   code {
     font-family: font.$monospace;
+    letter-spacing: -0.02em;
+
+    @media (min-width: size.$breakpoint-md) {
+      letter-spacing: unset;
+    }
   }
 
   :not(pre) > code {
     border-radius: 0.5 * size.$gap-unit;
-    padding: (0.25 * size.$gap-unit) (0.5 * size.$gap-unit);
+    padding: (0.125 * size.$gap-unit) (0.25 * size.$gap-unit);
     background-color: theme-color.$bg-code-inline;
 
-    font-size: 13px;
+    font-size: 0.875em;
   }
 
   em {
@@ -223,7 +237,7 @@
     background-color: theme-color.$bg-base;
 
     font-family: font.$sans-serif;
-    font-size: 14px;
+    font-size: 0.875em;
     white-space: nowrap;
   }
 

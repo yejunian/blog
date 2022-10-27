@@ -7,12 +7,8 @@
     margin: 0;
 
     line-height: 1.4;
-    font-size: size.$text-general-h2-sm;
+    font-size: size.$text-section-heading;
     font-weight: var(--font-weight-sans-bold);
-
-    @media (min-width: size.$breakpoint-md) {
-      font-size: size.$text-general-h2;
-    }
 
     a {
       color: inherit;
@@ -29,7 +25,7 @@
     flex-direction: column;
     gap: var(--gap-column);
 
-    margin-top: var(--gap-column);
+    margin-top: 3 * size.$gap-unit;
 
     .empty {
       color: theme-color.$text-bright-2;

@@ -6,40 +6,30 @@ $breakpoint-lg: 744px;
 
 $gap-unit: 8px;
 $gap-section: 5 * $gap-unit;
+$gap-section: 60px;
 
 $content-width-max: 744px;
 
 $text-base: 16px;
 
-$text-general-h1-sm: 24px;
-$text-general-h2-sm: 20px;
-$text-general-h3-sm: 16px;
-$text-general-h4-sm: 15px;
-$text-general-h5-sm: 14px; // Intended not to use
-$text-general-h6-sm: 13px; // Intended not to use
+$text-section-heading: 24px;
+$text-category-name: 20px;
+$text-list-item-title: 16px;
+$text-list-item-title-md: 18px;
 
-$text-general-h1: 28px;
-$text-general-h2: 24px;
-$text-general-h3: 18px;
-$text-general-h4: 16px;
-$text-general-h5: 15px; // Intended not to use
-$text-general-h6: 14px; // Intended not to use
-
-$text-post-h1: 24px;
-$text-post-h2: 22px;
-$text-post-h3: 20px;
+$text-post-h1: 25.6px;
+$text-post-h2: 22.8px;
+$text-post-h3: 20.3px;
 $text-post-h4: 18px;
 $text-post-h5: 16px;
-$text-post-h6: 15px; // Intended not to use
+$text-post-h6: 14.2px; // Intended not to use
 
-$text-general-sizes: (
-  h1: $text-general-h1,
-  h2: $text-general-h2,
-  h3: $text-general-h3,
-  h4: $text-general-h4,
-  h5: $text-general-h5,
-  h6: $text-general-h6,
-);
+$text-post-h1-md: 32px;
+$text-post-h2-md: 26.9px;
+$text-post-h3-md: 22.6px;
+$text-post-h4-md: 19px;
+$text-post-h5-md: 16px;
+$text-post-h6-md: 14.2px; // Intended not to use
 
 $text-post-sizes: (
   h1: $text-post-h1,
@@ -48,6 +38,14 @@ $text-post-sizes: (
   h4: $text-post-h4,
   h5: $text-post-h5,
   h6: $text-post-h6,
+);
+$text-post-sizes-md: (
+  h1: $text-post-h1-md,
+  h2: $text-post-h2-md,
+  h3: $text-post-h3-md,
+  h4: $text-post-h4-md,
+  h5: $text-post-h5-md,
+  h6: $text-post-h6-md,
 );
 
 @function column-width($column-count, $spanning: 1, $is-margin-included: true) {
@@ -66,8 +64,12 @@ $text-post-sizes: (
   @return $font-size + ($factor - 1) * $text-base;
 }
 
-@function font-post-heading($heading-level: 2) {
-  @return map.get($text-post-sizes, h#{$heading-level});
+@function font-post-heading($heading-level: 2, $prefix: null) {
+  @if $prefix == md {
+    @return map.get($text-post-sizes-md, h#{$heading-level});
+  } @else {
+    @return map.get($text-post-sizes, h#{$heading-level});
+  }
 }
 
 @mixin text-ellipsis($visible-line-count) {

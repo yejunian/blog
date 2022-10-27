@@ -53,8 +53,7 @@
     }
   }
 
-  .license,
-  .source {
+  .license {
     margin: size.$gap-unit 0;
 
     p,
@@ -74,6 +73,14 @@
     .bright {
       color: theme-color.$text-bright-2;
       font-size: 12px;
+    }
+  }
+
+  .source {
+    margin: size.$gap-unit 0;
+
+    p {
+      margin: (0.5 * size.$gap-unit) 0;
     }
   }
 }

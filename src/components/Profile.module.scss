@@ -13,11 +13,11 @@
     .title {
       margin: 0;
 
-      font-size: size.$text-general-h1-sm;
+      font-size: 24px;
       font-weight: var(--font-weight-sans-regular);
 
       @media (min-width: size.$breakpoint-md) {
-        font-size: size.$text-general-h1;
+        font-size: 28px;
       }
 
       .logo {

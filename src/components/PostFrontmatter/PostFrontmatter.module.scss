@@ -11,10 +11,14 @@
     margin-bottom: var(--gap-column);
     width: 100%;
     height: auto;
+
+    + .text {
+      margin: var(--gap-column) var(--gap-column) size.$gap-section;
+    }
   }
 
   .text {
-    margin: var(--gap-column) var(--gap-column) size.$gap-section;
+    margin: calc(1.5 * var(--gap-column)) var(--gap-column);
 
     .title {
       margin: 0;
@@ -22,10 +26,15 @@
       line-height: size.line-height-as-base(size.$text-post-h1);
       font-size: size.$text-post-h1;
       font-weight: var(--font-weight-sans-bold);
+
+      @media (min-width: size.$breakpoint-md) {
+        line-height: size.line-height-as-base(size.$text-post-h1-md);
+        font-size: size.$text-post-h1-md;
+      }
     }
 
     .description {
-      margin: (2 * size.$gap-unit) 0;
+      margin: (2 * size.$gap-unit) 0 0;
 
       color: theme-color.$text-bright-1;
     }
