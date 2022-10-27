@@ -8,7 +8,7 @@
 
     line-height: 1.4;
     font-size: size.$text-general-h2-sm;
-    font-weight: font.$weight-sans-bold;
+    font-weight: var(--font-weight-sans-bold);
 
     @media (min-width: size.$breakpoint-md) {
       font-size: size.$text-general-h2;

@@ -4,8 +4,14 @@ $sans-serif: 'Pretendard Variable', -apple-system, BlinkMacSystemFont,
 $monospace: 'Cascadia Mono', 'Cascadia Code', 'Menlo', 'Consolas', 'Courier New',
   'Pretendard Variable', 'Apple SD Gothic Neo', 'Malgun Gothic', monospace;
 
-$weight-sans-regular: 450;
-$weight-sans-bold: 700;
+@mixin declare-css-variables {
+  --font-weight-sans-regular: 400;
+  --font-weight-sans-bold: 700;
 
-$weight-mono-regular: 400;
-$weight-mono-bold: 700;
+  --font-weight-mono-regular: 400;
+  --font-weight-mono-bold: 700;
+
+  @media (max-resolution: 1dppx) {
+    --font-weight-sans-regular: 450;
+  }
+}

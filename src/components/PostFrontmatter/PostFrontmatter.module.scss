@@ -21,7 +21,7 @@
 
       line-height: size.line-height-as-base(size.$text-post-h1);
       font-size: size.$text-post-h1;
-      font-weight: font.$weight-sans-bold;
+      font-weight: var(--font-weight-sans-bold);
     }
 
     .description {

@@ -5,6 +5,7 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');
 
 :root {
+  @include font.declare-css-variables;
   @include size.declare-css-variables;
 }
 
@@ -20,27 +21,17 @@ body {
   font-feature-settings: 'ss10';
   font-size: 16px;
   text-size-adjust: none;
-  font-weight: font.$weight-sans-regular;
+  font-weight: var(--font-weight-sans-regular);
 
   word-break: keep-all;
   overflow-wrap: break-word;
 }
 
-pre,
-code {
-  font-weight: font.$weight-mono-regular;
+:is(pre, code) {
+  font-weight: var(--font-weight-mono-regular);
 
-  dt &,
-  h1 &,
-  h2 &,
-  h3 &,
-  h4 &,
-  h5 &,
-  h6 &,
-  th &,
-  b &,
-  strong & {
-    font-weight: font.$weight-mono-bold;
+  :is(dt, h1, h2, h3, h4, h5, h6, th, b, strong) & {
+    font-weight: var(--font-weight-mono-bold);
   }
 }
 

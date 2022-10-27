@@ -14,7 +14,7 @@
       margin: 0;
 
       font-size: size.$text-general-h1-sm;
-      font-weight: font.$weight-sans-regular;
+      font-weight: var(--font-weight-sans-regular);
 
       @media (min-width: size.$breakpoint-md) {
         font-size: size.$text-general-h1;
