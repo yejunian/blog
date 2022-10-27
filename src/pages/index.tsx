@@ -30,7 +30,6 @@ const getPostListItemArrayFromNode = (
       ) as string[])
     : []
   const slug = node.frontmatter?.slug ?? null
-  const subtitle = node.frontmatter?.subtitle ?? null
   const thumbnail =
     node.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData ?? null
   const thumbnailAlt = node.frontmatter?.thumbnailAlt ?? null
@@ -39,7 +38,6 @@ const getPostListItemArrayFromNode = (
 
   return {
     id,
-    subtitle,
     description,
     thumbnail,
     thumbnailAlt,
@@ -91,7 +89,6 @@ export const query = graphql`
               main
             }
             slug
-            subtitle
             thumbnail {
               childImageSharp {
                 gatsbyImageData(breakpoints: [216, 432], layout: FULL_WIDTH)

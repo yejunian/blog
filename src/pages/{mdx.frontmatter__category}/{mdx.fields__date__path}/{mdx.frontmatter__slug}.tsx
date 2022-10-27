@@ -61,7 +61,6 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
           thumbnail={frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData}
           thumbnailAlt={frontmatter?.thumbnailAlt}
           title={frontmatter?.title ?? defaultTitle}
-          subtitle={frontmatter?.subtitle}
           description={frontmatter?.description}
           rest={restFrontmatter}
         />
@@ -130,7 +129,6 @@ export const query = graphql`
         }
         thumbnailAlt
         title
-        subtitle
         description
         date(formatString: "YYYY년 M월 D일 H시", locale: "ko-KR")
         revisions {

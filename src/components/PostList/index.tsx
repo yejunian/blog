@@ -28,7 +28,6 @@ const PostList = ({ heading, categoryId, items }: PostListProps) => {
           path={item.path}
           date={item.date}
           title={item.title}
-          subtitle={item.subtitle}
           description={item.description}
           keywords={item.keywords}
           thumbnail={item.thumbnail}

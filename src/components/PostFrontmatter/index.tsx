@@ -8,7 +8,6 @@ type PostFrontmatterProps = {
   thumbnail?: IGatsbyImageData | null
   thumbnailAlt?: string | null
   title: string
-  subtitle?: string | null
   description?: string | null
   rest?: PostMetadataItem[] | null
 }
@@ -17,7 +16,6 @@ const PostFrontmatter = ({
   thumbnail,
   thumbnailAlt,
   title,
-  subtitle,
   description,
   rest,
 }: PostFrontmatterProps) => (
@@ -32,10 +30,7 @@ const PostFrontmatter = ({
     )}
 
     <div className={styles.text}>
-      <header className={styles.titleGroup}>
-        <h1 className={styles.title}>{title}</h1>
-        {subtitle && <p className={styles.subtitle}>&mdash; {subtitle}</p>}
-      </header>
+      <h1 className={styles.title}>{title}</h1>
 
       {description && <p className={styles.description}>{description}</p>}
 

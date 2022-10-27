@@ -16,23 +16,12 @@
   .text {
     margin: var(--gap-column) var(--gap-column) size.$gap-section;
 
-    .title-group {
-      margin: 0 0 (2 * size.$gap-unit);
+    .title {
+      margin: 0;
 
-      .title {
-        margin: 0;
-
-        line-height: size.line-height-as-base(size.$text-post-h1, 1.6);
-        font-size: size.$text-post-h1;
-        font-weight: font.$weight-sans-bold;
-      }
-
-      .subtitle {
-        margin: (0.5 * size.$gap-unit) 0 0;
-
-        color: theme-color.$text-bright-2;
-        font-size: size.$text-base;
-      }
+      line-height: size.line-height-as-base(size.$text-post-h1);
+      font-size: size.$text-post-h1;
+      font-weight: font.$weight-sans-bold;
     }
 
     .description {
