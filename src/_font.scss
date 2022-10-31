@@ -11,7 +11,11 @@ $monospace: 'Cascadia Mono', 'Cascadia Code', 'Menlo', 'Consolas', 'Courier New'
   --font-weight-mono-regular: 400;
   --font-weight-mono-bold: 700;
 
-  @media (max-resolution: 1dppx) {
+  @media screen and (max-resolution: 1.4dppx) {
     --font-weight-sans-regular: 450;
+  }
+
+  @media screen and (max-resolution: 1.19dppx) {
+    --font-weight-sans-regular: 500;
   }
 }
