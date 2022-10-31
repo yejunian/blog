@@ -49,6 +49,12 @@ const Footer = () => (
             있습니다.
           </li>
         </ul>
+        <p className={styles.bright}>
+          게시물에 포함된 이미지를 외부 서비스에서 사용하려면, 이미지를
+          다운로드한 뒤 공유하려는 서비스의 이미지 첨부 기능을 활용하기
+          바랍니다. 이 사이트에 포함된 이미지의 URL은 언제든지 변경될 수
+          있습니다.
+        </p>
       </div>
 
       <div className={styles.source}>
