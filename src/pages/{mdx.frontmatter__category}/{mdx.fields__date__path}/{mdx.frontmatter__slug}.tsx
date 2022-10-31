@@ -14,6 +14,19 @@ type PostPageDataType = {
 
 const defaultTitle = '제목이 없는 글'
 
+const joinKeywords = (
+  keywords: readonly unknown[] | unknown[] | null | undefined
+) =>
+  (keywords ?? []).reduce((acc: string, value: unknown) => {
+    if (value === '' || value === '__EMPTY') {
+      return acc
+    } else if (acc === '') {
+      return `${value}`
+    } else {
+      return `${acc}, ${value}`
+    }
+  }, '')
+
 const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
   const frontmatter = data.mdx.frontmatter
 
@@ -33,9 +46,9 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
   }, [frontmatter?.revisions])
 
   const keywords = useMemo(() => {
-    const mainKeywords = frontmatter?.keywords?.main?.join(', ')
-    const subKeywords = frontmatter?.keywords?.sub?.join(', ')
-    // const miscKeywords = frontmatter?.keywords?.misc?.join(', ') ?? ''
+    const mainKeywords = joinKeywords(frontmatter?.keywords?.main)
+    const subKeywords = joinKeywords(frontmatter?.keywords?.sub)
+    // const miscKeywords = joinKeywords(frontmatter?.keywords?.misc)
 
     if (mainKeywords && subKeywords) {
       return [`${mainKeywords},`, subKeywords]
