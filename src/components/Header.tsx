@@ -22,9 +22,9 @@ const Header = () => (
         </h2>
       </div>
 
-      <div className={styles.navSub}>
+      {/* <div className={styles.navSub}>
         <Link to="/posts/">전체글</Link>
-      </div>
+      </div> */}
     </nav>
   </header>
 )

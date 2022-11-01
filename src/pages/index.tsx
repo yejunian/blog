@@ -59,9 +59,9 @@ const IndexPage = ({ data }: PageProps<IndexPageDataType>) => {
     <Layout mainClassName={styles.root}>
       <Profile />
 
-      <hr />
+      {/* <hr /> */}
 
-      <CategoryList heading="어떤 분류로 끄적이고 있나" />
+      {/* <CategoryList heading="어떤 분류로 끄적이고 있나" /> */}
 
       <hr />
 

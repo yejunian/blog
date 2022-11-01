@@ -40,7 +40,8 @@ const PostList = ({ heading, categoryId, items }: PostListProps) => {
   return (
     <div className={styles.root}>
       <h2 className={styles.title}>
-        <a href="#">{heading ?? `${fallbackHeadingPrefix}무엇을 끄적였나`}</a>
+        {/* <a href="#">{heading ?? `${fallbackHeadingPrefix}무엇을 끄적였나`}</a> */}
+        무엇을 끄적였나
       </h2>
 
       <div className={styles.list}>
@@ -51,9 +52,9 @@ const PostList = ({ heading, categoryId, items }: PostListProps) => {
         )}
       </div>
 
-      <div className={styles.more}>
+      {/* <div className={styles.more}>
         <a href="#">‘{categoryLabel}’ 카테고리의 모든 글 보기 &gt;</a>
-      </div>
+      </div> */}
     </div>
   )
 }
