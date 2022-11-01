@@ -1,3 +1,4 @@
+import Giscus from '@giscus/react'
 import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby'
 import React, { useMemo } from 'react'
 
@@ -84,7 +85,21 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
       </article>
 
       <section className={styles.comment}>
-        <div className={styles.placeholder} />
+        <Giscus
+          repo="yejunian/blog-post"
+          repoId="R_kgDOIHuXOg"
+          category="Comments"
+          categoryId="DIC_kwDOIHuXOs4CSTDL"
+          mapping="specific"
+          term={`${data.mdx.fields?.date?.path}/${frontmatter?.slug}`}
+          strict="1"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="top"
+          theme="light"
+          lang="ko"
+          loading="lazy"
+        />
       </section>
     </Layout>
   )

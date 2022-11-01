@@ -23,10 +23,5 @@
 
   .comment {
     margin: (2 * size.$gap-section) var(--gap-column) 0;
-
-    .placeholder {
-      background-color: theme-color.$image-placeholder;
-      min-height: 716;
-    }
   }
 }
