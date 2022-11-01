@@ -113,6 +113,13 @@ const config: GatsbyConfig = {
         },
       },
     },
+
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: ['G-K84ZMQZ9P3'],
+      },
+    },
   ],
 }
 
