@@ -6,6 +6,7 @@
   "author": "yejunian",
   "homepage": "https://yejunian.github.io/blog/",
   "scripts": {
+    "clone-post": "git clone https://github.com/yejunian/blog-post.git src/blog-post",
     "develop": "gatsby develop -H 0.0.0.0",
     "start": "yarn develop",
     "build": "gatsby build --prefix-paths",
