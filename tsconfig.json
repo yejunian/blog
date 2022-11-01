@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["dom", "esnext"],
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/global.d.ts",
+    ]
+  },
+  "include": [
+    "./src/**/*",
+    "./gatsby-browser.*",
+    "./gatsby-config.*",
+    "./gatsby-node.*",
+    "./gatsby-ssr.*",
+    "./plugins/**/*"
+  ]
+}

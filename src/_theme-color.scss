@@ -1,0 +1,38 @@
+// TODO - Redefine colors by HCL color space.
+
+$gray-00: #fff;
+$gray-005: #f3f4f5;
+$gray-01: #e9e9ec;
+$gray-02: #d4d5da;
+$gray-03: #c0c2ca;
+$gray-04: #aeb1ba;
+$gray-05: #9ea0ac;
+$gray-06: #8e919f;
+$gray-07: #7f8292;
+$gray-08: #717584;
+$gray-09: #646876;
+$gray-10: #585b68;
+$gray-11: #4d4f5a;
+$gray-12: #41434d;
+$gray-13: #35373e;
+$gray-14: #282a2f;
+$gray-15: #191a1e;
+$gray-16: #000;
+
+$bg-base: $gray-00;
+$bg-code-inline: $gray-01;
+$bg-mark: #fbeaa4;
+$bg-summary-hover: $gray-01;
+$bg-table-head: $gray-01;
+$bg-table-zebra: $gray-005;
+$image-placeholder: $gray-03;
+
+$text: $gray-15;
+$text-bright-1: $gray-11;
+$text-bright-2: $gray-08;
+$text-link: #0934e0;
+$text-link-dark: #082dbf;
+
+$line-bright: $gray-03;
+$line-base: $gray-07;
+$line-dark: $gray-11;

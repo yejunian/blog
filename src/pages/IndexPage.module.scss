@@ -1,0 +1,18 @@
+@use '../size';
+
+.root {
+  margin-top: 0.5 * size.$gap-unit;
+  margin-bottom: size.$gap-section;
+
+  > * {
+    margin: size.$gap-section var(--gap-column);
+  }
+
+  > :first-child {
+    margin-top: calc(1.5 * var(--gap-column));
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}

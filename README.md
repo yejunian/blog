@@ -1,3 +1,3 @@
-# &amp;#51456;
+# yejunian
 
-[leeye51456의 개인 블로그](https://leeye51456.github.io/blog/)입니다.
+[yejunian의 개인 블로그](https://yejunian.github.io/blog/)입니다.

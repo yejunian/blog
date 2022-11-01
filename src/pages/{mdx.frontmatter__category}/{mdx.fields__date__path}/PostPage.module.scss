@@ -1,0 +1,27 @@
+@use '../../../font';
+@use '../../../post-body';
+@use '../../../size';
+@use '../../../theme-color';
+
+.root {
+  margin-bottom: size.$gap-section;
+
+  .post {
+    line-height: 1.8;
+    font-size: 16px;
+
+    > hr {
+      margin: size.$gap-section var(--gap-column);
+    }
+
+    .post-body {
+      margin: (5 * size.$gap-unit) var(--gap-column);
+
+      @include post-body.base;
+    }
+  }
+
+  .comment {
+    margin: (2 * size.$gap-section) var(--gap-column) 0;
+  }
+}
