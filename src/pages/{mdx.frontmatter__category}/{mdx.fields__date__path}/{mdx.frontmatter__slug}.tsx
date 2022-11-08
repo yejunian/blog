@@ -6,6 +6,8 @@ import Layout from '../../../components/Layout'
 import PostFrontmatter from '../../../components/PostFrontmatter'
 import { PostMetadataItem } from '../../../components/PostFrontmatter/MetadataList'
 import Seo from '../../../components/head/Seo'
+import formatDatetime from '../../../utils/formatDatetime'
+import joinKeywords from '../../../utils/joinKeywords'
 
 import * as styles from './PostPage.module.scss'
 
@@ -14,19 +16,6 @@ type PostPageDataType = {
 }
 
 const defaultTitle = '제목이 없는 글'
-
-const joinKeywords = (
-  keywords: readonly unknown[] | unknown[] | null | undefined
-) =>
-  (keywords ?? []).reduce((acc: string, value: unknown) => {
-    if (value === '' || value === '__EMPTY') {
-      return acc
-    } else if (acc === '') {
-      return `${value}`
-    } else {
-      return `${acc}, ${value}`
-    }
-  }, '')
 
 const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
   const frontmatter = data.mdx.frontmatter
@@ -37,7 +26,8 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
       const date = recent?.date
 
       if (date) {
-        return recent.message ? [date, recent.message] : [date]
+        const dateString = formatDatetime(date, { withHours: true })
+        return recent.message ? [dateString, recent.message] : [dateString]
       } else {
         return null
       }
@@ -63,7 +53,12 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
   }, [frontmatter?.keywords])
 
   const restFrontmatter: PostMetadataItem[] = [
-    { key: '최초 게시', values: frontmatter?.date },
+    {
+      key: '최초 게시',
+      values: frontmatter?.date
+        ? formatDatetime(frontmatter.date, { withHours: true })
+        : undefined,
+    },
     { key: '최종 수정', values: revisions },
     { key: '키워드', values: keywords },
   ]
@@ -126,7 +121,11 @@ export const Head: HeadFC<PostPageDataType> = ({
 
   return (
     <Seo
-      canonicalPath={location.pathname}
+      canonicalPath={
+        location.pathname.endsWith('/')
+          ? location.pathname.slice(0, -1)
+          : location.pathname
+      }
       title={data.mdx.frontmatter?.title?.trim()}
       description={data.mdx.frontmatter?.description?.trim()}
       keywords={keywords}
@@ -158,9 +157,9 @@ export const query = graphql`
         thumbnailAlt
         title
         description
-        date(formatString: "YYYY년 M월 D일 H시", locale: "ko-KR")
+        date(formatString: "YYYY-MM-DD[T]HH:mm:ss[Z]")
         revisions {
-          date(formatString: "YYYY년 M월 D일 H시", locale: "ko-KR")
+          date(formatString: "YYYY-MM-DD[T]HH:mm:ss[Z]")
           message
         }
         keywords {
