@@ -9,6 +9,7 @@ import PostList, {
   PostListItemArrayEntry,
 } from '../components/PostList'
 import Seo from '../components/head/Seo'
+import formatDatetime from '../utils/formatDatetime'
 
 import * as styles from './IndexPage.module.scss'
 
@@ -22,7 +23,9 @@ const getPostListItemArrayFromNode = (
 ): PostListItemArrayEntry => {
   const datePath = node.fields?.date?.path ?? null
   const category = node.frontmatter?.category ?? null
-  const formattedDate = node.frontmatter?.date ?? null
+  const formattedDate = node.frontmatter?.date
+    ? formatDatetime(node.frontmatter.date)
+    : null
   const description = node.frontmatter?.description ?? null
   const mainKeywords: string[] = node.frontmatter?.keywords?.main
     ? (node.frontmatter.keywords.main.filter((value) =>
@@ -83,7 +86,7 @@ export const query = graphql`
         node {
           frontmatter {
             category
-            date(formatString: "YYYY년 M월 D일")
+            date(formatString: "YYYY-MM-DD[T]HH:mm:ss[Z]")
             description
             keywords {
               main
