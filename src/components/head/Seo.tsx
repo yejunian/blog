@@ -2,6 +2,7 @@ import React from 'react'
 
 import useSiteMetadata from '../../hooks/useSiteMetadata'
 import fallbackThumbnail from '../../images/thumbnail-fallback.png'
+import joinKeywords from '../../utils/joinKeywords'
 
 type SeoProps = {
   canonicalPath?: string | null
@@ -35,8 +36,7 @@ const Seo = ({
   const actualDescription = givenDescription || defaultDescription
 
   const defaultKeywords = siteMetadata?.keywords || 'yejunian'
-  const actualKeywords =
-    (givenKeywords && givenKeywords.join(',')) || defaultKeywords
+  const actualKeywords = joinKeywords(givenKeywords) || defaultKeywords
 
   const defaultThumbnailPath = fallbackThumbnail
   const thumbnailPath = givenThumbnailPath || defaultThumbnailPath

@@ -6,6 +6,7 @@ import Layout from '../../../components/Layout'
 import PostFrontmatter from '../../../components/PostFrontmatter'
 import { PostMetadataItem } from '../../../components/PostFrontmatter/MetadataList'
 import Seo from '../../../components/head/Seo'
+import joinKeywords from '../../../utils/joinKeywords'
 
 import * as styles from './PostPage.module.scss'
 
@@ -14,19 +15,6 @@ type PostPageDataType = {
 }
 
 const defaultTitle = '제목이 없는 글'
-
-const joinKeywords = (
-  keywords: readonly unknown[] | unknown[] | null | undefined
-) =>
-  (keywords ?? []).reduce((acc: string, value: unknown) => {
-    if (value === '' || value === '__EMPTY') {
-      return acc
-    } else if (acc === '') {
-      return `${value}`
-    } else {
-      return `${acc}, ${value}`
-    }
-  }, '')
 
 const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
   const frontmatter = data.mdx.frontmatter
