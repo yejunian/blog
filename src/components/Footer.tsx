@@ -32,27 +32,30 @@ const Footer = () => (
         </p>
         <ul className={styles.bright}>
           <li>
-            게시물(코드 블록 제외):{' '}
+            <a href="https://github.com/yejunian/blog-post">
+              yejunian/blog-post
+            </a>
+            를 통해 게시된 게시물(코드 블록 제외):{' '}
             <a href="https://creativecommons.org/licenses/by/4.0/deed.ko">
               CC-BY 4.0
             </a>
           </li>
           <li>
-            게시물 등에 삽입된 코드 블록(
+            게시물에 삽입된 코드 블록(
             <code>
               &lt;pre&gt;&lt;code&gt;&hellip;&lt;/code&gt;&lt;/pre&gt;
             </code>
             )의 내용: 퍼블릭 도메인
           </li>
           <li>
-            댓글 등, 타인이 작성한 게시물의 저작권은 각 게시물의 작성자에게
-            있습니다.
+            댓글 등, 웹 사이트 방문자가 작성한 게시물의 저작권은 해당 콘텐츠의
+            작성자에게 있으며, 저작권자의 이용허락이 필요합니다.
           </li>
         </ul>
         <p className={styles.bright}>
-          게시물에 포함된 이미지를 외부 서비스에서 사용하려면, 이미지를
-          다운로드한 뒤 공유하려는 서비스의 이미지 첨부 기능을 활용하기
-          바랍니다. 이 사이트에 포함된 이미지의 URL은 언제든지 변경될 수
+          게시물에 포함된 이미지 등을 외부 서비스에서 사용하려면, 해당 콘텐츠를
+          다운로드한 뒤 공유하려는 서비스의 콘텐츠 첨부 기능을 활용하기
+          바랍니다. 이 사이트에 포함된 이미지 등의 URL은 언제든지 변경될 수
           있습니다.
         </p>
       </div>
