@@ -233,7 +233,7 @@
     border: 1px solid theme-color.$line-base;
     border-bottom: 2px solid theme-color.$line-dark;
     border-radius: 0.5 * size.$gap-unit;
-    padding: (0.25 * size.$gap-unit) (0.5 * size.$gap-unit);
+    padding: (0.125 * size.$gap-unit) (0.5 * size.$gap-unit);
     background-color: theme-color.$bg-base;
 
     font-family: font.$sans-serif;
@@ -247,13 +247,22 @@
     background-color: theme-color.$bg-mark;
 
     color: inherit;
+
+    code {
+      border: 1px solid theme-color.$line-base;
+      background-color: unset;
+    }
   }
 
   s {
     color: theme-color.$text-bright-2;
     text-decoration: line-through;
 
-    mark {
+    &:hover {
+      text-decoration: unset;
+    }
+
+    code {
       color: theme-color.$text-bright-1;
     }
   }
@@ -264,6 +273,11 @@
 
   strong {
     font-weight: var(--font-weight-sans-bold);
+  }
+
+  mark s,
+  s mark {
+    color: theme-color.$text-bright-1;
   }
 }
 
