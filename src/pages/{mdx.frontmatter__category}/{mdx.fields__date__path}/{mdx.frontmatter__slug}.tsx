@@ -114,7 +114,11 @@ export const Head: HeadFC<PostPageDataType> = ({
 
   return (
     <Seo
-      canonicalPath={location.pathname}
+      canonicalPath={
+        location.pathname.endsWith('/')
+          ? location.pathname.slice(0, -1)
+          : location.pathname
+      }
       title={data.mdx.frontmatter?.title?.trim()}
       description={data.mdx.frontmatter?.description?.trim()}
       keywords={keywords}
