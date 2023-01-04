@@ -167,23 +167,29 @@
     border-collapse: collapse;
 
     line-height: 1.6;
-    font-size: 15px;
+    font-size: 14px;
 
     overflow-x: auto;
-
-    > thead > tr {
-      background-color: theme-color.$bg-table-head;
-    }
 
     > tr:nth-of-type(even),
     > tbody > tr:nth-of-type(even) {
       background-color: theme-color.$bg-table-zebra;
     }
 
+    th {
+      background-color: theme-color.$bg-table-head;
+
+      font-size: 13px;
+    }
+
     td,
     th {
       border: 1px solid theme-color.$line-base;
-      padding: size.$gap-unit (2 * size.$gap-unit);
+      padding: (0.5 * size.$gap-unit) size.$gap-unit;
+
+      @media (min-width: size.$breakpoint-md) {
+        padding: size.$gap-unit (2 * size.$gap-unit);
+      }
     }
   }
 }
