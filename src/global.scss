@@ -42,3 +42,8 @@ hr {
 
   background-color: theme-color.$line-bright;
 }
+
+.gatsby-highlight pre[class*="language-"],
+.gatsby-highlight code[class*="language-"] {
+  tab-size: 4;
+}
