@@ -5,6 +5,8 @@
   line-height: 1.4;
 
   a {
+    display: block;
+
     color: inherit;
     text-decoration: none;
 
@@ -21,17 +23,27 @@
   }
 
   .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: (3 * size.$gap-unit);
+
     margin: (3 * size.$gap-unit) 0 0;
 
     .item-group {
-      margin: (3 * size.$gap-unit) 0 0;
-
       cursor: pointer;
 
+      & > :last-child {
+        margin-bottom: 0;
+      }
+
       dt {
-        margin: size.$gap-unit 0 (0.5 * size.$gap-unit);
+        margin: 0 0 (0.5 * size.$gap-unit);
         font-size: size.$text-category-name;
         font-weight: var(--font-weight-sans-bold);
+
+        @media (min-width: size.$breakpoint-md) {
+          font-size: size.$text-category-name-md;
+        }
       }
 
       dd {
