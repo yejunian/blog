@@ -1,24 +1,33 @@
+import { Link } from 'gatsby'
 import React, { useMemo } from 'react'
 
 import categoryMetadata from '../../blog-post/src/categoryMetadata'
-
-import * as styles from './PostList.module.scss'
 import PostListItem, { PostListItemProps } from './PostListItem'
 
+import * as styles from './PostList.module.scss'
+
 type PostListProps = {
-  heading?: string
-  categoryId: string
+  categoryId?: string
   items: PostListItemArray
+  showMore?: boolean
 }
 
-// TODO - Combine with PostMetadataItem type
 export type PostListItemArray = PostListItemArrayEntry[]
 export type PostListItemArrayEntry = PostListItemProps & { id: string }
 
-const PostList = ({ heading, categoryId, items }: PostListProps) => {
-  const categoryLabel = categoryMetadata.get(categoryId)?.label
-  const fallbackHeadingPrefix =
-    !heading && categoryLabel ? `${categoryLabel}에는 ` : ''
+const PostList = ({ categoryId, items, showMore }: PostListProps) => {
+  const categoryLabel = categoryMetadata.get(categoryId ?? '')?.label
+  const fallbackHeadingPrefixNode = categoryLabel ? (
+    <>
+      <Link to={`/${categoryId}/`}>‘{categoryLabel}’</Link>에는{' '}
+    </>
+  ) : null
+  const headingLabelNode =
+    categoryId === 'all' ? (
+      <Link to="/all/">무엇을 끄적였나</Link>
+    ) : (
+      <>{fallbackHeadingPrefixNode}무엇을 끄적였나</>
+    )
 
   const postListItems = useMemo(
     () =>
@@ -39,10 +48,7 @@ const PostList = ({ heading, categoryId, items }: PostListProps) => {
 
   return (
     <div className={styles.root}>
-      <h2 className={styles.title}>
-        {/* <a href="#">{heading ?? `${fallbackHeadingPrefix}무엇을 끄적였나`}</a> */}
-        무엇을 끄적였나
-      </h2>
+      <h2 className={styles.title}>{headingLabelNode}</h2>
 
       <div className={styles.list}>
         {postListItems.length > 0 ? (
@@ -52,9 +58,14 @@ const PostList = ({ heading, categoryId, items }: PostListProps) => {
         )}
       </div>
 
-      {/* <div className={styles.more}>
-        <a href="#">‘{categoryLabel}’ 카테고리의 모든 글 보기 &gt;</a>
-      </div> */}
+      {showMore && categoryId ? (
+        <div className={styles.more}>
+          <Link to={`/${categoryId ?? 'all'}/`}>
+            {categoryId !== 'all' ? `‘${categoryLabel}’ 카테고리의 ` : ''}
+            모든 글 보기 &gt;
+          </Link>
+        </div>
+      ) : null}
     </div>
   )
 }
