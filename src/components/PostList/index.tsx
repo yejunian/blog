@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import React, { useMemo } from 'react'
+import React, { ReactNode, useMemo } from 'react'
 
 import categoryMetadata from '../../blog-post/src/categoryMetadata'
 import PostListItem, { PostListItemProps } from './PostListItem'
@@ -8,26 +8,70 @@ import * as styles from './PostList.module.scss'
 
 type PostListProps = {
   categoryId?: string
+  isRecent?: boolean
   items: PostListItemArray
   showMore?: boolean
+  year?: number | string
 }
 
 export type PostListItemArray = PostListItemArrayEntry[]
 export type PostListItemArrayEntry = PostListItemProps & { id: string }
 
-const PostList = ({ categoryId, items, showMore }: PostListProps) => {
-  const categoryLabel = categoryMetadata.get(categoryId ?? '')?.label
-  const fallbackHeadingPrefixNode = categoryLabel ? (
-    <>
-      <Link to={`/${categoryId}/`}>‘{categoryLabel}’</Link>에는{' '}
-    </>
-  ) : null
-  const headingLabelNode =
-    categoryId === 'all' ? (
-      <Link to="/all/">무엇을 끄적였나</Link>
-    ) : (
-      <>{fallbackHeadingPrefixNode}무엇을 끄적였나</>
+const unknownCategoryText = '모르는 분류'
+
+const deriveCategoryNode = (
+  text: string | null | undefined,
+  id: string | null | undefined
+): ReactNode => {
+  if (text) {
+    return <Link to={`/category/${id}/`}>‘{text}’</Link>
+  } else if (text === '') {
+    return null
+  } else {
+    return `‘${unknownCategoryText}’`
+  }
+}
+
+const concatenateWhenWhereNodes = (
+  when: ReactNode,
+  where: ReactNode
+): ReactNode => {
+  if (when && where) {
+    return (
+      <>
+        {when} {where}
+      </>
     )
+  } else {
+    return when || where
+  }
+}
+
+const deriveHeadingNode = (
+  categoryText: string | null | undefined,
+  whenWhereNode: ReactNode
+): ReactNode => {
+  if (typeof categoryText === 'string') {
+    return <>{whenWhereNode}에는 무엇을 끄적였나</>
+  } else {
+    return <>무엇을 끄적였나</>
+  }
+}
+
+const PostList = ({
+  categoryId,
+  isRecent,
+  items,
+  showMore,
+  year,
+}: PostListProps) => {
+  const whenNode = isRecent ? <>최근</> : year ? <>{year}년</> : null
+
+  const categoryText = categoryId ? categoryMetadata.get(categoryId)?.label : ''
+  const categoryNode = deriveCategoryNode(categoryText, categoryId)
+
+  const whenWhereNode = concatenateWhenWhereNodes(whenNode, categoryNode)
+  const headingLabelNode = deriveHeadingNode(categoryText, whenWhereNode)
 
   const postListItems = useMemo(
     () =>
@@ -58,11 +102,11 @@ const PostList = ({ categoryId, items, showMore }: PostListProps) => {
         )}
       </div>
 
-      {showMore && categoryId ? (
+      {showMore ? (
         <div className={styles.more}>
-          <Link to={`/${categoryId ?? 'all'}/`}>
-            {categoryId !== 'all' ? `‘${categoryLabel}’ 카테고리의 ` : ''}
-            모든 글 보기 &gt;
+          <Link to={categoryId ? `/category/${categoryId}/` : `/post/`}>
+            {categoryId ? `‘${categoryText}’ 분류의 ` : null}
+            {isRecent ? '최근 ' : null}글 더 보기 &gt;
           </Link>
         </div>
       ) : null}

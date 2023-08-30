@@ -25,7 +25,7 @@ const CategoryListItem = ({
   return (
     <div className={groupClassName} onClick={handleGroupClick}>
       <dt>
-        <Link ref={linkRef} to={`/${categoryId}/`}>
+        <Link ref={linkRef} to={`/category/${categoryId}/`}>
           {label}
         </Link>
       </dt>

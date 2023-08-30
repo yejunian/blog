@@ -31,7 +31,7 @@ const IndexPage = ({ data }: PageProps<IndexPageDataType>) => {
 
       <hr />
 
-      <PostList categoryId="all" items={postItems} showMore={true} />
+      <PostList isRecent={true} items={postItems} showMore={true} />
     </Layout>
   )
 }
@@ -40,7 +40,7 @@ export const Head: HeadFC = () => <Seo />
 
 export const query = graphql`
   query {
-    allMdx(limit: 5, sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(limit: 3, sort: { fields: frontmatter___date, order: DESC }) {
       edges {
         node {
           frontmatter {
