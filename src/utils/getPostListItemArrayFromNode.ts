@@ -5,7 +5,6 @@ const getPostListItemArrayFromNode = (
   node: Queries.Mdx
 ): PostListItemArrayEntry => {
   const datePath = node.fields?.date?.path ?? null
-  const category = node.frontmatter?.category ?? null
   const formattedDate = node.frontmatter?.date
     ? formatDatetime(node.frontmatter.date)
     : null
@@ -27,7 +26,7 @@ const getPostListItemArrayFromNode = (
     description,
     thumbnail,
     thumbnailAlt,
-    path: `/${category}/${datePath}/${slug}`,
+    path: `/post/${datePath}/${slug}`,
     date: formattedDate,
     title: title,
     keywords: mainKeywords,
