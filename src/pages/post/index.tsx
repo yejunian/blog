@@ -10,6 +10,7 @@ import * as styles from '../GeneralPage.module.scss'
 
 export type PostListPageDataType = {
   allMdx: Queries.MdxConnection
+  years: Queries.MdxConnection
 }
 
 const RecentPostListPage = ({ data }: PageProps<PostListPageDataType>) => {
@@ -19,6 +20,11 @@ const RecentPostListPage = ({ data }: PageProps<PostListPageDataType>) => {
     [data.allMdx.edges]
   )
 
+  const availableYears = useMemo(
+    () => [...data.years.distinct].reverse(),
+    [data.years.distinct]
+  )
+
   return (
     <PostListLayout
       mainClassName={styles.root}
@@ -26,6 +32,8 @@ const RecentPostListPage = ({ data }: PageProps<PostListPageDataType>) => {
       showPostList={true}
       isRecentPostList={true}
       posts={postItems}
+      isYearFilterVisible={true}
+      availableYears={availableYears}
     />
   )
 }
@@ -46,6 +54,10 @@ export const Head: HeadFC<PostListPageDataType> = ({
 
 export const query = graphql`
   query {
+    years: allMdx {
+      distinct(field: fields___date___year)
+    }
+
     allMdx(limit: 10, sort: { fields: frontmatter___date, order: DESC }) {
       edges {
         node {

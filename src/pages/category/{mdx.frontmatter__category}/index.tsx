@@ -6,12 +6,9 @@ import { PostListItemArray } from '../../../components/PostList'
 import PostListLayout from '../../../components/PostListLayout'
 import Seo from '../../../components/head/Seo'
 import getPostListItemArrayFromNode from '../../../utils/getPostListItemArrayFromNode'
+import { PostListPageDataType } from '../../post/index'
 
 import * as styles from '../../GeneralPage.module.scss'
-
-export type PostListPageDataType = {
-  allMdx: Queries.MdxConnection
-}
 
 const CategoryPostListPage = ({
   data,
@@ -23,6 +20,11 @@ const CategoryPostListPage = ({
     [data.allMdx.edges]
   )
 
+  const availableYears = useMemo(
+    () => [...data.years.distinct].reverse(),
+    [data.years.distinct]
+  )
+
   return (
     <PostListLayout
       mainClassName={styles.root}
@@ -30,7 +32,10 @@ const CategoryPostListPage = ({
       showPostList={true}
       categoryId={params.frontmatter__category}
       isRecentPostList={true}
+      isYearFilterVisible={true}
       posts={postItems}
+      availableYears={availableYears}
+      selectedYear={params.fields__date__year}
       categoryListHeading="다른 분류"
     />
   )
@@ -59,6 +64,12 @@ export const Head: HeadFC<PostListPageDataType> = ({
 
 export const query = graphql`
   query ($frontmatter__category: String) {
+    years: allMdx(
+      filter: { frontmatter: { category: { eq: $frontmatter__category } } }
+    ) {
+      distinct(field: fields___date___year)
+    }
+
     allMdx(
       filter: { frontmatter: { category: { eq: $frontmatter__category } } }
       limit: 10

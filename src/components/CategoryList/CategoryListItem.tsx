@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 
 type CategoryListItemProps = {
   groupClassName: string
-  categoryId: string
+  categoryId?: string
   label: string
   description: string
 }
@@ -25,7 +25,10 @@ const CategoryListItem = ({
   return (
     <div className={groupClassName} onClick={handleGroupClick}>
       <dt>
-        <Link ref={linkRef} to={`/category/${categoryId}/`}>
+        <Link
+          ref={linkRef}
+          to={categoryId ? `/category/${categoryId}/` : '/post/'}
+        >
           {label}
         </Link>
       </dt>

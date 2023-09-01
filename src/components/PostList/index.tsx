@@ -2,16 +2,19 @@ import { Link } from 'gatsby'
 import React, { ReactNode, useMemo } from 'react'
 
 import categoryMetadata from '../../blog-post/src/categoryMetadata'
+import YearFilter from '../YearFilter'
 import PostListItem, { PostListItemProps } from './PostListItem'
 
 import * as styles from './PostList.module.scss'
 
 type PostListProps = {
+  availableYears?: (number | string)[]
   categoryId?: string
   isRecent?: boolean
   items: PostListItemArray
+  selectedYear?: number | string
   showMore?: boolean
-  year?: number | string
+  showYearFilter?: boolean
 }
 
 export type PostListItemArray = PostListItemArrayEntry[]
@@ -59,13 +62,19 @@ const deriveHeadingNode = (
 }
 
 const PostList = ({
+  availableYears,
   categoryId,
   isRecent,
   items,
+  selectedYear,
   showMore,
-  year,
+  showYearFilter,
 }: PostListProps) => {
-  const whenNode = isRecent ? <>최근</> : year ? <>{year}년</> : null
+  const whenNode = isRecent ? (
+    <>최근</>
+  ) : selectedYear ? (
+    <>{selectedYear}년</>
+  ) : null
 
   const categoryText = categoryId ? categoryMetadata.get(categoryId)?.label : ''
   const categoryNode = deriveCategoryNode(categoryText, categoryId)
@@ -94,6 +103,14 @@ const PostList = ({
     <div className={styles.root}>
       <h2 className={styles.title}>{headingLabelNode}</h2>
 
+      {showYearFilter ? (
+        <YearFilter
+          availableYears={availableYears}
+          categoryId={categoryId}
+          selectedYear={selectedYear}
+        />
+      ) : null}
+
       <div className={styles.list}>
         {postListItems.length > 0 ? (
           postListItems
@@ -101,6 +118,14 @@ const PostList = ({
           <div className={styles.empty}>// 앗, 여기에는 글이 없어요!</div>
         )}
       </div>
+
+      {showYearFilter ? (
+        <YearFilter
+          availableYears={availableYears}
+          categoryId={categoryId}
+          selectedYear={selectedYear}
+        />
+      ) : null}
 
       {showMore ? (
         <div className={styles.more}>

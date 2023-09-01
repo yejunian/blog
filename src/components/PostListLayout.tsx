@@ -14,7 +14,9 @@ type PostListLayoutProps = {
   isRecentPostList?: boolean
   posts?: PostListItemArray
   isMorePostsVisible?: boolean
-  year?: number | string
+  isYearFilterVisible?: boolean
+  availableYears?: (number | string)[]
+  selectedYear?: number | string
 
   categoryListHeading?: string
 }
@@ -27,17 +29,21 @@ const PostListLayout = ({
   isRecentPostList,
   posts,
   isMorePostsVisible,
-  year,
+  isYearFilterVisible,
+  availableYears,
+  selectedYear,
   categoryListHeading,
 }: PostListLayoutProps) => (
   <Layout mainClassName={mainClassName}>
     {showPostList && posts ? (
       <PostList
+        availableYears={availableYears}
         categoryId={categoryId}
         isRecent={isRecentPostList}
         items={posts}
+        selectedYear={selectedYear}
         showMore={isMorePostsVisible}
-        year={year}
+        showYearFilter={isYearFilterVisible}
       />
     ) : null}
 
@@ -46,6 +52,7 @@ const PostListLayout = ({
     {showCategoryList ? (
       <CategoryList
         heading={categoryListHeading ?? '어떤 분류로 끄적이고 있나'}
+        categoryId={categoryId}
       />
     ) : null}
   </Layout>

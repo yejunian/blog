@@ -20,14 +20,21 @@ const AnnualPostListPage = ({
     [data.allMdx.edges]
   )
 
+  const availableYears = useMemo(
+    () => [...data.years.distinct].reverse(),
+    [data.years.distinct]
+  )
+
   return (
     <PostListLayout
       mainClassName={styles.root}
       showCategoryList={true}
       showPostList={true}
       categoryId={params.frontmatter__category}
+      isYearFilterVisible={true}
       posts={postItems}
-      year={params.fields__date__year}
+      availableYears={availableYears}
+      selectedYear={params.fields__date__year}
       categoryListHeading="다른 분류"
     />
   )
@@ -56,6 +63,12 @@ export const Head: HeadFC<PostListPageDataType> = ({
 
 export const query = graphql`
   query ($fields__date__year: Date, $frontmatter__category: String) {
+    years: allMdx(
+      filter: { frontmatter: { category: { eq: $frontmatter__category } } }
+    ) {
+      distinct(field: fields___date___year)
+    }
+
     allMdx(
       filter: {
         fields: { date: { year: { eq: $fields__date__year } } }
