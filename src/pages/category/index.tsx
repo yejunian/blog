@@ -6,10 +6,6 @@ import PostListLayout from '../../components/PostListLayout'
 
 import * as styles from '../GeneralPage.module.scss'
 
-export type CategoryListPageDataType = {
-  allMdx: Queries.MdxConnection
-}
-
 const CategoryListPage = () => (
   <PostListLayout
     mainClassName={styles.root}
@@ -18,9 +14,7 @@ const CategoryListPage = () => (
   />
 )
 
-export const Head: HeadFC<CategoryListPageDataType> = ({
-  location,
-}: HeadProps<CategoryListPageDataType>) => (
+export const Head: HeadFC = ({ location }: HeadProps) => (
   <Seo
     canonicalPath={
       location.pathname.endsWith('/')

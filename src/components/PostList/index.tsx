@@ -1,4 +1,4 @@
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import React, { ReactNode, useMemo } from 'react'
 
 import categoryMetadata from '../../blog-post/src/categoryMetadata'
@@ -138,5 +138,32 @@ const PostList = ({
     </div>
   )
 }
+
+export const postListFragment = graphql`
+  fragment PostListFragment on Mdx {
+    frontmatter {
+      category
+      date(formatString: "YYYY-MM-DD[T]HH:mm:ss[Z]")
+      description
+      keywords {
+        main
+      }
+      slug
+      thumbnail {
+        childImageSharp {
+          gatsbyImageData(breakpoints: [216, 432], layout: FULL_WIDTH)
+        }
+      }
+      thumbnailAlt
+      title
+    }
+    id
+    fields {
+      date {
+        path
+      }
+    }
+  }
+`
 
 export default PostList
