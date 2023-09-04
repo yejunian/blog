@@ -2,11 +2,9 @@ import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby'
 import React, { useMemo } from 'react'
 
 import { PostListItemArray } from '../../components/PostList'
-import PostListLayout from '../../components/PostListLayout'
+import PostListLayout from '../../components/layout/PostListLayout'
 import Seo from '../../components/head/Seo'
 import getPostListItemArrayFromNode from '../../utils/getPostListItemArrayFromNode'
-
-import * as styles from '../GeneralPage.module.scss'
 
 export type PostListPageDataType = {
   allMdx: Queries.MdxConnection
@@ -27,7 +25,6 @@ const RecentPostListPage = ({ data }: PageProps<PostListPageDataType>) => {
 
   return (
     <PostListLayout
-      mainClassName={styles.root}
       showCategoryList={true}
       showPostList={true}
       isRecentPostList={true}

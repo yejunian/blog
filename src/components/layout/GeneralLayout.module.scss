@@ -1,6 +1,6 @@
-@use '../size';
+@use '../../size';
 
-.root {
+.main {
   margin-top: 0.5 * size.$gap-unit;
   margin-bottom: size.$gap-section;
 

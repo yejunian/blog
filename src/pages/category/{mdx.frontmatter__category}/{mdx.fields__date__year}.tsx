@@ -3,12 +3,10 @@ import React, { useMemo } from 'react'
 
 import categoryMetadata from '../../../blog-post/src/categoryMetadata'
 import { PostListItemArray } from '../../../components/PostList'
-import PostListLayout from '../../../components/PostListLayout'
+import PostListLayout from '../../../components/layout/PostListLayout'
 import Seo from '../../../components/head/Seo'
 import getPostListItemArrayFromNode from '../../../utils/getPostListItemArrayFromNode'
 import { PostListPageDataType } from '../../post/index'
-
-import * as styles from '../../GeneralPage.module.scss'
 
 const AnnualPostListPage = ({
   data,
@@ -27,7 +25,6 @@ const AnnualPostListPage = ({
 
   return (
     <PostListLayout
-      mainClassName={styles.root}
       showCategoryList={true}
       showPostList={true}
       categoryId={params.frontmatter__category}

@@ -2,7 +2,7 @@ import Giscus from '@giscus/react'
 import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby'
 import React, { useMemo } from 'react'
 
-import Layout from '../../../components/Layout'
+import PostLayout from '../../../components/layout/PostLayout'
 import PostFrontmatter from '../../../components/PostFrontmatter'
 import { PostMetadataItem } from '../../../components/PostFrontmatter/MetadataList'
 import Seo from '../../../components/head/Seo'
@@ -64,7 +64,7 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
   ]
 
   return (
-    <Layout mainClassName={styles.root}>
+    <PostLayout>
       <article className={styles.post}>
         <PostFrontmatter
           thumbnail={frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData}
@@ -96,7 +96,7 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
           loading="lazy"
         />
       </section>
-    </Layout>
+    </PostLayout>
   )
 }
 

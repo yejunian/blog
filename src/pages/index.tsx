@@ -2,13 +2,11 @@ import { graphql, HeadFC, PageProps } from 'gatsby'
 import React, { useMemo } from 'react'
 
 import CategoryList from '../components/CategoryList'
-import Layout from '../components/Layout'
+import GeneralLayout from '../components/layout/GeneralLayout'
 import Profile from '../components/Profile'
 import PostList, { PostListItemArray } from '../components/PostList'
 import Seo from '../components/head/Seo'
 import getPostListItemArrayFromNode from '../utils/getPostListItemArrayFromNode'
-
-import * as styles from './GeneralPage.module.scss'
 
 type IndexPageDataType = {
   allMdx: Queries.MdxConnection
@@ -22,7 +20,7 @@ const IndexPage = ({ data }: PageProps<IndexPageDataType>) => {
   )
 
   return (
-    <Layout mainClassName={styles.root}>
+    <GeneralLayout>
       <Profile />
 
       <hr />
@@ -32,7 +30,7 @@ const IndexPage = ({ data }: PageProps<IndexPageDataType>) => {
       <hr />
 
       <PostList isRecent={true} items={postItems} showMore={true} />
-    </Layout>
+    </GeneralLayout>
   )
 }
 

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Layout from './Layout'
-import PostList, { PostListItemArray } from './PostList'
-import CategoryList from './CategoryList'
+import PostList, { PostListItemArray } from '../PostList'
+import CategoryList from '../CategoryList'
+import GeneralLayout from './GeneralLayout'
 
 type PostListLayoutProps = {
   mainClassName?: string
@@ -34,7 +34,7 @@ const PostListLayout = ({
   selectedYear,
   categoryListHeading,
 }: PostListLayoutProps) => (
-  <Layout mainClassName={mainClassName}>
+  <GeneralLayout mainClassName={mainClassName}>
     {showPostList && posts ? (
       <PostList
         availableYears={availableYears}
@@ -55,7 +55,7 @@ const PostListLayout = ({
         categoryId={categoryId}
       />
     ) : null}
-  </Layout>
+  </GeneralLayout>
 )
 
 export default PostListLayout

@@ -2,13 +2,10 @@ import { HeadFC, HeadProps } from 'gatsby'
 import React from 'react'
 
 import Seo from '../../components/head/Seo'
-import PostListLayout from '../../components/PostListLayout'
-
-import * as styles from '../GeneralPage.module.scss'
+import PostListLayout from '../../components/layout/PostListLayout'
 
 const CategoryListPage = () => (
   <PostListLayout
-    mainClassName={styles.root}
     showCategoryList={true}
     showPostList={false}
   />
