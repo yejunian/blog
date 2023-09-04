@@ -1,9 +1,8 @@
-import { Link } from 'gatsby'
-import React from 'react'
+import { Link } from 'gatsby';
+import React from 'react';
 
-import logo from '../images/logo.svg'
-
-import * as styles from './Header.module.scss'
+import logo from '../images/logo.svg';
+import * as styles from './Header.module.scss';
 
 const Header = () => (
   <header className={styles.root}>
@@ -27,6 +26,6 @@ const Header = () => (
       </div>
     </nav>
   </header>
-)
+);
 
-export default Header
+export default Header;

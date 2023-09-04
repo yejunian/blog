@@ -1,27 +1,27 @@
-import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby'
-import React, { useMemo } from 'react'
+import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby';
+import React, { useMemo } from 'react';
 
-import { PostListItemArray } from '../../components/PostList'
-import PostListLayout from '../../components/layout/PostListLayout'
-import Seo from '../../components/head/Seo'
-import getPostListItemArrayFromNode from '../../utils/getPostListItemArrayFromNode'
+import { PostListItemArray } from '../../components/PostList';
+import Seo from '../../components/head/Seo';
+import PostListLayout from '../../components/layout/PostListLayout';
+import getPostListItemArrayFromNode from '../../utils/getPostListItemArrayFromNode';
 
 export type PostListPageDataType = {
-  allMdx: Queries.MdxConnection
-  years: Queries.MdxConnection
-}
+  allMdx: Queries.MdxConnection;
+  years: Queries.MdxConnection;
+};
 
 const RecentPostListPage = ({ data }: PageProps<PostListPageDataType>) => {
   const postItems: PostListItemArray = useMemo(
     () =>
       data.allMdx.edges.map(({ node }) => getPostListItemArrayFromNode(node)),
-    [data.allMdx.edges]
-  )
+    [data.allMdx.edges],
+  );
 
   const availableYears = useMemo(
     () => [...data.years.distinct].reverse(),
-    [data.years.distinct]
-  )
+    [data.years.distinct],
+  );
 
   return (
     <PostListLayout
@@ -32,8 +32,8 @@ const RecentPostListPage = ({ data }: PageProps<PostListPageDataType>) => {
       isYearFilterVisible={true}
       availableYears={availableYears}
     />
-  )
-}
+  );
+};
 
 export const Head: HeadFC<PostListPageDataType> = ({
   location,
@@ -47,7 +47,7 @@ export const Head: HeadFC<PostListPageDataType> = ({
     title="글 목록"
     noindex={true}
   />
-)
+);
 
 export const query = graphql`
   query {
@@ -63,6 +63,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default RecentPostListPage
+export default RecentPostListPage;

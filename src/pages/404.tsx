@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link, HeadFC } from 'gatsby'
+import { Link, HeadFC } from 'gatsby';
+import React from 'react';
 
 const NotFoundPage = () => {
   return (
@@ -9,9 +9,9 @@ const NotFoundPage = () => {
         <Link to="/">Go home</Link>
       </p>
     </main>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;
 
-export const Head: HeadFC = () => <title>Not found - yejunian/blog</title>
+export const Head: HeadFC = () => <title>Not found - yejunian/blog</title>;

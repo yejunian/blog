@@ -1,16 +1,16 @@
-const emptyValue = '__EMPTY'
+const emptyValue = '__EMPTY';
 
 const joinKeywords = (
-  keywords: readonly unknown[] | unknown[] | null | undefined
+  keywords: readonly unknown[] | unknown[] | null | undefined,
 ) =>
   (keywords ?? []).reduce((acc: string, value: unknown) => {
     if (value === '' || value === emptyValue) {
-      return acc
+      return acc;
     } else if (acc === '') {
-      return `${value}`
+      return `${value}`;
     } else {
-      return `${acc}, ${value}`
+      return `${acc}, ${value}`;
     }
-  }, '')
+  }, '');
 
-export default joinKeywords
+export default joinKeywords;

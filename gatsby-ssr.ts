@@ -1,7 +1,7 @@
-import { GatsbySSR } from 'gatsby'
+import { GatsbySSR } from 'gatsby';
 
 export const onRenderBody: GatsbySSR['onRenderBody'] = ({
   setHtmlAttributes,
 }) => {
-  setHtmlAttributes({ lang: 'ko-KR' })
-}
+  setHtmlAttributes({ lang: 'ko-KR' });
+};

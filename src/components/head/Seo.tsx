@@ -1,17 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import useSiteMetadata from '../../hooks/useSiteMetadata'
-import fallbackThumbnail from '../../images/thumbnail-fallback.png'
-import joinKeywords from '../../utils/joinKeywords'
+import useSiteMetadata from '../../hooks/useSiteMetadata';
+import fallbackThumbnail from '../../images/thumbnail-fallback.png';
+import joinKeywords from '../../utils/joinKeywords';
 
 type SeoProps = {
-  canonicalPath?: string | null
-  title?: string | null
-  description?: string | null
-  keywords?: string[] | null
-  thumbnailPath?: string | null
-  noindex?: boolean | null
-}
+  canonicalPath?: string | null;
+  title?: string | null;
+  description?: string | null;
+  keywords?: string[] | null;
+  thumbnailPath?: string | null;
+  noindex?: boolean | null;
+};
 
 const Seo = ({
   canonicalPath: givenCanonicalPath,
@@ -21,28 +21,28 @@ const Seo = ({
   thumbnailPath: givenThumbnailPath,
   noindex: givenNoindex,
 }: SeoProps) => {
-  const siteMetadata = useSiteMetadata()
+  const siteMetadata = useSiteMetadata();
 
-  const siteUrl = siteMetadata?.siteUrl || 'https://yejunian.github.io'
+  const siteUrl = siteMetadata?.siteUrl || 'https://yejunian.github.io';
 
-  const defaultCanonicalPath = '/blog/'
-  const canonicalPath = givenCanonicalPath || defaultCanonicalPath
-  const actualCanonicalUrl = `${siteUrl}${canonicalPath}`
+  const defaultCanonicalPath = '/blog/';
+  const canonicalPath = givenCanonicalPath || defaultCanonicalPath;
+  const actualCanonicalUrl = `${siteUrl}${canonicalPath}`;
 
-  const baseTitle = siteMetadata?.title || 'yejunian/blog'
-  const actualTitle = givenTitle ? `${givenTitle} | ${baseTitle}` : baseTitle
+  const baseTitle = siteMetadata?.title || 'yejunian/blog';
+  const actualTitle = givenTitle ? `${givenTitle} | ${baseTitle}` : baseTitle;
 
-  const defaultDescription = siteMetadata?.description || ''
-  const actualDescription = givenDescription || defaultDescription
+  const defaultDescription = siteMetadata?.description || '';
+  const actualDescription = givenDescription || defaultDescription;
 
-  const defaultKeywords = siteMetadata?.keywords || 'yejunian'
-  const actualKeywords = joinKeywords(givenKeywords) || defaultKeywords
+  const defaultKeywords = siteMetadata?.keywords || 'yejunian';
+  const actualKeywords = joinKeywords(givenKeywords) || defaultKeywords;
 
-  const defaultThumbnailPath = fallbackThumbnail
-  const thumbnailPath = givenThumbnailPath || defaultThumbnailPath
-  const actualThumbnail = `${siteUrl}${thumbnailPath}`
+  const defaultThumbnailPath = fallbackThumbnail;
+  const thumbnailPath = givenThumbnailPath || defaultThumbnailPath;
+  const actualThumbnail = `${siteUrl}${thumbnailPath}`;
 
-  const actualNoindex = givenNoindex ?? false
+  const actualNoindex = givenNoindex ?? false;
 
   return (
     <>
@@ -65,7 +65,7 @@ const Seo = ({
 
       {actualNoindex && <meta name="robots" content="noindex" />}
     </>
-  )
-}
+  );
+};
 
-export default Seo
+export default Seo;

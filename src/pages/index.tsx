@@ -1,23 +1,23 @@
-import { graphql, HeadFC, PageProps } from 'gatsby'
-import React, { useMemo } from 'react'
+import { graphql, HeadFC, PageProps } from 'gatsby';
+import React, { useMemo } from 'react';
 
-import CategoryList from '../components/CategoryList'
-import GeneralLayout from '../components/layout/GeneralLayout'
-import Profile from '../components/Profile'
-import PostList, { PostListItemArray } from '../components/PostList'
-import Seo from '../components/head/Seo'
-import getPostListItemArrayFromNode from '../utils/getPostListItemArrayFromNode'
+import CategoryList from '../components/CategoryList';
+import PostList, { PostListItemArray } from '../components/PostList';
+import Profile from '../components/Profile';
+import Seo from '../components/head/Seo';
+import GeneralLayout from '../components/layout/GeneralLayout';
+import getPostListItemArrayFromNode from '../utils/getPostListItemArrayFromNode';
 
 type IndexPageDataType = {
-  allMdx: Queries.MdxConnection
-}
+  allMdx: Queries.MdxConnection;
+};
 
 const IndexPage = ({ data }: PageProps<IndexPageDataType>) => {
   const postItems: PostListItemArray = useMemo(
     () =>
       data.allMdx.edges.map(({ node }) => getPostListItemArrayFromNode(node)),
-    [data.allMdx.edges]
-  )
+    [data.allMdx.edges],
+  );
 
   return (
     <GeneralLayout>
@@ -31,10 +31,10 @@ const IndexPage = ({ data }: PageProps<IndexPageDataType>) => {
 
       <PostList isRecent={true} items={postItems} showMore={true} />
     </GeneralLayout>
-  )
-}
+  );
+};
 
-export const Head: HeadFC = () => <Seo />
+export const Head: HeadFC = () => <Seo />;
 
 export const query = graphql`
   query {
@@ -46,6 +46,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default IndexPage
+export default IndexPage;

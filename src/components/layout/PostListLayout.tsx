@@ -1,25 +1,25 @@
-import React from 'react'
+import React from 'react';
 
-import PostList, { PostListItemArray } from '../PostList'
-import CategoryList from '../CategoryList'
-import GeneralLayout from './GeneralLayout'
+import CategoryList from '../CategoryList';
+import PostList, { PostListItemArray } from '../PostList';
+import GeneralLayout from './GeneralLayout';
 
 type PostListLayoutProps = {
-  mainClassName?: string
-  showPostList: boolean
-  showCategoryList: boolean
+  mainClassName?: string;
+  showPostList: boolean;
+  showCategoryList: boolean;
 
-  categoryId?: string
+  categoryId?: string;
 
-  isRecentPostList?: boolean
-  posts?: PostListItemArray
-  isMorePostsVisible?: boolean
-  isYearFilterVisible?: boolean
-  availableYears?: (number | string)[]
-  selectedYear?: number | string
+  isRecentPostList?: boolean;
+  posts?: PostListItemArray;
+  isMorePostsVisible?: boolean;
+  isYearFilterVisible?: boolean;
+  availableYears?: (number | string)[];
+  selectedYear?: number | string;
 
-  categoryListHeading?: string
-}
+  categoryListHeading?: string;
+};
 
 const PostListLayout = ({
   mainClassName,
@@ -56,6 +56,6 @@ const PostListLayout = ({
       />
     ) : null}
   </GeneralLayout>
-)
+);
 
-export default PostListLayout
+export default PostListLayout;

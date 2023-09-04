@@ -1,28 +1,28 @@
-import React from 'react'
+import React from 'react';
 
-import * as styles from './MetadataList.module.scss'
+import * as styles from './MetadataList.module.scss';
 
 type PostRestFrontmatterProps = {
-  metadata: PostMetadataItem[]
-}
+  metadata: PostMetadataItem[];
+};
 
 export type PostMetadataItem = {
-  key: string
-  values?: string[] | string | null
-}
+  key: string;
+  values?: string[] | string | null;
+};
 
 const MetadataList = ({ metadata }: PostRestFrontmatterProps) => (
   <dl className={styles.root}>
     {metadata.reduce<React.ReactNode[]>((acc, { key, values }) => {
       if (!values || values.length === 0) {
-        return acc
+        return acc;
       }
 
-      let valueArray: string[]
+      let valueArray: string[];
       if (typeof values === 'string') {
-        valueArray = [values]
+        valueArray = [values];
       } else {
-        valueArray = values
+        valueArray = values;
       }
 
       acc.push(
@@ -33,12 +33,12 @@ const MetadataList = ({ metadata }: PostRestFrontmatterProps) => (
               {value}
             </dd>
           ))}
-        </div>
-      )
+        </div>,
+      );
 
-      return acc
+      return acc;
     }, [])}
   </dl>
-)
+);
 
-export default MetadataList
+export default MetadataList;

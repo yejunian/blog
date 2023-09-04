@@ -1,65 +1,64 @@
-import { Link, graphql } from 'gatsby'
-import React, { ReactNode, useMemo } from 'react'
+import { Link, graphql } from 'gatsby';
+import React, { ReactNode, useMemo } from 'react';
 
-import categoryMetadata from '../../blog-post/src/categoryMetadata'
-import YearFilter from '../YearFilter'
-import PostListItem, { PostListItemProps } from './PostListItem'
-
-import * as styles from './PostList.module.scss'
+import categoryMetadata from '../../blog-post/src/categoryMetadata';
+import YearFilter from '../YearFilter';
+import * as styles from './PostList.module.scss';
+import PostListItem, { PostListItemProps } from './PostListItem';
 
 type PostListProps = {
-  availableYears?: (number | string)[]
-  categoryId?: string
-  isRecent?: boolean
-  items: PostListItemArray
-  selectedYear?: number | string
-  showMore?: boolean
-  showYearFilter?: boolean
-}
+  availableYears?: (number | string)[];
+  categoryId?: string;
+  isRecent?: boolean;
+  items: PostListItemArray;
+  selectedYear?: number | string;
+  showMore?: boolean;
+  showYearFilter?: boolean;
+};
 
-export type PostListItemArray = PostListItemArrayEntry[]
-export type PostListItemArrayEntry = PostListItemProps & { id: string }
+export type PostListItemArray = PostListItemArrayEntry[];
+export type PostListItemArrayEntry = PostListItemProps & { id: string };
 
-const unknownCategoryText = '모르는 분류'
+const unknownCategoryText = '모르는 분류';
 
 const deriveCategoryNode = (
   text: string | null | undefined,
-  id: string | null | undefined
+  id: string | null | undefined,
 ): ReactNode => {
   if (text) {
-    return <Link to={`/category/${id}/`}>‘{text}’</Link>
+    return <Link to={`/category/${id}/`}>‘{text}’</Link>;
   } else if (text === '') {
-    return null
+    return null;
   } else {
-    return `‘${unknownCategoryText}’`
+    return `‘${unknownCategoryText}’`;
   }
-}
+};
 
 const concatenateWhenWhereNodes = (
   when: ReactNode,
-  where: ReactNode
+  where: ReactNode,
 ): ReactNode => {
   if (when && where) {
     return (
       <>
         {when} {where}
       </>
-    )
+    );
   } else {
-    return when || where
+    return when || where;
   }
-}
+};
 
 const deriveHeadingNode = (
   categoryText: string | null | undefined,
-  whenWhereNode: ReactNode
+  whenWhereNode: ReactNode,
 ): ReactNode => {
   if (typeof categoryText === 'string') {
-    return <>{whenWhereNode}에는 무엇을 끄적였나</>
+    return <>{whenWhereNode}에는 무엇을 끄적였나</>;
   } else {
-    return <>무엇을 끄적였나</>
+    return <>무엇을 끄적였나</>;
   }
-}
+};
 
 const PostList = ({
   availableYears,
@@ -74,13 +73,15 @@ const PostList = ({
     <>최근</>
   ) : selectedYear ? (
     <>{selectedYear}년</>
-  ) : null
+  ) : null;
 
-  const categoryText = categoryId ? categoryMetadata.get(categoryId)?.label : ''
-  const categoryNode = deriveCategoryNode(categoryText, categoryId)
+  const categoryText = categoryId
+    ? categoryMetadata.get(categoryId)?.label
+    : '';
+  const categoryNode = deriveCategoryNode(categoryText, categoryId);
 
-  const whenWhereNode = concatenateWhenWhereNodes(whenNode, categoryNode)
-  const headingLabelNode = deriveHeadingNode(categoryText, whenWhereNode)
+  const whenWhereNode = concatenateWhenWhereNodes(whenNode, categoryNode);
+  const headingLabelNode = deriveHeadingNode(categoryText, whenWhereNode);
 
   const postListItems = useMemo(
     () =>
@@ -96,8 +97,8 @@ const PostList = ({
           thumbnailAlt={item.thumbnailAlt}
         />
       )),
-    [items]
-  )
+    [items],
+  );
 
   return (
     <div className={styles.root}>
@@ -136,8 +137,8 @@ const PostList = ({
         </div>
       ) : null}
     </div>
-  )
-}
+  );
+};
 
 export const postListFragment = graphql`
   fragment PostListFragment on Mdx {
@@ -164,6 +165,6 @@ export const postListFragment = graphql`
       }
     }
   }
-`
+`;
 
-export default PostList
+export default PostList;

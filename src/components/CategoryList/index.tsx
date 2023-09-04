@@ -1,18 +1,17 @@
-import React, { useMemo } from 'react'
+import React, { useMemo } from 'react';
 
-import categoryMetadata from '../../blog-post/src/categoryMetadata'
-
-import * as styles from './CategoryList.module.scss'
-import CategoryListItem from './CategoryListItem'
+import categoryMetadata from '../../blog-post/src/categoryMetadata';
+import * as styles from './CategoryList.module.scss';
+import CategoryListItem from './CategoryListItem';
 
 type CategoryListProps = {
-  heading: string
-  categoryId?: string
-}
+  heading: string;
+  categoryId?: string;
+};
 
 const CategoryList = ({ heading, categoryId }: CategoryListProps) => {
   const items = useMemo(() => {
-    const result: React.ReactNode[] = []
+    const result: React.ReactNode[] = [];
 
     for (const [id, { label, description }] of categoryMetadata) {
       if (!categoryId || categoryId !== id) {
@@ -23,13 +22,13 @@ const CategoryList = ({ heading, categoryId }: CategoryListProps) => {
             categoryId={id}
             label={label}
             description={description}
-          />
-        )
+          />,
+        );
       }
     }
 
-    return result
-  }, [categoryMetadata])
+    return result;
+  }, [categoryMetadata]);
 
   return (
     <div className={styles.root}>
@@ -47,7 +46,7 @@ const CategoryList = ({ heading, categoryId }: CategoryListProps) => {
         {items}
       </dl>
     </div>
-  )
-}
+  );
+};
 
-export default CategoryList
+export default CategoryList;

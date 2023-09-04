@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import author from '../images/author.svg'
-
-import * as styles from './Profile.module.scss'
+import author from '../images/author.svg';
+import * as styles from './Profile.module.scss';
 
 const Profile = () => {
   return (
@@ -26,7 +25,7 @@ const Profile = () => {
         컴퓨터공학, 웹 프론트엔드를 중심으로 이것저것 공부하는 나부랭이.
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

@@ -1,20 +1,20 @@
-import { Link } from 'gatsby'
-import React from 'react'
+import { Link } from 'gatsby';
+import React from 'react';
 
-import * as styles from './YearFilter.module.scss'
+import * as styles from './YearFilter.module.scss';
 
 type YearFilterProps = {
-  availableYears?: (number | string)[]
-  categoryId?: string
-  selectedYear?: number | string
-}
+  availableYears?: (number | string)[];
+  categoryId?: string;
+  selectedYear?: number | string;
+};
 
 const YearFilter = ({
   availableYears,
   categoryId,
   selectedYear,
 }: YearFilterProps) => {
-  const basePath = categoryId ? `/category/${categoryId}` : `/post`
+  const basePath = categoryId ? `/category/${categoryId}` : `/post`;
 
   return (
     <div className={styles.root}>
@@ -34,7 +34,7 @@ const YearFilter = ({
         </Link>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default YearFilter
+export default YearFilter;

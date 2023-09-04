@@ -1,12 +1,12 @@
-import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby'
-import React, { useMemo } from 'react'
+import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby';
+import React, { useMemo } from 'react';
 
-import categoryMetadata from '../../../blog-post/src/categoryMetadata'
-import { PostListItemArray } from '../../../components/PostList'
-import PostListLayout from '../../../components/layout/PostListLayout'
-import Seo from '../../../components/head/Seo'
-import getPostListItemArrayFromNode from '../../../utils/getPostListItemArrayFromNode'
-import { PostListPageDataType } from '../../post/index'
+import categoryMetadata from '../../../blog-post/src/categoryMetadata';
+import { PostListItemArray } from '../../../components/PostList';
+import Seo from '../../../components/head/Seo';
+import PostListLayout from '../../../components/layout/PostListLayout';
+import getPostListItemArrayFromNode from '../../../utils/getPostListItemArrayFromNode';
+import { PostListPageDataType } from '../../post/index';
 
 const CategoryPostListPage = ({
   data,
@@ -15,13 +15,13 @@ const CategoryPostListPage = ({
   const postItems: PostListItemArray = useMemo(
     () =>
       data.allMdx.edges.map(({ node }) => getPostListItemArrayFromNode(node)),
-    [data.allMdx.edges]
-  )
+    [data.allMdx.edges],
+  );
 
   const availableYears = useMemo(
     () => [...data.years.distinct].reverse(),
-    [data.years.distinct]
-  )
+    [data.years.distinct],
+  );
 
   return (
     <PostListLayout
@@ -35,8 +35,8 @@ const CategoryPostListPage = ({
       selectedYear={params.fields__date__year}
       categoryListHeading="다른 분류"
     />
-  )
-}
+  );
+};
 
 export const Head: HeadFC<PostListPageDataType> = ({
   params,
@@ -44,7 +44,7 @@ export const Head: HeadFC<PostListPageDataType> = ({
 }: HeadProps<PostListPageDataType>) => {
   const categoryLabel =
     categoryMetadata.get(params.frontmatter__category)?.label ??
-    '알 수 없는 분류'
+    '알 수 없는 분류';
 
   return (
     <Seo
@@ -56,8 +56,8 @@ export const Head: HeadFC<PostListPageDataType> = ({
       title={categoryLabel}
       noindex={true}
     />
-  )
-}
+  );
+};
 
 export const query = graphql`
   query ($frontmatter__category: String) {
@@ -79,6 +79,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default CategoryPostListPage
+export default CategoryPostListPage;

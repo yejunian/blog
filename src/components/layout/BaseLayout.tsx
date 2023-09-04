@@ -1,14 +1,14 @@
-import classNames from 'classnames'
-import React from 'react'
+import classNames from 'classnames';
+import React from 'react';
 
-import Footer from '../Footer'
-import Header from '../Header'
-import * as styles from './BaseLayout.module.scss'
+import Footer from '../Footer';
+import Header from '../Header';
+import * as styles from './BaseLayout.module.scss';
 
 export type BaseLayoutProps = {
-  children?: React.ReactNode
-  mainClassName?: string
-}
+  children?: React.ReactNode;
+  mainClassName?: string;
+};
 
 const BaseLayout = ({ children, mainClassName }: BaseLayoutProps) => (
   <div className={styles.root}>
@@ -18,6 +18,6 @@ const BaseLayout = ({ children, mainClassName }: BaseLayoutProps) => (
 
     <Footer />
   </div>
-)
+);
 
-export default BaseLayout
+export default BaseLayout;

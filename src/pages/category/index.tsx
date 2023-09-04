@@ -1,15 +1,12 @@
-import { HeadFC, HeadProps } from 'gatsby'
-import React from 'react'
+import { HeadFC, HeadProps } from 'gatsby';
+import React from 'react';
 
-import Seo from '../../components/head/Seo'
-import PostListLayout from '../../components/layout/PostListLayout'
+import Seo from '../../components/head/Seo';
+import PostListLayout from '../../components/layout/PostListLayout';
 
 const CategoryListPage = () => (
-  <PostListLayout
-    showCategoryList={true}
-    showPostList={false}
-  />
-)
+  <PostListLayout showCategoryList={true} showPostList={false} />
+);
 
 export const Head: HeadFC = ({ location }: HeadProps) => (
   <Seo
@@ -21,6 +18,6 @@ export const Head: HeadFC = ({ location }: HeadProps) => (
     title="분류 목록"
     noindex={true}
   />
-)
+);
 
-export default CategoryListPage
+export default CategoryListPage;

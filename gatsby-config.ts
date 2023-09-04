@@ -1,4 +1,4 @@
-import { GatsbyConfig } from 'gatsby'
+import { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   // NOTE - Uncomment below when debugging build error
@@ -121,6 +121,6 @@ const config: GatsbyConfig = {
       },
     },
   ],
-}
+};
 
-export default config
+export default config;
