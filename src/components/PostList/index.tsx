@@ -1,24 +1,87 @@
-import React, { useMemo } from 'react'
+import { Link, graphql } from 'gatsby';
+import React, { ReactNode, useMemo } from 'react';
 
-import categoryMetadata from '../../blog-post/src/categoryMetadata'
-
-import * as styles from './PostList.module.scss'
-import PostListItem, { PostListItemProps } from './PostListItem'
+import categoryMetadata from '../../blog-post/src/categoryMetadata';
+import YearFilter from '../YearFilter';
+import * as styles from './PostList.module.scss';
+import PostListItem, { PostListItemProps } from './PostListItem';
 
 type PostListProps = {
-  heading?: string
-  categoryId: string
-  items: PostListItemArray
-}
+  availableYears?: (number | string)[];
+  categoryId?: string;
+  isRecent?: boolean;
+  items: PostListItemArray;
+  selectedYear?: number | string;
+  showMore?: boolean;
+  showYearFilter?: boolean;
+};
 
-// TODO - Combine with PostMetadataItem type
-export type PostListItemArray = PostListItemArrayEntry[]
-export type PostListItemArrayEntry = PostListItemProps & { id: string }
+export type PostListItemArray = PostListItemArrayEntry[];
+export type PostListItemArrayEntry = PostListItemProps & { id: string };
 
-const PostList = ({ heading, categoryId, items }: PostListProps) => {
-  const categoryLabel = categoryMetadata.get(categoryId)?.label
-  const fallbackHeadingPrefix =
-    !heading && categoryLabel ? `${categoryLabel}에는 ` : ''
+const unknownCategoryText = '모르는 분류';
+
+const deriveCategoryNode = (
+  text: string | null | undefined,
+  id: string | null | undefined,
+): ReactNode => {
+  if (text) {
+    return <Link to={`/category/${id}/`}>‘{text}’</Link>;
+  } else if (text === '') {
+    return null;
+  } else {
+    return `‘${unknownCategoryText}’`;
+  }
+};
+
+const concatenateWhenWhereNodes = (
+  when: ReactNode,
+  where: ReactNode,
+): ReactNode => {
+  if (when && where) {
+    return (
+      <>
+        {when} {where}
+      </>
+    );
+  } else {
+    return when || where;
+  }
+};
+
+const deriveHeadingNode = (
+  categoryText: string | null | undefined,
+  whenWhereNode: ReactNode,
+): ReactNode => {
+  if (typeof categoryText === 'string') {
+    return <>{whenWhereNode}에는 무엇을 끄적였나</>;
+  } else {
+    return <>무엇을 끄적였나</>;
+  }
+};
+
+const PostList = ({
+  availableYears,
+  categoryId,
+  isRecent,
+  items,
+  selectedYear,
+  showMore,
+  showYearFilter,
+}: PostListProps) => {
+  const whenNode = isRecent ? (
+    <>최근</>
+  ) : selectedYear ? (
+    <>{selectedYear}년</>
+  ) : null;
+
+  const categoryText = categoryId
+    ? categoryMetadata.get(categoryId)?.label
+    : '';
+  const categoryNode = deriveCategoryNode(categoryText, categoryId);
+
+  const whenWhereNode = concatenateWhenWhereNodes(whenNode, categoryNode);
+  const headingLabelNode = deriveHeadingNode(categoryText, whenWhereNode);
 
   const postListItems = useMemo(
     () =>
@@ -34,15 +97,20 @@ const PostList = ({ heading, categoryId, items }: PostListProps) => {
           thumbnailAlt={item.thumbnailAlt}
         />
       )),
-    [items]
-  )
+    [items],
+  );
 
   return (
     <div className={styles.root}>
-      <h2 className={styles.title}>
-        {/* <a href="#">{heading ?? `${fallbackHeadingPrefix}무엇을 끄적였나`}</a> */}
-        무엇을 끄적였나
-      </h2>
+      <h2 className={styles.title}>{headingLabelNode}</h2>
+
+      {showYearFilter ? (
+        <YearFilter
+          availableYears={availableYears}
+          categoryId={categoryId}
+          selectedYear={selectedYear}
+        />
+      ) : null}
 
       <div className={styles.list}>
         {postListItems.length > 0 ? (
@@ -52,11 +120,51 @@ const PostList = ({ heading, categoryId, items }: PostListProps) => {
         )}
       </div>
 
-      {/* <div className={styles.more}>
-        <a href="#">‘{categoryLabel}’ 카테고리의 모든 글 보기 &gt;</a>
-      </div> */}
-    </div>
-  )
-}
+      {showYearFilter ? (
+        <YearFilter
+          availableYears={availableYears}
+          categoryId={categoryId}
+          selectedYear={selectedYear}
+        />
+      ) : null}
 
-export default PostList
+      {showMore ? (
+        <div className={styles.more}>
+          <Link to={categoryId ? `/category/${categoryId}/` : `/post/`}>
+            {categoryId ? `‘${categoryText}’ 분류의 ` : null}
+            {isRecent ? '최근 ' : null}글 더 보기 &gt;
+          </Link>
+        </div>
+      ) : null}
+    </div>
+  );
+};
+
+export const postListFragment = graphql`
+  fragment PostListFragment on Mdx {
+    frontmatter {
+      category
+      date(formatString: "YYYY-MM-DD[T]HH:mm:ss[Z]")
+      description
+      keywords {
+        main
+      }
+      slug
+      thumbnail {
+        childImageSharp {
+          gatsbyImageData(breakpoints: [216, 432], layout: FULL_WIDTH)
+        }
+      }
+      thumbnailAlt
+      title
+    }
+    id
+    fields {
+      date {
+        path
+      }
+    }
+  }
+`;
+
+export default PostList;

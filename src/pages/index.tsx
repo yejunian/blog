@@ -1,115 +1,51 @@
-import { graphql, HeadFC, PageProps } from 'gatsby'
-import React, { useMemo } from 'react'
+import { graphql, HeadFC, PageProps } from 'gatsby';
+import React, { useMemo } from 'react';
 
-import CategoryList from '../components/CategoryList'
-import Layout from '../components/Layout'
-import Profile from '../components/Profile'
-import PostList, {
-  PostListItemArray,
-  PostListItemArrayEntry,
-} from '../components/PostList'
-import Seo from '../components/head/Seo'
-import formatDatetime from '../utils/formatDatetime'
-
-import * as styles from './IndexPage.module.scss'
+import CategoryList from '../components/CategoryList';
+import PostList, { PostListItemArray } from '../components/PostList';
+import Profile from '../components/Profile';
+import Seo from '../components/head/Seo';
+import GeneralLayout from '../components/layout/GeneralLayout';
+import getPostListItemArrayFromNode from '../utils/getPostListItemArrayFromNode';
 
 type IndexPageDataType = {
-  allMdx: Queries.MdxConnection
-}
-
-// TODO - Extract when combining PostListItemArrayEntry with PostMetadataItem
-const getPostListItemArrayFromNode = (
-  node: Queries.Mdx
-): PostListItemArrayEntry => {
-  const datePath = node.fields?.date?.path ?? null
-  const category = node.frontmatter?.category ?? null
-  const formattedDate = node.frontmatter?.date
-    ? formatDatetime(node.frontmatter.date)
-    : null
-  const description = node.frontmatter?.description ?? null
-  const mainKeywords: string[] = node.frontmatter?.keywords?.main
-    ? (node.frontmatter.keywords.main.filter((value) =>
-        value ? true : false
-      ) as string[])
-    : []
-  const slug = node.frontmatter?.slug ?? null
-  const thumbnail =
-    node.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData ?? null
-  const thumbnailAlt = node.frontmatter?.thumbnailAlt ?? null
-  const title = node.frontmatter?.title ?? null
-  const id = node.id
-
-  return {
-    id,
-    description,
-    thumbnail,
-    thumbnailAlt,
-    path: `/${category}/${datePath}/${slug}`,
-    date: formattedDate,
-    title: title,
-    keywords: mainKeywords,
-  }
-}
+  allMdx: Queries.MdxConnection;
+};
 
 const IndexPage = ({ data }: PageProps<IndexPageDataType>) => {
   const postItems: PostListItemArray = useMemo(
     () =>
       data.allMdx.edges.map(({ node }) => getPostListItemArrayFromNode(node)),
-    [data.allMdx.edges]
-  )
+    [data.allMdx.edges],
+  );
 
   return (
-    <Layout mainClassName={styles.root}>
+    <GeneralLayout>
       <Profile />
-
-      {/* <hr /> */}
-
-      {/* <CategoryList heading="어떤 분류로 끄적이고 있나" /> */}
 
       <hr />
 
-      <PostList categoryId="post" items={postItems} />
-    </Layout>
-  )
-}
+      <CategoryList heading="어떤 분류로 끄적이고 있나" />
 
-export const Head: HeadFC = () => <Seo />
+      <hr />
+
+      <PostList isRecent={true} items={postItems} showMore={true} />
+    </GeneralLayout>
+  );
+};
+
+export const Head: HeadFC = () => <Seo />;
 
 export const query = graphql`
   query {
-    allMdx(
-      filter: { frontmatter: { category: { eq: "post" } } }
-      limit: 5
-      sort: { fields: frontmatter___date, order: DESC }
-    ) {
+    allMdx(limit: 3, sort: { fields: frontmatter___date, order: DESC }) {
       edges {
         node {
-          frontmatter {
-            category
-            date(formatString: "YYYY-MM-DD[T]HH:mm:ss[Z]")
-            description
-            keywords {
-              main
-            }
-            slug
-            thumbnail {
-              childImageSharp {
-                gatsbyImageData(breakpoints: [216, 432], layout: FULL_WIDTH)
-              }
-            }
-            thumbnailAlt
-            title
-          }
-          id
-          fields {
-            date {
-              path
-            }
-          }
+          ...PostListFragment
         }
       }
     }
   }
-`
+`;
 
-export default IndexPage
+export default IndexPage;

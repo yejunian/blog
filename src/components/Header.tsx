@@ -1,9 +1,8 @@
-import { Link } from 'gatsby'
-import React from 'react'
+import { Link } from 'gatsby';
+import React from 'react';
 
-import logo from '../images/logo.svg'
-
-import * as styles from './Header.module.scss'
+import logo from '../images/logo.svg';
+import * as styles from './Header.module.scss';
 
 const Header = () => (
   <header className={styles.root}>
@@ -22,11 +21,11 @@ const Header = () => (
         </h2>
       </div>
 
-      {/* <div className={styles.navSub}>
-        <Link to="/posts/">전체글</Link>
-      </div> */}
+      <div className={styles.navSub}>
+        <Link to="/post/">최근 글</Link>
+      </div>
     </nav>
   </header>
-)
+);
 
-export default Header
+export default Header;

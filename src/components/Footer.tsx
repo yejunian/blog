@@ -1,9 +1,8 @@
-import { Link } from 'gatsby'
-import React from 'react'
+import { Link } from 'gatsby';
+import React from 'react';
 
-import logo from '../images/logo.svg'
-
-import * as styles from './Footer.module.scss'
+import logo from '../images/logo.svg';
+import * as styles from './Footer.module.scss';
 
 const Footer = () => (
   <footer className={styles.root}>
@@ -83,6 +82,6 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-)
+);
 
-export default Footer
+export default Footer;

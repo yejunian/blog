@@ -1,0 +1,7 @@
+/.cache/**/*
+/public/**/*
+
+/src/blog-post/**/*
+/src/gatsby-types.d.ts
+
+**/*.svg

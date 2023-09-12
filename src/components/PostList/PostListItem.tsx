@@ -1,18 +1,22 @@
-import { Link } from 'gatsby'
-import { GatsbyImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image'
-import React, { useRef } from 'react'
+import { Link } from 'gatsby';
+import {
+  GatsbyImage,
+  IGatsbyImageData,
+  StaticImage,
+} from 'gatsby-plugin-image';
+import React, { useRef } from 'react';
 
-import * as styles from './PostListItem.module.scss'
+import * as styles from './PostListItem.module.scss';
 
 export type PostListItemProps = {
-  path?: string | null
-  date?: string | null
-  title?: string | null
-  description?: string | null
-  keywords?: string[] | null
-  thumbnail?: IGatsbyImageData | null
-  thumbnailAlt?: string | null
-}
+  path?: string | null;
+  date?: string | null;
+  title?: string | null;
+  description?: string | null;
+  keywords?: string[] | null;
+  thumbnail?: IGatsbyImageData | null;
+  thumbnailAlt?: string | null;
+};
 
 const PostListItem = ({
   path,
@@ -23,13 +27,13 @@ const PostListItem = ({
   thumbnailAlt,
   keywords = [],
 }: PostListItemProps) => {
-  const linkRef = useRef<Link<unknown> & HTMLAnchorElement>(null)
+  const linkRef = useRef<Link<unknown> & HTMLAnchorElement>(null);
 
   const handleRootClick: React.MouseEventHandler = (event) => {
     if (event.target !== linkRef.current) {
-      linkRef.current?.click()
+      linkRef.current?.click();
     }
-  }
+  };
 
   return (
     <article className={styles.root} onClick={handleRootClick}>
@@ -65,7 +69,7 @@ const PostListItem = ({
         )}
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default PostListItem
+export default PostListItem;

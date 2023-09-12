@@ -1,56 +1,55 @@
-import Giscus from '@giscus/react'
-import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby'
-import React, { useMemo } from 'react'
+import Giscus from '@giscus/react';
+import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby';
+import React, { useMemo } from 'react';
 
-import Layout from '../../../components/Layout'
-import PostFrontmatter from '../../../components/PostFrontmatter'
-import { PostMetadataItem } from '../../../components/PostFrontmatter/MetadataList'
-import Seo from '../../../components/head/Seo'
-import formatDatetime from '../../../utils/formatDatetime'
-import joinKeywords from '../../../utils/joinKeywords'
-
-import * as styles from './PostPage.module.scss'
+import PostFrontmatter from '../../../components/PostFrontmatter';
+import { PostMetadataItem } from '../../../components/PostFrontmatter/MetadataList';
+import Seo from '../../../components/head/Seo';
+import PostLayout from '../../../components/layout/PostLayout';
+import formatDatetime from '../../../utils/formatDatetime';
+import joinKeywords from '../../../utils/joinKeywords';
+import * as styles from './PostPage.module.scss';
 
 type PostPageDataType = {
-  mdx: Queries.Mdx
-}
+  mdx: Queries.Mdx;
+};
 
-const defaultTitle = '제목이 없는 글'
+const defaultTitle = '제목이 없는 글';
 
 const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
-  const frontmatter = data.mdx.frontmatter
+  const frontmatter = data.mdx.frontmatter;
 
   const revisions = useMemo(() => {
     if (typeof frontmatter?.revisions?.length === 'number') {
-      const recent = frontmatter.revisions[frontmatter.revisions.length - 1]
-      const date = recent?.date
+      const recent = frontmatter.revisions[frontmatter.revisions.length - 1];
+      const date = recent?.date;
 
       if (date) {
-        const dateString = formatDatetime(date, { withHours: true })
-        return recent.message ? [dateString, recent.message] : [dateString]
+        const dateString = formatDatetime(date, { withHours: true });
+        return recent.message ? [dateString, recent.message] : [dateString];
       } else {
-        return null
+        return null;
       }
     } else {
-      return null
+      return null;
     }
-  }, [frontmatter?.revisions])
+  }, [frontmatter?.revisions]);
 
   const keywords = useMemo(() => {
-    const mainKeywords = joinKeywords(frontmatter?.keywords?.main)
-    const subKeywords = joinKeywords(frontmatter?.keywords?.sub)
+    const mainKeywords = joinKeywords(frontmatter?.keywords?.main);
+    const subKeywords = joinKeywords(frontmatter?.keywords?.sub);
     // const miscKeywords = joinKeywords(frontmatter?.keywords?.misc)
 
     if (mainKeywords && subKeywords) {
-      return [`${mainKeywords},`, subKeywords]
+      return [`${mainKeywords},`, subKeywords];
     } else if (mainKeywords && !subKeywords) {
-      return [mainKeywords]
+      return [mainKeywords];
     } else if (!mainKeywords && subKeywords) {
-      return ['(메인 키워드 없음)', subKeywords]
+      return ['(메인 키워드 없음)', subKeywords];
     } else {
-      return null
+      return null;
     }
-  }, [frontmatter?.keywords])
+  }, [frontmatter?.keywords]);
 
   const restFrontmatter: PostMetadataItem[] = [
     {
@@ -61,10 +60,10 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
     },
     { key: '최종 수정', values: revisions },
     { key: '키워드', values: keywords },
-  ]
+  ];
 
   return (
-    <Layout mainClassName={styles.root}>
+    <PostLayout>
       <article className={styles.post}>
         <PostFrontmatter
           thumbnail={frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData}
@@ -96,9 +95,9 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
           loading="lazy"
         />
       </section>
-    </Layout>
-  )
-}
+    </PostLayout>
+  );
+};
 
 export const Head: HeadFC<PostPageDataType> = ({
   data,
@@ -112,12 +111,12 @@ export const Head: HeadFC<PostPageDataType> = ({
         data.mdx.frontmatter?.keywords?.misc,
       ].reduce<string[]>((acc, partial) => {
         if (Array.isArray(partial)) {
-          acc.push(...partial)
+          acc.push(...partial);
         }
-        return acc
+        return acc;
       }, []),
-    [data.mdx.frontmatter?.keywords]
-  )
+    [data.mdx.frontmatter?.keywords],
+  );
 
   return (
     <Seo
@@ -132,8 +131,8 @@ export const Head: HeadFC<PostPageDataType> = ({
       thumbnailPath={data.mdx.frontmatter?.thumbnail?.publicURL}
       noindex={data.mdx.frontmatter?.noindex}
     />
-  )
-}
+  );
+};
 
 export const query = graphql`
   query ($id: String) {
@@ -171,6 +170,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default PostPage
+export default PostPage;
