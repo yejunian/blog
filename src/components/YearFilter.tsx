@@ -22,7 +22,7 @@ const YearFilter = ({
         className={selectedYear ? undefined : styles.selected}
         to={`${basePath}/`}
       >
-        전체
+        최근
       </Link>
       {availableYears?.map((year) => (
         <Link
