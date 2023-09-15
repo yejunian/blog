@@ -20,6 +20,14 @@
   .text {
     margin: calc(1.5 * var(--gap-column)) var(--gap-column);
 
+    .category {
+      margin: 0 0 (0.5 * size.$gap-unit) 0;
+      padding: 0;
+
+      line-height: 1;
+      color: theme-color.$gray-08;
+    }
+
     .title {
       margin: 0;
 

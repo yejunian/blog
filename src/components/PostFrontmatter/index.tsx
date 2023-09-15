@@ -1,12 +1,14 @@
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React from 'react';
 
+import categoryMetadata from '../../blog-post/src/categoryMetadata';
 import MetadataList, { PostMetadataItem } from './MetadataList';
 import * as styles from './PostFrontmatter.module.scss';
 
 type PostFrontmatterProps = {
   thumbnail?: IGatsbyImageData | null;
   thumbnailAlt?: string | null;
+  category?: string;
   title: string;
   description?: string | null;
   rest?: PostMetadataItem[] | null;
@@ -15,28 +17,36 @@ type PostFrontmatterProps = {
 const PostFrontmatter = ({
   thumbnail,
   thumbnailAlt,
+  category,
   title,
   description,
   rest,
-}: PostFrontmatterProps) => (
-  <div className={styles.root}>
-    {thumbnail && (
-      <GatsbyImage
-        className={styles.thumbnail}
-        role="presentation"
-        alt={thumbnailAlt ?? ''}
-        image={thumbnail}
-      />
-    )}
+}: PostFrontmatterProps) => {
+  const categoryLabel = category && categoryMetadata.get(category)?.label;
 
-    <div className={styles.text}>
-      <h1 className={styles.title}>{title}</h1>
+  return (
+    <div className={styles.root}>
+      {thumbnail && (
+        <GatsbyImage
+          className={styles.thumbnail}
+          role="presentation"
+          alt={thumbnailAlt ?? ''}
+          image={thumbnail}
+        />
+      )}
 
-      {description && <p className={styles.description}>{description}</p>}
+      <div className={styles.text}>
+        {categoryLabel ? (
+          <div className={styles.category}>[{categoryLabel}]</div>
+        ) : null}
+        <h1 className={styles.title}>{title}</h1>
 
-      {rest && <MetadataList metadata={rest} />}
+        {description && <p className={styles.description}>{description}</p>}
+
+        {rest && <MetadataList metadata={rest} />}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default PostFrontmatter;
