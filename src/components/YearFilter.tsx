@@ -20,7 +20,7 @@ const YearFilter = ({
     <div className={styles.root}>
       <Link
         className={selectedYear ? undefined : styles.selected}
-        to={`${basePath}/`}
+        to={`${basePath}`}
       >
         최근
       </Link>
@@ -28,7 +28,7 @@ const YearFilter = ({
         <Link
           key={year}
           className={selectedYear === year ? styles.selected : undefined}
-          to={`${basePath}/${year}/`}
+          to={`${basePath}/${year}`}
         >
           {year}
         </Link>

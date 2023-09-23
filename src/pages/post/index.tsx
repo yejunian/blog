@@ -52,10 +52,10 @@ export const Head: HeadFC<PostListPageDataType> = ({
 export const query = graphql`
   query {
     years: allMdx {
-      distinct(field: fields___date___year)
+      distinct(field: { fields: { date: { year: SELECT } } })
     }
 
-    allMdx(limit: 10, sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(limit: 10, sort: { frontmatter: { date: DESC } }) {
       edges {
         node {
           ...PostListFragment

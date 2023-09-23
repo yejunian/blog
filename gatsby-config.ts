@@ -15,6 +15,7 @@ const config: GatsbyConfig = {
   },
 
   graphqlTypegen: true,
+  trailingSlash: 'never',
 
   plugins: [
     {
@@ -81,9 +82,7 @@ const config: GatsbyConfig = {
               maxWidth: 696,
               quality: 80,
               srcSetBreakpoints: [696, 1392],
-              withAvif: {
-                quailty: 60,
-              },
+              withAvif: { quality: 60 },
             },
           },
           {
