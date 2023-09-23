@@ -1,4 +1,7 @@
 import { GatsbyConfig } from 'gatsby';
+import remarkFootnotes from 'remark-footnotes';
+import remarkGfm from 'remark-gfm';
+import remarkHeadingId from 'remark-heading-id';
 
 const config: GatsbyConfig = {
   // NOTE - Uncomment below when debugging build error
@@ -58,6 +61,14 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        mdxOptions: {
+          remarkPlugins: [
+            [remarkGfm, { singleTilde: false }],
+            remarkHeadingId,
+            remarkFootnotes, // TODO - When Gatsby supports ESM, remove it and upgrade `remark-gfm`
+          ],
+        },
+
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-copy-linked-files',
