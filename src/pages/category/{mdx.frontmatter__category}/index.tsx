@@ -64,13 +64,13 @@ export const query = graphql`
     years: allMdx(
       filter: { frontmatter: { category: { eq: $frontmatter__category } } }
     ) {
-      distinct(field: fields___date___year)
+      distinct(field: { fields: { date: { year: SELECT } } })
     }
 
     allMdx(
       filter: { frontmatter: { category: { eq: $frontmatter__category } } }
       limit: 10
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {

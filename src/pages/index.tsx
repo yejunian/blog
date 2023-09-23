@@ -38,7 +38,7 @@ export const Head: HeadFC = () => <Seo />;
 
 export const query = graphql`
   query {
-    allMdx(limit: 3, sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(limit: 3, sort: { frontmatter: { date: DESC } }) {
       edges {
         node {
           ...PostListFragment
