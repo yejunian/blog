@@ -65,8 +65,16 @@ const config: GatsbyConfig = {
           remarkPlugins: [
             [remarkGfm, { singleTilde: false }],
             remarkHeadingId,
-            remarkFootnotes, // TODO - When Gatsby supports ESM, remove it and upgrade `remark-gfm`
+            // TODO - When Gatsby fully supports ESM, remove `remark-footnotes`
+            //        and upgrade `remark-gfm`.
+            remarkFootnotes,
           ],
+          remarkRehypeOptions: {
+            clobberPrefix: '',
+            footnoteBackLabel: '본문으로',
+            footnoteLabel: '각주',
+            footnoteLabelProperties: { clasName: undefined },
+          },
         },
 
         gatsbyRemarkPlugins: [
