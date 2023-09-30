@@ -90,6 +90,7 @@ const PostList = ({
           key={item.id}
           path={item.path}
           date={item.date}
+          category={categoryId ? undefined : item.category}
           title={item.title}
           description={item.description}
           keywords={item.keywords}

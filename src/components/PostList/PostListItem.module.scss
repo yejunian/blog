@@ -63,7 +63,22 @@
       @extend %secondary;
 
       display: flex;
-      gap: 2 * size.$gap-unit;
+
+      > ::before {
+        content: '·';
+
+        margin: 0 (0.5 * size.$gap-unit);
+
+        color: theme-color.$line-bright;
+
+        @media (min-width: size.$breakpoint-md) {
+          margin: 0 (0.75 * size.$gap-unit);
+        }
+      }
+
+      > :first-child::before {
+        content: none;
+      }
 
       .keywords {
         flex: 1 1;
