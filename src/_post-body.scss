@@ -255,7 +255,8 @@
     }
   }
 
-  s {
+  s,
+  del {
     color: theme-color.$text-bright-2;
     text-decoration: line-through;
 
@@ -276,8 +277,8 @@
     font-weight: var(--font-weight-sans-bold);
   }
 
-  mark s,
-  s mark {
+  mark :is(del, s),
+  :is(del, s) mark {
     color: theme-color.$text-bright-1;
   }
 }
