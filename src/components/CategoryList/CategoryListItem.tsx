@@ -27,7 +27,7 @@ const CategoryListItem = ({
       <dt>
         <Link
           ref={linkRef}
-          to={categoryId ? `/category/${categoryId}/` : '/post/'}
+          to={categoryId ? `/category/${categoryId}` : '/post'}
         >
           {label}
         </Link>

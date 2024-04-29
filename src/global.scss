@@ -47,3 +47,9 @@ hr {
 .gatsby-highlight code[class*='language-'] {
   tab-size: 4;
 }
+
+@counter-style footnotes {
+  system: extends decimal;
+  prefix: '[';
+  suffix: '] ';
+}

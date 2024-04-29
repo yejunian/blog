@@ -1,4 +1,7 @@
 import { GatsbyConfig } from 'gatsby';
+import remarkFootnotes from 'remark-footnotes';
+import remarkGfm from 'remark-gfm';
+import remarkHeadingId from 'remark-heading-id';
 
 const config: GatsbyConfig = {
   // NOTE - Uncomment below when debugging build error
@@ -15,6 +18,7 @@ const config: GatsbyConfig = {
   },
 
   graphqlTypegen: true,
+  trailingSlash: 'never',
 
   plugins: [
     {
@@ -57,6 +61,22 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        mdxOptions: {
+          remarkPlugins: [
+            [remarkGfm, { singleTilde: false }],
+            remarkHeadingId,
+            // TODO - When Gatsby fully supports ESM, remove `remark-footnotes`
+            //        and upgrade `remark-gfm`.
+            remarkFootnotes,
+          ],
+          remarkRehypeOptions: {
+            clobberPrefix: '',
+            footnoteBackLabel: '본문으로',
+            footnoteLabel: '각주',
+            footnoteLabelProperties: { clasName: undefined },
+          },
+        },
+
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-copy-linked-files',
@@ -81,9 +101,7 @@ const config: GatsbyConfig = {
               maxWidth: 696,
               quality: 80,
               srcSetBreakpoints: [696, 1392],
-              withAvif: {
-                quailty: 60,
-              },
+              withAvif: { quality: 60 },
             },
           },
           {

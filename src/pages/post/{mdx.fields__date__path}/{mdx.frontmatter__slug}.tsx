@@ -68,6 +68,7 @@ const PostPage = ({ children, data }: PageProps<PostPageDataType>) => {
         <PostFrontmatter
           thumbnail={frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData}
           thumbnailAlt={frontmatter?.thumbnailAlt}
+          category={frontmatter?.category ?? undefined}
           title={frontmatter?.title ?? defaultTitle}
           description={frontmatter?.description}
           rest={restFrontmatter}
@@ -154,6 +155,7 @@ export const query = graphql`
           }
         }
         thumbnailAlt
+        category
         title
         description
         date(formatString: "YYYY-MM-DD[T]HH:mm:ss[Z]")

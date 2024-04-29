@@ -1,3 +1,10 @@
+declare module 'remark-heading-id' {
+  const remarkHeadingId: (options?: {
+    defaults?: boolean;
+  }) => (node: unknown) => void;
+  export default remarkHeadingId;
+}
+
 declare module '*.scss';
 
 declare module '*.svg' {

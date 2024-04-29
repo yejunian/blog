@@ -16,7 +16,9 @@ const formatDatetime = (
 
   const dateString = `${year}년 ${month}월 ${date}일`;
 
-  return options?.withHours ? `${dateString} ${hours}시` : dateString;
+  return options?.withHours ? `${dateString} ${padHours(hours)}시` : dateString;
 };
+
+const padHours = (hours: number) => (hours < 10 ? `0${hours}` : `${hours}`);
 
 export default formatDatetime;

@@ -11,6 +11,7 @@ import * as styles from './PostListItem.module.scss';
 export type PostListItemProps = {
   path?: string | null;
   date?: string | null;
+  category?: string | null;
   title?: string | null;
   description?: string | null;
   keywords?: string[] | null;
@@ -21,6 +22,7 @@ export type PostListItemProps = {
 const PostListItem = ({
   path,
   date,
+  category,
   title,
   description,
   thumbnail,
@@ -47,6 +49,7 @@ const PostListItem = ({
         {description && <div className={styles.description}>{description}</div>}
         <div className={styles.metadata}>
           <div>{date || '(작성 날짜 정보 없음)'}</div>
+          {category ? <div>{category}</div> : null}
           <div className={styles.keywords}>{keywords?.join(', ')}</div>
         </div>
       </div>

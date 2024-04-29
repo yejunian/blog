@@ -26,7 +26,7 @@ const deriveCategoryNode = (
   id: string | null | undefined,
 ): ReactNode => {
   if (text) {
-    return <Link to={`/category/${id}/`}>‘{text}’</Link>;
+    return <Link to={`/category/${id}`}>‘{text}’</Link>;
   } else if (text === '') {
     return null;
   } else {
@@ -90,6 +90,7 @@ const PostList = ({
           key={item.id}
           path={item.path}
           date={item.date}
+          category={categoryId ? undefined : item.category}
           title={item.title}
           description={item.description}
           keywords={item.keywords}
@@ -130,7 +131,7 @@ const PostList = ({
 
       {showMore ? (
         <div className={styles.more}>
-          <Link to={categoryId ? `/category/${categoryId}/` : `/post/`}>
+          <Link to={categoryId ? `/category/${categoryId}` : `/post`}>
             {categoryId ? `‘${categoryText}’ 분류의 ` : null}
             {isRecent ? '최근 ' : null}글 더 보기 &gt;
           </Link>
