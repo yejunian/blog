@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[218],{2513:function(e,n,t){t.r(n),t.d(n,{Head:function(){return a}});var l=t(1883),u=t(7294);n.default=()=>u.createElement("main",null,u.createElement("h1",null,"Page not found"),u.createElement("p",null,u.createElement(l.Link,{to:"/"},"Go home")));const a=()=>u.createElement("title",null,"Not found - yejunian/blog")}}]);
+//# sourceMappingURL=component---src-pages-404-tsx-46af173bb0d0e69df853.js.map
