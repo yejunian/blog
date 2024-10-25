@@ -57,6 +57,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
 
+      - name: Clone blog-post
+        run: yarn clone-post
+
       - name: Install dependencies
         run: yarn install
 
