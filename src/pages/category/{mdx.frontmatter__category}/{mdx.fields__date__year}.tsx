@@ -1,7 +1,7 @@
 import { graphql, HeadFC, HeadProps, PageProps } from 'gatsby';
 import React, { useMemo } from 'react';
 
-import categoryMetadata from '../../../blog-post/src/categoryMetadata';
+import categoryMetadata from '../../../blog-post/metadata/category';
 import { PostListItemArray } from '../../../components/PostList';
 import Seo from '../../../components/head/Seo';
 import PostListLayout from '../../../components/layout/PostListLayout';

@@ -81,9 +81,11 @@ $text-post-sizes-md: (
   overflow: hidden;
 }
 
-@mixin declare-css-variables {
+@mixin variables {
   --gap-column: #{2 * $gap-unit};
+}
 
+@mixin variables-nested {
   @media (min-width: $breakpoint-md) {
     --gap-column: #{3 * $gap-unit};
   }

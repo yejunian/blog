@@ -1,4 +1,4 @@
-import categoryMetadata from '../blog-post/src/categoryMetadata';
+import categoryMetadata from '../blog-post/metadata/category';
 import { PostListItemArrayEntry } from '../components/PostList';
 import formatDatetime from './formatDatetime';
 

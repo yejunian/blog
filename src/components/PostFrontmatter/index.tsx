@@ -1,7 +1,7 @@
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React from 'react';
 
-import categoryMetadata from '../../blog-post/src/categoryMetadata';
+import categoryMetadata from '../../blog-post/metadata/category';
 import MetadataList, { PostMetadataItem } from './MetadataList';
 import * as styles from './PostFrontmatter.module.scss';
 

@@ -1,7 +1,7 @@
 import { Link, graphql } from 'gatsby';
 import React, { ReactNode, useMemo } from 'react';
 
-import categoryMetadata from '../../blog-post/src/categoryMetadata';
+import categoryMetadata from '../../blog-post/metadata/category';
 import YearFilter from '../YearFilter';
 import * as styles from './PostList.module.scss';
 import PostListItem, { PostListItemProps } from './PostListItem';

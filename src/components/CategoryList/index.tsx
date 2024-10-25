@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import categoryMetadata from '../../blog-post/src/categoryMetadata';
+import categoryMetadata from '../../blog-post/metadata/category';
 import * as styles from './CategoryList.module.scss';
 import CategoryListItem from './CategoryListItem';
 
