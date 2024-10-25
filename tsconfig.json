@@ -13,6 +13,7 @@
   },
   "include": [
     "./src/**/*",
+    "./src/blog-post/**/*",
     "./gatsby-browser.*",
     "./gatsby-config.*",
     "./gatsby-node.*",
