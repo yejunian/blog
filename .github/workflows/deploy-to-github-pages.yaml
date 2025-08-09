@@ -6,8 +6,9 @@ on:
   push:
     branches: [main]
 
-  repository_dispatch:
-    types: [post-change]
+  # TODO: Astro 마이그레이션 완료 후, main으로 병합하기 직전에 활성화
+  # repository_dispatch:
+  #   types: [post-change]
 
   # Actions 탭에서 수동으로 워크플로 실행 허용
   workflow_dispatch:
@@ -33,6 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
+    # TODO: Astro 마이그레이션 후반에 Astro에 맞게 작업
     steps:
       - name: 블로그 코어 체크아웃
         uses: actions/checkout@v4
