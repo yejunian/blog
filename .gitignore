@@ -1,4 +1,9 @@
+# VS Code 설정
 .vscode/settings.json
+
+# 블로그 게시글 레포
+src/data/blog-post
+
 
 # build output
 dist/
