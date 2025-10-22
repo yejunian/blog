@@ -1,0 +1,30 @@
+---
+import categories from "@/data/blog-post/metadata/categories.json";
+
+import CategoryListItem from "./CategoryListItem.astro";
+
+interface Props {
+  heading: string;
+  categoryId?: string;
+}
+
+const { heading, categoryId = "" } = Astro.props;
+
+const items = categories.filter(({ id }) => categoryId !== id);
+---
+
+<section class="category">
+  {heading ? <h2 class="category-title">{heading}</h2> : null}
+
+  <dl class="category-list">
+    {
+      items.map(({ id, label, description }) => (
+        <CategoryListItem
+          categoryId={id}
+          label={label}
+          description={description}
+        />
+      ))
+    }
+  </dl>
+</section>

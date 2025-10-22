@@ -1,0 +1,21 @@
+---
+import fixPath from "@/utils/fixPath";
+
+interface Props {
+  categoryId: string;
+  label: string;
+  description: string;
+}
+
+const { categoryId, label, description } = Astro.props;
+---
+
+<div class="item">
+  <dt>
+    <a href={fixPath(categoryId ? `/category/${categoryId}` : "/post")}>
+      {label}
+    </a>
+  </dt>
+
+  <dd>{description}</dd>
+</div>

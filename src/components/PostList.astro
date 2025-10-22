@@ -1,0 +1,89 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import categories from "@/data/blog-post/metadata/categories.json";
+import fixPath from "@/utils/fixPath";
+
+import PostListItem from "./PostListItem.astro";
+import YearFilter from "./YearFilter.astro";
+
+interface Props {
+  availableYears?: (number | string)[];
+  categoryId?: string;
+  isRecent?: boolean;
+  posts: CollectionEntry<"blogPost">[];
+  selectedYear?: number | string;
+  showMore?: boolean;
+  showYearFilter?: boolean;
+}
+
+const {
+  availableYears,
+  categoryId = "",
+  isRecent = false,
+  posts,
+  selectedYear,
+  showMore = false,
+  showYearFilter = false,
+} = Astro.props;
+
+const when = isRecent ? "최근" : selectedYear ? `${selectedYear}년` : null;
+const categoryLabel =
+  categories.find(({ id }) => id === categoryId)?.label ?? "???";
+---
+
+<div class="post-list">
+  <h2 class="title">
+    {
+      categoryId ? (
+        <>
+          {when}
+          {when && categoryLabel ? " " : null}
+          <a href={fixPath(`/category/${categoryId}`)}>‘{categoryLabel}’</a>
+          에는{" "}
+        </>
+      ) : null
+    }뭐라고 썼나
+  </h2>
+
+  {
+    showYearFilter ? (
+      <YearFilter
+        availableYears={availableYears}
+        categoryId={categoryId}
+        selectedYear={selectedYear}
+      />
+    ) : null
+  }
+
+  <div class="list">
+    {
+      posts.length > 0 ? (
+        posts.map((entry) => <PostListItem entry={entry} />)
+      ) : (
+        <div class="empty">아무것도 안 썼습니다.</div>
+      )
+    }
+  </div>
+
+  {
+    showYearFilter ? (
+      <YearFilter
+        availableYears={availableYears}
+        categoryId={categoryId}
+        selectedYear={selectedYear}
+      />
+    ) : null
+  }
+
+  {
+    showMore ? (
+      <div class="more">
+        <a href={fixPath(categoryId ? `/category/${categoryId}` : "/post")}>
+          {categoryId ? `‘${categoryLabel}’ 분류의 ` : null}
+          {isRecent ? "최근 " : null}글 더 보기 →
+        </a>
+      </div>
+    ) : null
+  }
+</div>

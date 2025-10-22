@@ -1,0 +1,33 @@
+---
+import { join } from "node:path";
+
+import fixPath from "@/utils/fixPath";
+
+interface Props {
+  availableYears?: (number | string)[];
+  categoryId?: string;
+  selectedYear?: number | string;
+}
+
+const { availableYears, categoryId = "", selectedYear } = Astro.props;
+
+const categoryPath = fixPath(
+  categoryId ? join("/category/", categoryId) : "/post",
+);
+---
+
+<div class="years">
+  <a class={selectedYear ? undefined : "selected"} href={categoryPath}>
+    최근
+  </a>
+  {
+    availableYears?.map((year) => (
+      <a
+        class={selectedYear === year ? "selected" : undefined}
+        href={join(categoryPath, year.toString())}
+      >
+        {year}
+      </a>
+    ))
+  }
+</div>
