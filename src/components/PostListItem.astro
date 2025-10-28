@@ -14,7 +14,7 @@ export interface Props {
 const { entry } = Astro.props;
 
 const datePath = entry.data.date.trim().split("T")[0].replaceAll("-", "/");
-const path = join(datePath, entry.data.slug, "./");
+const path = join("post", datePath, entry.data.slug, "./");
 
 const formattedDate = entry.data.date
   .trim()
