@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+
+import PostFrontmatter from "@/components/PostFrontmatter.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  return (await getCollection("blogPost")).map((post) => {
+    const [year, month, date] = post.data.date.trim().split("T")[0].split("-");
+
+    return {
+      params: {
+        year,
+        month,
+        date,
+        slug: post.data.slug,
+      },
+      props: {
+        post,
+      },
+    };
+  });
+}
+
+const { post } = Astro.props;
+---
+
+<BaseLayout>
+  <article class="post">
+    <PostFrontmatter post={post} />
+
+    <hr />
+
+    <div class="post-body">{post.body}</div>
+  </article>
+
+  <section class="comment">
+    <!-- <Giscus /> -->
+  </section>
+</BaseLayout>

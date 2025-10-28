@@ -1,0 +1,83 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import categories from "@/data/blog-post/metadata/categories.json";
+
+interface Props {
+  post: CollectionEntry<"blogPost">;
+}
+
+const { data } = Astro.props.post;
+
+const categoryLabel = categories.find(({ id }) => id === data.category)?.label;
+const lastRevision = data.revisions?.at(-1);
+
+function formatDate(input: string): string {
+  return input
+    .trim()
+    .replace(/^(\d{4,})-0?(\d+)-0?(\d+)T(\d+).*$/, "$1년 $2월 $3일 $4시");
+}
+
+function joinKeywords(items: string[]): string {
+  return items.filter((value) => value !== "__EMPTY").join(", ");
+}
+
+const subKeywords = joinKeywords(data.keywords.sub);
+const mainKeywords =
+  joinKeywords(data.keywords.main) + (subKeywords ? "," : "");
+---
+
+<div class="frontmatter">
+  {
+    data.thumbnail && (
+      <img
+        class="hero"
+        role="presentation"
+        alt={data.thumbnailAlt ?? ""}
+        src={data.thumbnail.src}
+        width={data.thumbnail.width / 2}
+        height={data.thumbnail.height / 2}
+      />
+    )
+  }
+
+  <div class="properties">
+    {categoryLabel ? <div class="category">[{categoryLabel}]</div> : null}
+    <h1 class="title">{data.title}</h1>
+
+    {data.description && <p class="description">{data.description}</p>}
+
+    <dl class="kvpairs">
+      <div class="item">
+        <dt class="item-key">최초 게시</dt>
+        <dd class="item-value">{formatDate(data.date)}</dd>
+      </div>
+
+      {
+        lastRevision && (
+          <div class="item">
+            <dt class="item-key">최근 수정</dt>
+            <dd class="item-value">{formatDate(lastRevision.date)}</dd>
+            {lastRevision.message && (
+              <dd class="item-value">{lastRevision.message}</dd>
+            )}
+          </div>
+        )
+      }
+
+      {
+        mainKeywords || subKeywords ? (
+          <div class="item">
+            <dt class="item-key">키워드</dt>
+            {mainKeywords ? (
+              <dd class="item-value">{mainKeywords}</dd>
+            ) : (
+              "(메인 키워드 없음)"
+            )}
+            {subKeywords ? <dd class="item-value">{subKeywords}</dd> : null}
+          </div>
+        ) : null
+      }
+    </dl>
+  </div>
+</div>
