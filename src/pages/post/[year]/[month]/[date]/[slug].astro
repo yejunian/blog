@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 import PostFrontmatter from "@/components/PostFrontmatter.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -23,6 +23,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const { Content } = await render(post);
 ---
 
 <BaseLayout>
@@ -31,7 +32,7 @@ const { post } = Astro.props;
 
     <hr />
 
-    <div class="post-body">{post.body}</div>
+    <div class="post-body"><Content /></div>
   </article>
 
   <section class="comment">
