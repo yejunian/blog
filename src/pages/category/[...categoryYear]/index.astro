@@ -1,0 +1,90 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import categories from "@/data/blog-post/metadata/categories.json";
+import PostListLayout from "@/layouts/PostListLayout.astro";
+
+type PostsByCategoryYear = {
+  [category: string]: Map<number, CollectionEntry<"blogPost">[]>;
+};
+
+type StaticPathsReturn = {
+  params: {
+    categoryYear: string;
+  };
+  props: {
+    category: string;
+    year?: number;
+    availableYears: number[];
+    posts: CollectionEntry<"blogPost">[];
+  };
+}[];
+
+export async function getStaticPaths(): Promise<StaticPathsReturn> {
+  const categoryIds = categories.map(({ id }) => id).filter((id) => id);
+  const sortedPosts = (await getCollection("blogPost")).sort((a, b) => {
+    if (b.data.date < a.data.date) {
+      return -1;
+    } else if (b.data.date > a.data.date) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  const posts: PostsByCategoryYear = {};
+
+  for (const entry of sortedPosts) {
+    const category = entry.data.category;
+    const year = parseInt(entry.data.date, 10);
+
+    if (!posts[category]) {
+      posts[category] = new Map();
+      posts[category].set(0, []);
+    }
+    if (!posts[category].has(year)) {
+      posts[category].set(year, []);
+    }
+
+    posts[category].get(0)?.push(entry);
+    posts[category].get(year)?.push(entry);
+  }
+
+  const result: StaticPathsReturn = [];
+
+  for (const id of categoryIds) {
+    const availableYears = Array.from(posts[id].keys()).filter((year) => year);
+
+    for (const [year, entries] of posts[id]) {
+      result.push({
+        params: {
+          categoryYear: year ? `${id}/${year}` : id,
+        },
+        props: {
+          category: id,
+          year: year || undefined,
+          availableYears,
+          posts: entries ?? [],
+        },
+      });
+    }
+  }
+
+  return result;
+}
+
+const { category, year, availableYears, posts } = Astro.props;
+---
+
+<PostListLayout
+  showCategoryList
+  showPostList
+  categoryId={category}
+  isRecentPostList={!year}
+  isYearFilterVisible
+  posts={posts}
+  availableYears={availableYears}
+  selectedYear={year}
+  categoryListHeading="다른 분류"
+/>

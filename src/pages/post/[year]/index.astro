@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import PostListLayout from "@/layouts/PostListLayout.astro";
+
+type StaticPathsReturn = {
+  params: {
+    year: number;
+  };
+  props: {
+    availableYears: number[];
+    posts: CollectionEntry<"blogPost">[];
+  };
+}[];
+
+export async function getStaticPaths(): Promise<StaticPathsReturn> {
+  const sortedPosts = (await getCollection("blogPost")).sort((a, b) => {
+    if (b.data.date < a.data.date) {
+      return -1;
+    } else if (b.data.date > a.data.date) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  const posts: Map<number, CollectionEntry<"blogPost">[]> = new Map();
+
+  for (const entry of sortedPosts) {
+    const year = parseInt(entry.data.date, 10);
+
+    if (!posts.has(year)) {
+      posts.set(year, []);
+    }
+
+    posts.get(year)?.push(entry);
+  }
+
+  const result: StaticPathsReturn = [];
+
+  const availableYears = Array.from(posts.keys()).filter((year) => year);
+
+  for (const [year, entries] of posts) {
+    result.push({
+      params: {
+        year,
+      },
+      props: {
+        availableYears,
+        posts: entries ?? [],
+      },
+    });
+  }
+
+  return result;
+}
+
+const { year } = Astro.params;
+const { availableYears, posts } = Astro.props;
+---
+
+<PostListLayout
+  showCategoryList
+  showPostList
+  isYearFilterVisible
+  posts={posts}
+  availableYears={availableYears}
+  selectedYear={year}
+/>

@@ -1,4 +1,6 @@
 ---
+import { join } from "node:path";
+
 import fixPath from "@/utils/fixPath";
 
 interface Props {
@@ -12,7 +14,7 @@ const { categoryId, label, description } = Astro.props;
 
 <div class="item">
   <dt>
-    <a href={fixPath(categoryId ? `/category/${categoryId}` : "/post")}>
+    <a href={fixPath(categoryId ? join("/category/", categoryId) : "/post")}>
       {label}
     </a>
   </dt>

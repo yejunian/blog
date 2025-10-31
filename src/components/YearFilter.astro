@@ -11,20 +11,18 @@ interface Props {
 
 const { availableYears, categoryId = "", selectedYear } = Astro.props;
 
-const categoryPath = fixPath(
-  categoryId ? join("/category/", categoryId) : "/post",
-);
+const categoryPath = categoryId ? join("/category/", categoryId) : "/post";
 ---
 
 <div class="years">
-  <a class={selectedYear ? undefined : "selected"} href={categoryPath}>
+  <a class={selectedYear ? undefined : "selected"} href={fixPath(categoryPath)}>
     최근
   </a>
   {
     availableYears?.map((year) => (
       <a
         class={selectedYear === year ? "selected" : undefined}
-        href={join(categoryPath, year.toString())}
+        href={fixPath(join(categoryPath, year.toString()))}
       >
         {year}
       </a>

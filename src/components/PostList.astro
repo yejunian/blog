@@ -1,4 +1,6 @@
 ---
+import { join } from "node:path";
+
 import type { CollectionEntry } from "astro:content";
 
 import categories from "@/data/blog-post/metadata/categories.json";
@@ -27,23 +29,27 @@ const {
   showYearFilter = false,
 } = Astro.props;
 
-const when = isRecent ? "최근" : selectedYear ? `${selectedYear}년` : null;
+const when = (() => {
+  if (isRecent || !selectedYear) {
+    return "최근";
+  } else if (selectedYear) {
+    return `${selectedYear}년`;
+  } else {
+    return null;
+  }
+})();
 const categoryLabel =
   categories.find(({ id }) => id === categoryId)?.label ?? "???";
 ---
 
 <div class="post-list">
   <h2 class="title">
-    {
+    {when}{when && categoryId ? " " : null}{
       categoryId ? (
-        <>
-          {when}
-          {when && categoryLabel ? " " : null}
-          <a href={fixPath(`/category/${categoryId}`)}>‘{categoryLabel}’</a>
-          에는{" "}
-        </>
+        <a href={fixPath(join("/category/", categoryId))}>‘{categoryLabel}’</a>
       ) : null
-    }뭐라고 썼나
+    }{when || categoryLabel ? "에는 " : null}
+    뭐라고 썼나
   </h2>
 
   {
@@ -79,7 +85,9 @@ const categoryLabel =
   {
     showMore ? (
       <div class="more">
-        <a href={fixPath(categoryId ? `/category/${categoryId}` : "/post")}>
+        <a
+          href={fixPath(categoryId ? join("/category/", categoryId) : "/post")}
+        >
           {categoryId ? `‘${categoryLabel}’ 분류의 ` : null}
           {isRecent ? "최근 " : null}글 더 보기 →
         </a>

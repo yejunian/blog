@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import CategoryList from "@/components/CategoryList.astro";
+import PostList from "@/components/PostList.astro";
+
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  showPostList?: boolean;
+  showCategoryList?: boolean;
+
+  categoryId?: string;
+
+  isRecentPostList?: boolean;
+  posts?: CollectionEntry<"blogPost">[];
+  isMorePostsVisible?: boolean;
+  isYearFilterVisible?: boolean;
+  availableYears?: (number | string)[];
+  selectedYear?: number | string;
+
+  categoryListHeading?: string;
+}
+
+const {
+  showPostList,
+  showCategoryList,
+
+  categoryId = "",
+
+  isRecentPostList = false,
+  posts = [],
+  isMorePostsVisible = false,
+  isYearFilterVisible = false,
+  availableYears = [],
+  selectedYear,
+
+  categoryListHeading,
+} = Astro.props;
+---
+
+<BaseLayout>
+  {
+    showPostList && posts ? (
+      <PostList
+        availableYears={availableYears}
+        categoryId={categoryId}
+        isRecent={isRecentPostList}
+        posts={posts}
+        selectedYear={selectedYear}
+        showMore={isMorePostsVisible}
+        showYearFilter={isYearFilterVisible}
+      />
+    ) : null
+  }
+
+  {showPostList && posts && showCategoryList ? <hr /> : null}
+
+  {
+    showCategoryList ? (
+      <CategoryList
+        heading={categoryListHeading ?? "어떤 분류로 글을 쓰고 있나"}
+        categoryId={categoryId}
+      />
+    ) : null
+  }
+</BaseLayout>

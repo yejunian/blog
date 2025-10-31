@@ -6,11 +6,17 @@ function fixPath(path: string): string {
     return path;
   }
 
-  if (path.startsWith(import.meta.env.BASE_URL)) {
-    return path;
+  let fixed = path;
+
+  if (!fixed.startsWith(import.meta.env.BASE_URL)) {
+    fixed = join(import.meta.env.BASE_URL, fixed);
   }
 
-  return join(import.meta.env.BASE_URL, path);
+  if (!fixed.endsWith("/")) {
+    fixed += "/";
+  }
+
+  return fixed;
 }
 
 function isURL(input: string): boolean {
