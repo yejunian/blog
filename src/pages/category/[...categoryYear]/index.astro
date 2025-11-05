@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-import categories from "@/data/blog-post/metadata/categories.json";
 import PostListLayout from "@/layouts/PostListLayout.astro";
+import categories from "@/data/blog-post/metadata/categories.json";
 
 type PostsByCategoryYear = {
   [category: string]: Map<number, CollectionEntry<"blogPost">[]>;
