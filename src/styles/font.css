@@ -1,0 +1,26 @@
+:root {
+  --font-sans:
+    "Pretendard Variable", -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-monospace:
+    "Menlo", "Consolas", "Courier New", "Pretendard Variable",
+    "Apple SD Gothic Neo", "Malgun Gothic", monospace;
+
+  --font-weight-sans-regular: 400;
+  --font-weight-sans-bold: 700;
+
+  --font-weight-mono-regular: 400;
+  --font-weight-mono-bold: 700;
+}
+
+@media screen and (max-resolution: 1.4dppx) {
+  :root {
+    --font-weight-sans-regular: 450;
+  }
+}
+
+@media screen and (max-resolution: 1.19dppx) {
+  :root {
+    --font-weight-sans-regular: 500;
+  }
+}
