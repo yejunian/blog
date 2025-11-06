@@ -1,10 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
+import BasicLayout from "@/layouts/BasicLayout.astro";
 import CategoryList from "@/components/CategoryList.astro";
 import PostList from "@/components/PostList.astro";
-
-import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
   showPostList?: boolean;
@@ -39,7 +38,7 @@ const {
 } = Astro.props;
 ---
 
-<BaseLayout>
+<BasicLayout>
   {
     showPostList && posts ? (
       <PostList
@@ -64,7 +63,7 @@ const {
       />
     ) : null
   }
-</BaseLayout>
+</BasicLayout>
 
 <style is:global>
   main {

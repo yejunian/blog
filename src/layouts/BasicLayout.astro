@@ -1,0 +1,26 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+---
+
+<RootLayout>
+  <slot />
+</RootLayout>
+
+<style is:global>
+  main {
+    margin-top: calc(0.5 * var(--gap-unit));
+    margin-bottom: var(--gap-section);
+  }
+
+  main > * {
+    margin: var(--gap-section) var(--gap-column);
+  }
+
+  main > :first-child {
+    margin-top: calc(1.5 * var(--gap-column));
+  }
+
+  main > :last-child {
+    margin-bottom: 0;
+  }
+</style>

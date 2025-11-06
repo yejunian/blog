@@ -1,0 +1,154 @@
+---
+import logo from "@/assets/logo.svg";
+import fixPath from "@/utils/fixPath";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+  <div class="content">
+    <div class="title-line">
+      <h2 class="title">
+        <a href={fixPath("/")}>
+          <img
+            class="logo"
+            alt="yejunian / blog"
+            src={logo.src}
+            width={logo.width}
+            height={logo.height}
+          />
+        </a>
+      </h2>
+    </div>
+
+    <div class="license">
+      <p>
+        &copy; 2022-{currentYear}
+        <a href="https://github.com/yejunian">yejunian</a>
+      </p>
+      <p class="bright">
+        별도의 명시가 없다면 각 콘텐츠는 아래 조건 하에 이용 가능합니다.
+      </p>
+      <ul class="bright">
+        <li>
+          <a href="https://github.com/yejunian/blog-post">yejunian/blog-post</a
+          >에 업로드한 게시물(코드 블록 제외): <a
+            href="https://creativecommons.org/licenses/by/4.0/deed.ko"
+            >CC-BY 4.0</a
+          > (저작자 명시)
+        </li>
+        <li>
+          그 게시물에 삽입된 코드 블록의 내용: 퍼블릭 도메인 (자유롭게 이용
+          가능)
+        </li>
+        <li>
+          댓글 등, 웹 사이트 방문자가 작성한 게시물의 저작권은 해당 작성자에게
+          있으므로, 이를 활용하려면 당사자의 이용허락이 필요합니다.
+        </li>
+      </ul>
+      <p class="bright">
+        이미지 등, 게시물에 첨부한 파일을 외부 서비스에서 사용하려면, 해당
+        콘텐츠를 다운로드한 뒤 공유하려는 서비스의 콘텐츠 첨부 기능을 활용하기
+        바랍니다. 이 사이트에 첨부한 파일의 URL은 언제든지 변경될 수 있습니다.
+      </p>
+    </div>
+
+    <div class="source">
+      <p>
+        Built with <a
+          href="https://astro.build/"
+          target="_blank"
+          rel="noreferrer noopener">Astro</a
+        >. Hosted on <a
+          href="https://pages.github.com/"
+          target="_blank"
+          rel="noreferrer noopener">GitHub Pages</a
+        >.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-sizing: border-box;
+    margin: 0;
+    width: min(100%, var(--content-width-max));
+    padding: 0 var(--gap-column);
+
+    line-height: 1.4;
+    color: var(--color-text-bright-1);
+    font-size: 0.8125rem; /* 13px */
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .content {
+    box-sizing: border-box;
+    border-top: 1px solid var(--color-line-bright);
+    padding: var(--gap-section) 0;
+    width: 100%;
+  }
+
+  .title-line {
+    display: flex;
+    gap: var(--gap-column);
+
+    margin: 0 0 calc(2 * var(--gap-unit));
+  }
+
+  .title {
+    margin: 0;
+
+    line-height: 1;
+    color: var(--color--text);
+    font-size: 1rem; /* 16px */
+    font-weight: var(--font-weight-sans-regular);
+  }
+
+  .title a {
+    text-decoration: none;
+  }
+
+  .logo {
+    display: block;
+    object-fit: contain;
+  }
+
+  .license {
+    margin: var(--gap-unit) 0;
+
+    .bright {
+      color: var(--color-text-bright-2);
+      font-size: 0.75rem; /* 12px */
+    }
+  }
+
+  .license p,
+  .license ul {
+    margin: calc(0.5 * var(--gap-unit)) 0;
+  }
+
+  .license ul {
+    padding-left: calc(2 * var(--gap-unit));
+  }
+
+  .license code {
+    font-family: var(--font-monospace);
+    font-size: 0.875em;
+  }
+
+  .source {
+    margin: var(--gap-unit) 0;
+  }
+
+  .source p {
+    margin: calc(0.5 * var(--gap-unit)) 0;
+  }
+</style>

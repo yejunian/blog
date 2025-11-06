@@ -1,0 +1,89 @@
+---
+import logo from "@/assets/logo.svg";
+import fixPath from "@/utils/fixPath";
+---
+
+<header>
+  <nav>
+    <div class="left">
+      <h2 class="title">
+        <a href={fixPath("/")}>
+          <img
+            class="logo"
+            alt="yejunian / blog"
+            src={logo.src}
+            width={logo.width}
+            height={logo.height}
+          />
+        </a>
+      </h2>
+    </div>
+
+    <div class="right">
+      <a href={fixPath("/post/")}>최근 글</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 52px;
+
+    background-color: rgba(from var(--color-bg-base) r g b / 0.8);
+    box-shadow: 0 2px 2px rgba(from var(--color-gray-16) r g b / 0.15);
+    backdrop-filter: blur(4px);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-column);
+
+    box-sizing: border-box;
+    padding: 0 var(--gap-column);
+    width: min(100%, var(--content-width-max));
+  }
+
+  .title {
+    margin: 0;
+
+    line-height: 1;
+    font-size: 1rem; /* 16px */
+    font-weight: var(--font-weight-sans-regular);
+  }
+
+  .logo {
+    display: block;
+    object-fit: contain;
+  }
+
+  .right {
+    color: var(--color-text-bright-2);
+    font-size: 0.875rem; /* 14px */
+  }
+
+  @supports not (color: rgba(from red r g b / 1)) {
+    header {
+      background-color: #ffffffcc;
+      box-shadow: 0 2px 2px #00000026;
+    }
+  }
+</style>

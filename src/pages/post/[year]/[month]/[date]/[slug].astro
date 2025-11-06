@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import RootLayout from "@/layouts/RootLayout.astro";
 import PostFrontmatter from "@/components/PostFrontmatter.astro";
 
 export async function getStaticPaths() {
@@ -26,7 +26,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BaseLayout>
+<RootLayout>
   <article class="post">
     <PostFrontmatter post={post} />
 
@@ -38,4 +38,10 @@ const { Content } = await render(post);
   <section class="comment">
     <!-- <Giscus /> -->
   </section>
-</BaseLayout>
+</RootLayout>
+
+<style is:global>
+  main {
+    margin-bottom: var(--gap-section);
+  }
+</style>

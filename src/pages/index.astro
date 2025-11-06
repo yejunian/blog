@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import BasicLayout from "@/layouts/BasicLayout.astro";
 import CategoryList from "@/components/CategoryList.astro";
 import PostList from "@/components/PostList.astro";
 import Profile from "@/components/Profile.astro";
@@ -24,7 +24,7 @@ const recentPosts = (await getCollection("blogPost"))
   .slice(0, 3);
 ---
 
-<BaseLayout>
+<BasicLayout>
   <Profile />
 
   <hr />
@@ -34,4 +34,4 @@ const recentPosts = (await getCollection("blogPost"))
   <hr />
 
   <PostList isRecent posts={recentPosts} showMore />
-</BaseLayout>
+</BasicLayout>
