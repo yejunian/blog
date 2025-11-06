@@ -14,9 +14,9 @@ const items = categories.filter(({ id }) => categoryId !== id);
 ---
 
 <section class="category">
-  {heading ? <h2 class="category-title">{heading}</h2> : null}
+  {heading ? <h2 class="title">{heading}</h2> : null}
 
-  <dl class="category-list">
+  <dl class="list">
     {
       items.map(({ id, label, description }) => (
         <CategoryListItem
@@ -28,3 +28,24 @@ const items = categories.filter(({ id }) => categoryId !== id);
     }
   </dl>
 </section>
+
+<style>
+  .category {
+    line-height: 1.4;
+  }
+
+  .title {
+    margin: 0;
+
+    font-size: var(--text-section-heading);
+    font-weight: var(--font-weight-sans-bold);
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(3 * var(--gap-unit));
+
+    margin: calc(3 * var(--gap-unit)) 0 0;
+  }
+</style>

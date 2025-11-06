@@ -55,4 +55,20 @@ import "@/styles/utility.css";
     box-sizing: border-box;
     width: min(100%, var(--content-width-max));
   }
+
+  :is(pre, code) {
+    font-weight: var(--font-weight-mono-regular);
+  }
+
+  :is(dt, h1, h2, h3, h4, h5, h6, th, b, strong) :is(pre, code) {
+    font-weight: var(--font-weight-mono-bold);
+  }
+
+  hr {
+    margin: var(--gap-section) 0;
+    border: none;
+    height: 1px;
+
+    background-color: var(--color-line-bright);
+  }
 </style>

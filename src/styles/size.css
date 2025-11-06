@@ -4,9 +4,7 @@
   --content-width-max: 744px;
 
   --gap-unit: 8px;
-  /* TODO 3: 정리 필요. 원본에서 한 파일에 아래 순서로 2번 정의됨. */
-  --gap-section: calc(5 * var(--gap-unit));
-  --gap-section: 60px;
+  --gap-section: calc(7.5 * var(--gap-unit));
   --gap-column: calc(2 * var(--gap-unit));
 
   --text-section-heading: 1.5rem; /* 24px */
@@ -31,9 +29,17 @@
   --text-post-h5-md: 1rem; /* 16px */
   --text-post-h6-md: 0.8875rem; /* 14.2px, 사용하지 않음 */
 
-  --column-width: calc(
-    (100% + var(--gap-column)) * var(--span-column, 1) /
-      var(--count-column, 1) - var(--gap-column)
+  --column-width-1-of-4: calc(
+    (min(100%, var(--content-width-max)) + var(--gap-column)) / 4 -
+      var(--gap-column)
+  );
+  --column-width-1-of-6: calc(
+    (min(100%, var(--content-width-max)) + var(--gap-column)) / 6 -
+      var(--gap-column)
+  );
+  --column-width-2-of-6: calc(
+    (min(100%, var(--content-width-max)) + var(--gap-column)) / 3 -
+      var(--gap-column)
   );
 
   --line-height-as-base: calc(
