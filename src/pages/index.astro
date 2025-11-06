@@ -29,9 +29,9 @@ const recentPosts = (await getCollection("blogPost"))
 
   <hr />
 
-  <CategoryList heading="어떤 분류로 글을 쓰고 있나" />
+  <CategoryList />
 
   <hr />
 
-  <PostList isRecent posts={recentPosts} showMore />
+  <PostList isRecent posts={recentPosts} showMorePostsLink />
 </BasicLayout>

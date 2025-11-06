@@ -4,11 +4,11 @@ import categories from "@/data/blog-post/metadata/categories.json";
 import CategoryListItem from "./CategoryListItem.astro";
 
 interface Props {
-  heading: string;
+  heading?: string;
   categoryId?: string;
 }
 
-const { heading, categoryId = "" } = Astro.props;
+const { heading = "어떤 분류로 글을 쓰고 있나", categoryId = "" } = Astro.props;
 
 const items = categories.filter(({ id }) => categoryId !== id);
 ---

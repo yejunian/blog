@@ -13,10 +13,10 @@ interface Props {
 
   isRecentPostList?: boolean;
   posts?: CollectionEntry<"blogPost">[];
-  isMorePostsVisible?: boolean;
-  isYearFilterVisible?: boolean;
-  availableYears?: (number | string)[];
-  selectedYear?: number | string;
+  showMorePostsLink?: boolean;
+  showYearFilter?: boolean;
+  availableYears?: number[];
+  selectedYear?: number;
 
   categoryListHeading?: string;
 }
@@ -29,8 +29,8 @@ const {
 
   isRecentPostList = false,
   posts = [],
-  isMorePostsVisible = false,
-  isYearFilterVisible = false,
+  showMorePostsLink = false,
+  showYearFilter = false,
   availableYears = [],
   selectedYear,
 
@@ -47,8 +47,8 @@ const {
         isRecent={isRecentPostList}
         posts={posts}
         selectedYear={selectedYear}
-        showMore={isMorePostsVisible}
-        showYearFilter={isYearFilterVisible}
+        showMorePostsLink={showMorePostsLink}
+        showYearFilter={showYearFilter}
       />
     ) : null
   }
@@ -57,10 +57,7 @@ const {
 
   {
     showCategoryList ? (
-      <CategoryList
-        heading={categoryListHeading ?? "어떤 분류로 글을 쓰고 있나"}
-        categoryId={categoryId}
-      />
+      <CategoryList heading={categoryListHeading} categoryId={categoryId} />
     ) : null
   }
 </BasicLayout>

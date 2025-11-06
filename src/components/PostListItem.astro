@@ -9,9 +9,10 @@ import fixPath from "@/utils/fixPath";
 
 export interface Props {
   entry: CollectionEntry<"blogPost">;
+  hideCategory?: boolean;
 }
 
-const { entry } = Astro.props;
+const { entry, hideCategory = false } = Astro.props;
 
 const datePath = entry.data.date.trim().split("T")[0].replaceAll("-", "/");
 const path = join("post", datePath, entry.data.slug, "./");
@@ -42,7 +43,7 @@ const mainKeywords = entry.data.keywords.main.filter(
 
     <div class="metadata secondary">
       <div>{formattedDate}</div>
-      <div>{categoryLabel}</div>
+      {!hideCategory && <div>{categoryLabel}</div>}
       {
         mainKeywords.length > 0 && (
           <div class="keywords">{mainKeywords.join(", ")}</div>
@@ -157,7 +158,7 @@ const mainKeywords = entry.data.keywords.main.filter(
       font-size: var(--text-list-item-title-md);
     }
 
-    .metadata > ::before {
+    .metadata > *::before {
       margin: 0 calc(0.75 * var(--gap-unit));
     }
 

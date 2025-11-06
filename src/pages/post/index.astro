@@ -16,8 +16,8 @@ const sortedPosts = (await getCollection("blogPost")).toSorted((a, b) => {
 const recentPosts = sortedPosts.slice(0, 10);
 
 const availableYears = Array.from(
-  sortedPosts.reduce<Set<string>>((acc, { data: { date } }) => {
-    return acc.add(date.split("-")[0]);
+  sortedPosts.reduce<Set<number>>((acc, { data: { date } }) => {
+    return acc.add(parseInt(date, 10));
   }, new Set()),
 );
 ---
@@ -27,6 +27,6 @@ const availableYears = Array.from(
   showPostList
   isRecentPostList
   posts={recentPosts}
-  isYearFilterVisible
+  showYearFilter
   availableYears={availableYears}
 />

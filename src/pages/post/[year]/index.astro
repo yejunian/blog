@@ -6,10 +6,11 @@ import PostListLayout from "@/layouts/PostListLayout.astro";
 
 type StaticPathsReturn = {
   params: {
-    year: number;
+    year: string;
   };
   props: {
     availableYears: number[];
+    year: number;
     posts: CollectionEntry<"blogPost">[];
   };
 }[];
@@ -44,10 +45,11 @@ export async function getStaticPaths(): Promise<StaticPathsReturn> {
   for (const [year, entries] of posts) {
     result.push({
       params: {
-        year,
+        year: year.toFixed(0),
       },
       props: {
         availableYears,
+        year,
         posts: entries ?? [],
       },
     });
@@ -56,15 +58,15 @@ export async function getStaticPaths(): Promise<StaticPathsReturn> {
   return result;
 }
 
-const { year } = Astro.params;
-const { availableYears, posts } = Astro.props;
+const { availableYears, year, posts } = Astro.props;
 ---
 
 <PostListLayout
   showCategoryList
   showPostList
-  isYearFilterVisible
+  showYearFilter
   posts={posts}
   availableYears={availableYears}
   selectedYear={year}
+  categoryListHeading="다른 분류"
 />

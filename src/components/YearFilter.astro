@@ -4,9 +4,9 @@ import { join } from "node:path";
 import fixPath from "@/utils/fixPath";
 
 interface Props {
-  availableYears?: (number | string)[];
+  availableYears?: number[];
   categoryId?: string;
-  selectedYear?: number | string;
+  selectedYear?: number;
 }
 
 const { availableYears, categoryId = "", selectedYear } = Astro.props;

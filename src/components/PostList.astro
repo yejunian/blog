@@ -10,12 +10,12 @@ import PostListItem from "./PostListItem.astro";
 import YearFilter from "./YearFilter.astro";
 
 interface Props {
-  availableYears?: (number | string)[];
+  availableYears?: number[];
   categoryId?: string;
   isRecent?: boolean;
   posts: CollectionEntry<"blogPost">[];
-  selectedYear?: number | string;
-  showMore?: boolean;
+  selectedYear?: number;
+  showMorePostsLink?: boolean;
   showYearFilter?: boolean;
 }
 
@@ -25,7 +25,7 @@ const {
   isRecent = false,
   posts,
   selectedYear,
-  showMore = false,
+  showMorePostsLink = false,
   showYearFilter = false,
 } = Astro.props;
 
@@ -40,6 +40,7 @@ const when = (() => {
 })();
 const categoryLabel =
   categories.find(({ id }) => id === categoryId)?.label ?? "???";
+const hideCategory = !!categoryId;
 ---
 
 <section class="post-list">
@@ -65,7 +66,9 @@ const categoryLabel =
   <div class="list">
     {
       posts.length > 0 ? (
-        posts.map((entry) => <PostListItem entry={entry} />)
+        posts.map((entry) => (
+          <PostListItem entry={entry} hideCategory={hideCategory} />
+        ))
       ) : (
         <div class="empty">아무것도 안 썼습니다.</div>
       )
@@ -83,7 +86,7 @@ const categoryLabel =
   }
 
   {
-    showMore ? (
+    showMorePostsLink ? (
       <div class="more">
         <a
           href={fixPath(categoryId ? join("/category/", categoryId) : "/post")}
