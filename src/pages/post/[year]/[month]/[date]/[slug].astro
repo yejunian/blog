@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 
 import RootLayout from "@/layouts/RootLayout.astro";
+import PostBody from "@/components/PostBody.astro";
 import PostFrontmatter from "@/components/PostFrontmatter.astro";
 
 export async function getStaticPaths() {
@@ -32,7 +33,7 @@ const { Content } = await render(post);
 
     <hr />
 
-    <div class="post-body"><Content /></div>
+    <PostBody><Content /></PostBody>
   </article>
 
   <section class="comment">
@@ -43,5 +44,20 @@ const { Content } = await render(post);
 <style is:global>
   main {
     margin-bottom: var(--gap-section);
+  }
+</style>
+
+<style>
+  .post {
+    line-height: 1.8;
+    font-size: 1rem; /* 16px */
+  }
+
+  .post > hr {
+    margin: var(--gap-section) var(--gap-column);
+  }
+
+  .comment {
+    margin: calc(2 * var(--gap-section)) var(--gap-column) 0;
   }
 </style>

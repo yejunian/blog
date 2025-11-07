@@ -6,3 +6,9 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+@counter-style counter-footnotes {
+  system: extends decimal;
+  prefix: "[";
+  suffix: "] ";
+}

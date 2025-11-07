@@ -41,10 +41,6 @@
     (min(100%, var(--content-width-max)) + var(--gap-column)) / 3 -
       var(--gap-column)
   );
-
-  --line-height-as-base: calc(
-    var(--font-size, 1rem) + (var(--factor, 1.8) - 1) * 1rem
-  );
 }
 
 /* md */
