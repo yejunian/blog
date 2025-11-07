@@ -6,11 +6,6 @@ import CategoryList from "@/components/CategoryList.astro";
 import PostList from "@/components/PostList.astro";
 import Profile from "@/components/Profile.astro";
 
-// TODO 1: SEO 및 공유 카드용 메타 태그를 재정의할 수 있나?
-// canonical path, 제목, 설명, 키워드, 섬네일(경로), 인덱싱 거부 여부
-// 페이지 컴포넌트를 모두 옮기고 후행 슬래시 설정 확인 후에 착수.
-// Layout 컴포넌트에 prop 뚫어서 넘기기?
-
 const recentPosts = (await getCollection("blogPost"))
   .sort((a, b) => {
     if (b.data.date < a.data.date) {

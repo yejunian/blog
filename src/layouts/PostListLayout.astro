@@ -4,8 +4,11 @@ import type { CollectionEntry } from "astro:content";
 import BasicLayout from "@/layouts/BasicLayout.astro";
 import CategoryList from "@/components/CategoryList.astro";
 import PostList from "@/components/PostList.astro";
+import type { PageMetadata } from "@/types/PageMetadata";
 
 interface Props {
+  pageMetadata?: Partial<PageMetadata>;
+
   showPostList?: boolean;
   showCategoryList?: boolean;
 
@@ -22,6 +25,8 @@ interface Props {
 }
 
 const {
+  pageMetadata,
+
   showPostList,
   showCategoryList,
 
@@ -38,7 +43,7 @@ const {
 } = Astro.props;
 ---
 
-<BasicLayout>
+<BasicLayout pageMetadata={pageMetadata}>
   {
     showPostList && posts ? (
       <PostList

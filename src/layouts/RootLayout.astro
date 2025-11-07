@@ -1,4 +1,5 @@
 ---
+import thumbnailFallback from "@/assets/thumbnail-fallback.png";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 
@@ -6,6 +7,28 @@ import "@/styles/color.css";
 import "@/styles/font.css";
 import "@/styles/size.css";
 import "@/styles/utility.css";
+
+import type { PageMetadata } from "@/types/PageMetadata";
+
+interface Props {
+  pageMetadata?: Partial<PageMetadata>;
+}
+
+const {
+  pageMetadata: {
+    title: givenTitle,
+    description = "",
+    keywords: givenKeywords = "yejunian,개발 블로그,웹 프론트엔드",
+    thumbnail = thumbnailFallback,
+    noindex = false,
+  } = {},
+} = Astro.props;
+
+const title = (givenTitle ? `${givenTitle} | ` : "") + "yejunian/blog";
+const keywords =
+  typeof givenKeywords === "string"
+    ? givenKeywords
+    : givenKeywords.filter((value) => value && value !== "__EMPTY").join(",");
 ---
 
 <!doctype html>
@@ -15,7 +38,23 @@ import "@/styles/utility.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/blog/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>yejunian/blog</title>
+    {noindex ? <meta name="robots" content="noindex" /> : null}
+
+    <link rel="canonical" href={Astro.url} />
+    <title>{title}</title>
+    {description ? <meta name="description" content={description} /> : null}
+    {keywords ? <meta name="keywords" content={keywords} /> : null}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    {
+      description ? (
+        <meta property="og:description" content={description} />
+      ) : null
+    }
+    <meta property="og:image" content={thumbnail.src} />
+    <meta property="og:locale" content="ko_KR" />
 
     <link
       rel="stylesheet"
@@ -33,11 +72,7 @@ import "@/styles/utility.css";
 
   <body>
     <Header />
-
-    <main>
-      <slot />
-    </main>
-
+    <main><slot /></main>
     <Footer />
   </body>
 </html>

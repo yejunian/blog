@@ -59,9 +59,12 @@ export async function getStaticPaths(): Promise<StaticPathsReturn> {
 }
 
 const { availableYears, year, posts } = Astro.props;
+
+const pageTitle = `${year ? `${year}년` : "최근"}에 쓴 글`;
 ---
 
 <PostListLayout
+  pageMetadata={{ title: pageTitle }}
   showCategoryList
   showPostList
   showYearFilter
