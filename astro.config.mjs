@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 
 import mdx from "@astrojs/mdx";
-import react from "@astrojs/react";
 
 // https://docs.astro.build/en/reference/configuration-reference/
 // https://docs.astro.build/ko/reference/configuration-reference/
@@ -19,9 +18,16 @@ export default defineConfig({
       //   dark: "github-dark",
       // },
     },
+
     smartypants: false,
+
     remarkRehype: {
       footnoteLabel: "각주",
+      /**
+       * @param {number} referenceIndex
+       * @param {number} rereferenceIndex
+       * @returns {string}
+       */
       footnoteBackLabel(referenceIndex, rereferenceIndex) {
         return (
           "각주 " +
@@ -33,5 +39,5 @@ export default defineConfig({
     },
   },
 
-  integrations: [react(), mdx()],
+  integrations: [mdx()],
 });
