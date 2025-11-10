@@ -40,6 +40,12 @@ import authorImage from "@/assets/author.svg";
     font-weight: var(--font-weight-sans-regular);
   }
 
+  @media (min-width: 600px) {
+    .title {
+      font-size: 1.75rem; /* 28px */
+    }
+  }
+
   .logo {
     display: block;
     object-fit: contain;
@@ -48,6 +54,12 @@ import authorImage from "@/assets/author.svg";
   .more {
     color: var(--color-gray-08);
     font-size: 0.8125rem; /* 13px */
+  }
+
+  @media (min-width: 600px) {
+    .more {
+      font-size: 0.875rem; /* 14px */
+    }
   }
 
   .more a {
@@ -61,16 +73,7 @@ import authorImage from "@/assets/author.svg";
     font-size: 0.875rem; /* 14px */
   }
 
-  /* md */
   @media (min-width: 600px) {
-    .title {
-      font-size: 1.75rem; /* 28px */
-    }
-
-    .more {
-      font-size: 0.875rem; /* 14px */
-    }
-
     .description {
       font-size: 1rem; /* 16px */
     }

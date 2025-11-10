@@ -100,6 +100,12 @@ const mainKeywords = entry.data.keywords.main.filter(
     font-size: var(--text-list-item-title);
   }
 
+  @media (min-width: 600px) {
+    .title {
+      font-size: var(--text-list-item-title-md);
+    }
+  }
+
   .title a {
     --text-ellipsis-lines: 2;
   }
@@ -118,6 +124,12 @@ const mainKeywords = entry.data.keywords.main.filter(
     margin: 0 calc(0.5 * var(--gap-unit));
 
     color: var(--color-line-bright);
+  }
+
+  @media (min-width: 600px) {
+    .metadata > *::before {
+      margin: 0 calc(0.75 * var(--gap-unit));
+    }
   }
 
   .metadata > *:first-child::before {
@@ -142,6 +154,13 @@ const mainKeywords = entry.data.keywords.main.filter(
     object-fit: cover;
   }
 
+  @media (min-width: 600px) {
+    .thumbnail {
+      width: min(216px, var(--column-width-2-of-6));
+      height: 113.4px;
+    }
+  }
+
   .secondary {
     margin: calc(0.5 * var(--gap-unit)) 0 0;
 
@@ -150,21 +169,7 @@ const mainKeywords = entry.data.keywords.main.filter(
     font-size: 0.8125rem; /* 13px */
   }
 
-  /* md */
   @media (min-width: 600px) {
-    .title {
-      font-size: var(--text-list-item-title-md);
-    }
-
-    .metadata > *::before {
-      margin: 0 calc(0.75 * var(--gap-unit));
-    }
-
-    .thumbnail {
-      width: min(216px, var(--column-width-2-of-6));
-      height: 113.4px;
-    }
-
     .secondary {
       margin: var(--gap-unit) 0 0;
 

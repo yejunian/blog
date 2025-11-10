@@ -37,6 +37,12 @@ const { categoryId, label, description } = Astro.props;
     font-weight: var(--font-weight-sans-bold);
   }
 
+  @media (min-width: 600px) {
+    dt {
+      font-size: var(--text-category-name-md);
+    }
+  }
+
   a {
     display: block;
 
@@ -55,12 +61,7 @@ const { categoryId, label, description } = Astro.props;
     font-size: 0.875rem; /* 14px */
   }
 
-  /* md */
   @media (min-width: 600px) {
-    dt {
-      font-size: var(--text-category-name-md);
-    }
-
     dd {
       font-size: 1rem; /* 16px */
     }

@@ -43,6 +43,12 @@ const categoryPath = categoryId ? join("/category/", categoryId) : "/post";
     font-size: 0.8125rem; /* 13px */
   }
 
+  @media (min-width: 600px) {
+    .years {
+      font-size: 0.875rem; /* 14px */
+    }
+  }
+
   .years a {
     display: block;
     border: 2px solid var(--color-line-bright);
@@ -64,12 +70,5 @@ const categoryPath = categoryId ? join("/category/", categoryId) : "/post";
   .years a:hover {
     border-color: var(--color-text-link);
     color: var(--color-text-link);
-  }
-
-  /* md */
-  @media (min-width: 600px) {
-    .years {
-      font-size: 0.875rem; /* 14px */
-    }
   }
 </style>
