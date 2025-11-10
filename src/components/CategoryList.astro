@@ -1,5 +1,5 @@
 ---
-import categories from "@/data/blog-post/metadata/categories.json";
+import categoryMap from "@/data/categoryMap";
 
 import CategoryListItem from "./CategoryListItem.astro";
 
@@ -9,8 +9,6 @@ interface Props {
 }
 
 const { heading = "어떤 분류로 글을 쓰고 있나", categoryId = "" } = Astro.props;
-
-const items = categories.filter(({ id }) => categoryId !== id);
 ---
 
 <section class="category">
@@ -18,13 +16,16 @@ const items = categories.filter(({ id }) => categoryId !== id);
 
   <dl class="list">
     {
-      items.map(({ id, label, description }) => (
-        <CategoryListItem
-          categoryId={id}
-          label={label}
-          description={description}
-        />
-      ))
+      categoryMap
+        .entries()
+        .filter(([id]) => categoryId !== id)
+        .map(([id, { label, description }]) => (
+          <CategoryListItem
+            categoryId={id}
+            label={label}
+            description={description}
+          />
+        ))
     }
   </dl>
 </section>

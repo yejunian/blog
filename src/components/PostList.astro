@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import type { CollectionEntry } from "astro:content";
 
-import categories from "@/data/blog-post/metadata/categories.json";
+import categoryMap from "@/data/categoryMap";
 import fixPath from "@/utils/fixPath";
 
 import PostListItem from "./PostListItem.astro";
@@ -38,8 +38,7 @@ const when = (() => {
     return null;
   }
 })();
-const categoryLabel =
-  categories.find(({ id }) => id === categoryId)?.label ?? "???";
+const categoryLabel = categoryMap.get(categoryId)?.label ?? "???";
 const hideCategory = !!categoryId;
 ---
 

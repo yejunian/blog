@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 import PostListLayout from "@/layouts/PostListLayout.astro";
-import categories from "@/data/blog-post/metadata/categories.json";
+import categoryMap from "@/data/categoryMap";
 
 type PostsByCategoryYear = {
   [category: string]: Map<number, CollectionEntry<"blogPost">[]>;
@@ -22,7 +22,7 @@ type StaticPathsReturn = {
 }[];
 
 export async function getStaticPaths(): Promise<StaticPathsReturn> {
-  const categoryIds = categories.map(({ id }) => id).filter((id) => id);
+  const categoryIds = categoryMap.keys().filter((id) => id);
   const sortedPosts = (await getCollection("blogPost")).sort((a, b) => {
     if (b.data.date < a.data.date) {
       return -1;
@@ -76,7 +76,7 @@ export async function getStaticPaths(): Promise<StaticPathsReturn> {
 
 const { category, year, availableYears, posts } = Astro.props;
 
-const selectedCategory = categories.find(({ id }) => id === category);
+const selectedCategory = categoryMap.get(category);
 const pageTitle = `${year ? `${year}년` : "최근"}에 쓴 ${selectedCategory?.label}`;
 ---
 

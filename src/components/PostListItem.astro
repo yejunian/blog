@@ -4,7 +4,7 @@ import { join } from "node:path";
 import type { CollectionEntry } from "astro:content";
 
 import thumbnailFallback from "@/assets/thumbnail-fallback.png";
-import categories from "@/data/blog-post/metadata/categories.json";
+import categoryMap from "@/data/categoryMap";
 import fixPath from "@/utils/fixPath";
 
 export interface Props {
@@ -21,9 +21,7 @@ const formattedDate = entry.data.date
   .trim()
   .replace(/^(\d{4,})-0?(\d+)-0?(\d+).*$/, "$1년 $2월 $3일");
 
-const categoryLabel = categories.find(
-  ({ id }) => id === entry.data.category,
-)?.label;
+const categoryLabel = categoryMap.get(entry.data.category)?.label;
 
 const invalidKeywords = new Set(["", "__EMPTY"]);
 const mainKeywords = entry.data.keywords.main.filter(

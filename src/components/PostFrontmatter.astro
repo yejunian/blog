@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
-import categories from "@/data/blog-post/metadata/categories.json";
+import categoryMap from "@/data/categoryMap";
 
 interface Props {
   post: CollectionEntry<"blogPost">;
@@ -9,7 +9,7 @@ interface Props {
 
 const { data } = Astro.props.post;
 
-const categoryLabel = categories.find(({ id }) => id === data.category)?.label;
+const categoryLabel = categoryMap.get(data.category)?.label;
 const lastRevision = data.revisions?.at(-1);
 
 function formatDate(input: string): string {

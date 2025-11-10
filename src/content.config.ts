@@ -48,4 +48,15 @@ const blogPost = defineCollection({
     }),
 });
 
-export const collections = { blogPost };
+const category = defineCollection({
+  loader: file("src/data/blog-post/metadata/category.json"),
+  schema: z.array(
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      description: z.string(),
+    }),
+  ),
+});
+
+export const collections = { blogPost, category };
