@@ -48,8 +48,7 @@ const hideCategory = !!categoryId;
       categoryId ? (
         <a href={fixPath(join("/category/", categoryId))}>‘{categoryLabel}’</a>
       ) : null
-    }{when || categoryLabel ? "에는 " : null}
-    뭐라고 썼나
+    }{when || categoryLabel ? "에는" : null} 뭐라고 썼나
   </h2>
 
   {
@@ -90,8 +89,8 @@ const hideCategory = !!categoryId;
         <a
           href={fixPath(categoryId ? join("/category/", categoryId) : "/post")}
         >
-          {categoryId ? `‘${categoryLabel}’ 분류의 ` : null}
-          {isRecent ? "최근 " : null}글 더 보기 →
+          {categoryId ? `‘${categoryLabel}’ 분류의` : null}
+          {isRecent ? "최근" : null} 글 더 보기 →
         </a>
       </div>
     ) : null

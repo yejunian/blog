@@ -16,8 +16,6 @@ const blogPost = defineCollection({
 
   schema: ({ image }) =>
     z.object({
-      // TODO 3: blog-post/metadata/category.ts를 가져와서 자동으로 적용할 방법 찾기.
-      //         또는 카테고리를 JSON으로 관리하도록 변경.
       category: z.string(),
 
       slug: z.string(),

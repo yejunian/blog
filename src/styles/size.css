@@ -7,6 +7,8 @@
   --gap-section: calc(7.5 * var(--gap-unit));
   --gap-column: calc(2 * var(--gap-unit));
 
+  --height-header: 52px;
+
   --text-section-heading: 1.5rem; /* 24px */
   --text-category-name: 1.125rem; /* 18px */
   --text-category-name-md: 1.25rem; /* 20px */

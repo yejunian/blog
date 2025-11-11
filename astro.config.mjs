@@ -9,6 +9,10 @@ export default defineConfig({
   site: "https://yejunian.github.io",
   base: "/blog/",
 
+  // server: {
+  //   host: true,
+  // },
+
   markdown: {
     shikiConfig: {
       // TODO: 다크 모드 추가 시 코드 블록 테마 대응

@@ -36,7 +36,7 @@ const keywords =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/blog/favicon.svg" />
+    <link rel="icon" type="image/png" href="/blog/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     {noindex ? <meta name="robots" content="noindex" /> : null}
 
@@ -107,19 +107,23 @@ const keywords =
     width: min(100%, var(--content-width-max));
   }
 
-  :is(pre, code) {
+  :where(pre, code) {
     font-weight: var(--font-weight-mono-regular);
   }
 
-  :is(dt, h1, h2, h3, h4, h5, h6, th, b, strong) :is(pre, code) {
+  :where(dt, h1, h2, h3, h4, h5, h6, th, b, strong) :where(pre, code) {
     font-weight: var(--font-weight-mono-bold);
   }
 
-  hr {
+  :where(hr) {
     margin: var(--gap-section) 0;
     border: none;
     height: 1px;
 
     background-color: var(--color-line-bright);
+  }
+
+  * {
+    scroll-margin-top: calc(var(--height-header) + 4px + var(--gap-column));
   }
 </style>

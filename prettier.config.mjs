@@ -11,6 +11,7 @@ const config = {
       files: "*.astro",
       options: {
         parser: "astro",
+        htmlWhitespaceSensitivity: "strict",
       },
     },
   ],

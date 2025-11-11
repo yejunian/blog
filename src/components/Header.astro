@@ -39,7 +39,7 @@ import fixPath from "@/utils/fixPath";
     justify-content: center;
 
     width: 100%;
-    height: 52px;
+    height: var(--height-header);
 
     background-color: rgba(from var(--color-bg-base) r g b / 0.8);
     box-shadow: 0 2px 2px rgba(from var(--color-gray-16) r g b / 0.15);
@@ -84,6 +84,12 @@ import fixPath from "@/utils/fixPath";
     header {
       background-color: #ffffffcc;
       box-shadow: 0 2px 2px #00000026;
+    }
+  }
+
+  @supports not (backdrop-filter: blur(4px)) {
+    header {
+      background-color: #ffffff;
     }
   }
 </style>
