@@ -1,0 +1,129 @@
+---
+import thumbnailFallback from "@/assets/thumbnail-fallback.png";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+
+import "@/styles/color.css";
+import "@/styles/font.css";
+import "@/styles/size.css";
+import "@/styles/utility.css";
+
+import type { PageMetadata } from "@/types/PageMetadata";
+
+interface Props {
+  pageMetadata?: Partial<PageMetadata>;
+}
+
+const {
+  pageMetadata: {
+    title: givenTitle,
+    description = "",
+    keywords: givenKeywords = "yejunian,개발 블로그,웹 프론트엔드",
+    thumbnail = thumbnailFallback,
+    noindex = false,
+  } = {},
+} = Astro.props;
+
+const title = (givenTitle ? `${givenTitle} | ` : "") + "yejunian/blog";
+const keywords =
+  typeof givenKeywords === "string"
+    ? givenKeywords
+    : givenKeywords.filter((value) => value && value !== "__EMPTY").join(",");
+---
+
+<!doctype html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/blog/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    {noindex ? <meta name="robots" content="noindex" /> : null}
+
+    <link rel="canonical" href={Astro.url} />
+    <title>{title}</title>
+    {description ? <meta name="description" content={description} /> : null}
+    {keywords ? <meta name="keywords" content={keywords} /> : null}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    {
+      description ? (
+        <meta property="og:description" content={description} />
+      ) : null
+    }
+    <meta property="og:image" content={thumbnail.src} />
+    <meta property="og:locale" content="ko_KR" />
+
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <Header />
+    <main><slot /></main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    margin: 0;
+
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0;
+
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss10"; /* Pretendard 중간 크기 심벌(원 문자) */
+    font-weight: var(--font-weight-sans-regular);
+
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  main {
+    box-sizing: border-box;
+    width: min(100%, var(--content-width-max));
+  }
+
+  :where(pre, code) {
+    font-weight: var(--font-weight-mono-regular);
+  }
+
+  :where(dt, h1, h2, h3, h4, h5, h6, th, b, strong) :where(pre, code) {
+    font-weight: var(--font-weight-mono-bold);
+  }
+
+  :where(hr) {
+    margin: var(--gap-section) 0;
+    border: none;
+    height: 1px;
+
+    background-color: var(--color-line-bright);
+  }
+
+  * {
+    scroll-margin-top: calc(var(--height-header) + 4px + var(--gap-column));
+  }
+</style>

@@ -1,0 +1,343 @@
+<div class="post-body"><slot /></div>
+
+<style>
+  .post-body {
+    margin: calc(5 * var(--gap-unit)) var(--gap-column);
+  }
+
+  /* MARK: BLOCK ELEMENTS */
+
+  /* Block style base */
+  .post-body
+    :global(:where(blockquote, details, h2, h3, h4, h5, h6, p, pre, table)),
+  .post-body > :global(:where(ol, ul)) {
+    margin: calc(2 * var(--gap-unit)) 0;
+  }
+
+  .post-body :global(blockquote) {
+    border-left: calc(0.5 * var(--gap-unit)) solid var(--color-line-base);
+    padding-left: calc(2 * var(--gap-unit));
+
+    color: var(--color-text-bright-1);
+  }
+
+  .post-body :global(details) {
+    border: 1px solid var(--color-line-base);
+    border-radius: var(--gap-unit);
+    padding: calc(1.5 * var(--gap-unit)) calc(2 * var(--gap-unit));
+    background-color: var(--color-bg-base);
+
+    overflow: hidden;
+  }
+
+  .post-body :global(details > summary) {
+    margin: calc(-0.5 * var(--gap-unit)) calc(-1 * var(--gap-unit));
+    border-radius: calc(0.5 * var(--gap-unit));
+    padding: calc(0.5 * var(--gap-unit)) calc(1 * var(--gap-unit));
+
+    cursor: pointer;
+  }
+  .post-body :global(details > summary:hover) {
+    background-color: var(--color-bg-summary-hover);
+  }
+  .post-body :global(details > summary > *) {
+    display: inline;
+  }
+
+  .post-body :global(details > *:last-child) {
+    margin-bottom: 0;
+  }
+
+  .post-body :global(dl) {
+    margin-top: calc(2 * var(--gap-unit));
+    margin-bottom: calc(2.5 * var(--gap-unit));
+  }
+
+  .post-body :global(dl > div) {
+    margin: calc(2.5 * var(--gap-unit)) 0;
+  }
+  .post-body :global(dl > div:first-child) {
+    margin-top: 0;
+  }
+  .post-body :global(dl > div:last-child) {
+    margin-bottom: 0;
+  }
+
+  .post-body :global(dl dt) {
+    margin: calc(0.5 * var(--gap-unit)) 0;
+
+    font-weight: var(--font-weight-sans-bold);
+  }
+
+  .post-body :global(dl dd) {
+    margin: calc(0.5 * var(--gap-unit)) 0;
+
+    margin-left: calc(4 * var(--gap-unit));
+  }
+  .post-body :global(dl dd > *:first-child) {
+    margin-top: 0;
+  }
+  .post-body :global(dl dd > *:last-child) {
+    margin-bottom: 0;
+  }
+
+  .post-body :global(dl dd + dt) {
+    margin-top: calc(2.5 * var(--gap-unit));
+  }
+
+  .post-body :global(:is(h2, h3, h4, h5, h6)) {
+    margin-top: calc(1.5 * calc(7 - var(--heading-level, 5)) * var(--gap-unit));
+
+    line-height: calc(var(--font-size, 1rem) + 0.8rem);
+    font-size: var(--font-size, 1rem);
+    font-weight: var(--font-weight-sans-bold);
+  }
+  .post-body :global(h2) {
+    --font-size: var(--text-post-h2);
+    --heading-level: 2;
+  }
+  .post-body :global(h3) {
+    --font-size: var(--text-post-h3);
+    --heading-level: 3;
+  }
+  .post-body :global(h4) {
+    --font-size: var(--text-post-h4);
+    --heading-level: 4;
+  }
+  .post-body :global(h5) {
+    --font-size: var(--text-post-h5);
+    --heading-level: 5;
+  }
+  .post-body :global(h6) {
+    --font-size: var(--text-post-h6);
+    --heading-level: 6;
+  }
+
+  @media (min-width: 600px) {
+    .post-body :global(h2) {
+      --font-size: var(--text-post-h2-md);
+    }
+    .post-body :global(h3) {
+      --font-size: var(--text-post-h3-md);
+    }
+    .post-body :global(h4) {
+      --font-size: var(--text-post-h4-md);
+    }
+    .post-body :global(h5) {
+      --font-size: var(--text-post-h5-md);
+    }
+    .post-body :global(h6) {
+      --font-size: var(--text-post-h6-md);
+    }
+  }
+
+  .post-body :global(:is(ol, ul)) {
+    padding-left: calc(4 * var(--gap-unit));
+  }
+
+  .post-body :global(:is(ol, ul) > li) {
+    margin-top: calc(0.5 * var(--gap-unit));
+  }
+
+  .post-body :global(pre) {
+    border: 1px solid var(--color-line-base);
+    border-radius: var(--gap-unit);
+    padding: var(--gap-unit) calc(1.5 * var(--gap-unit));
+
+    line-height: 1.4;
+    font-family: var(--font-mono);
+    font-size: 0.75rem; /* 12px */
+
+    overflow-x: auto;
+  }
+
+  @media (min-width: 600px) {
+    .post-body :global(pre) {
+      padding: calc(1.5 * var(--gap-unit)) calc(2 * var(--gap-unit));
+
+      font-size: 0.8125rem; /* 13px */
+    }
+  }
+
+  @media (min-width: 744px) {
+    .post-body :global(pre) {
+      font-size: 0.85rem; /* 13.6px */
+    }
+  }
+
+  .post-body :global(table) {
+    border-collapse: collapse;
+
+    line-height: 1.6;
+    font-size: 0.875rem; /* 14px */
+
+    overflow-x: auto;
+  }
+
+  .post-body
+    :global(
+      table > tr:nth-of-type(even),
+      table > tbody > tr:nth-of-type(even)
+    ) {
+    background-color: var(--color-bg-table-zebra);
+  }
+
+  .post-body :global(table th) {
+    background-color: var(--color-bg-table-head);
+
+    font-size: 0.8125rem; /* 13px */
+  }
+
+  .post-body :global(table :is(td, th)) {
+    border: 1px solid var(--color-line-base);
+    padding: calc(0.5 * var(--gap-unit)) var(--gap-unit);
+  }
+
+  @media (min-width: 600px) {
+    .post-body :global(table :is(td, th)) {
+      padding: var(--gap-unit) calc(2 * var(--gap-unit));
+    }
+  }
+
+  /* MARK: INLINE ELEMENTS */
+
+  .post-body :global(a) {
+    color: var(--color-text-link);
+  }
+  .post-body :global(a:hover) {
+    text-decoration: none;
+  }
+  .post-body :global(a code) {
+    color: var(--color-text-link-dark);
+  }
+
+  .post-body :global(code) {
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
+  }
+
+  @media (min-width: 600px) {
+    .post-body :global(code) {
+      letter-spacing: unset;
+    }
+  }
+
+  .post-body :global(:not(pre) > code) {
+    border-radius: calc(0.5 * var(--gap-unit));
+    padding: calc(0.125 * var(--gap-unit)) calc(0.25 * var(--gap-unit));
+    background-color: var(--color-bg-code-inline);
+
+    font-size: 0.875em;
+  }
+
+  .post-body :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .post-body :global(kbd) {
+    margin: 0 1px;
+    border: 1px solid var(--color-line-base);
+    border-bottom: 2px solid var(--color-line-dark);
+    border-radius: calc(0.5 * var(--gap-unit));
+    padding: calc(0.125 * var(--gap-unit)) calc(0.5 * var(--gap-unit));
+    background-color: var(--color-bg-base);
+
+    font-family: var(--font-sans);
+    font-size: 0.875em;
+    white-space: nowrap;
+  }
+
+  .post-body :global(mark) {
+    border-radius: calc(0.5 * var(--gap-unit));
+    padding: 0 calc(0.25 * var(--gap-unit));
+    background-color: var(--color-bg-mark);
+
+    color: inherit;
+  }
+  .post-body :global(mark code) {
+    border: 1px solid var(--color-line-base);
+    background-color: unset;
+  }
+
+  .post-body :global(:is(s, del)) {
+    color: var(--color-text-bright-2);
+    text-decoration: line-through;
+  }
+  .post-body :global(:is(s, del):hover) {
+    text-decoration: unset;
+  }
+  .post-body :global(:is(s, del) code) {
+    color: var(--color-text-bright-1);
+  }
+
+  .post-body :global(small) {
+    font-size: 0.875em;
+  }
+
+  .post-body :global(strong) {
+    font-weight: var(--font-weight-sans-bold);
+  }
+
+  .post-body :global(mark :is(:is(del, s), :is(del, s) mark)) {
+    color: var(--color-text-bright-1);
+  }
+
+  /* MARK: FOOTNOTES */
+
+  /* 본문에 달린 각주 번호 */
+  .post-body :global(a[data-footnote-ref]) {
+    margin: -1px -2px -0.625em;
+    padding: 1px 2px 0.625em;
+
+    color: var(--color-text-link-dark);
+    font-feature-settings: "tnum";
+    text-decoration: none;
+
+    user-select: none;
+  }
+  .post-body :global(a[data-footnote-ref]:hover) {
+    text-decoration: underline;
+  }
+  .post-body :global(a[data-footnote-ref]::before) {
+    content: "[";
+  }
+  .post-body :global(a[data-footnote-ref]::after) {
+    content: "]";
+  }
+
+  /* 각주 내용 구역 */
+  .post-body :global(section[data-footnotes]) {
+    margin: var(--gap-section) 0 calc(2 * var(--gap-section));
+    border-top: 1px solid var(--color-line-bright);
+    padding-top: var(--gap-section);
+
+    font-size: 0.875em;
+  }
+  .post-body :global(section[data-footnotes] > :first-child) {
+    margin-top: 0;
+  }
+
+  .post-body :global(section[data-footnotes] ol) {
+    list-style: counter-footnotes;
+  }
+
+  .post-body :global(section[data-footnotes] li) {
+    line-height: 1.4;
+  }
+
+  .post-body :global(section[data-footnotes] p) {
+    margin: 0;
+  }
+
+  .post-body :global(section[data-footnotes] a) {
+    color: var(--color-text-link-dark);
+    text-decoration: none;
+
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+  .post-body :global(section[data-footnotes] a:hover) {
+    text-decoration: underline;
+  }
+</style>

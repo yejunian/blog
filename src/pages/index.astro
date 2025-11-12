@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+import BasicLayout from "@/layouts/BasicLayout.astro";
+import CategoryList from "@/components/CategoryList.astro";
+import PostList from "@/components/PostList.astro";
+import Profile from "@/components/Profile.astro";
+
+const recentPosts = (await getCollection("blogPost"))
+  .sort((a, b) => {
+    if (b.data.date < a.data.date) {
+      return -1;
+    } else if (b.data.date > a.data.date) {
+      return 1;
+    } else {
+      return 0;
+    }
+  })
+  .slice(0, 3);
+---
+
+<BasicLayout>
+  <Profile />
+
+  <hr />
+
+  <CategoryList />
+
+  <hr />
+
+  <PostList isRecent posts={recentPosts} showMorePostsLink />
+</BasicLayout>

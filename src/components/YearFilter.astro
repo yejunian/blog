@@ -1,0 +1,74 @@
+---
+import { join } from "node:path";
+
+import fixPath from "@/utils/fixPath";
+
+interface Props {
+  availableYears?: number[];
+  categoryId?: string;
+  selectedYear?: number;
+}
+
+const { availableYears, categoryId = "", selectedYear } = Astro.props;
+
+const categoryPath = categoryId ? join("/category/", categoryId) : "/post";
+---
+
+<div class="years">
+  <a class={selectedYear ? undefined : "selected"} href={fixPath(categoryPath)}>
+    최근
+  </a>
+  {
+    availableYears?.map((year) => (
+      <a
+        class={selectedYear === year ? "selected" : undefined}
+        href={fixPath(join(categoryPath, year.toString()))}
+      >
+        {year}
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .years {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: calc(2 * var(--gap-unit)) var(--gap-unit);
+
+    margin: calc(3 * var(--gap-unit)) calc(-0.125 * var(--gap-unit));
+
+    font-size: 0.8125rem; /* 13px */
+  }
+
+  @media (min-width: 600px) {
+    .years {
+      font-size: 0.875rem; /* 14px */
+    }
+  }
+
+  .years a {
+    display: block;
+    border: 2px solid var(--color-line-bright);
+    border-radius: calc(0.5 * var(--gap-unit));
+    padding: calc(0.75 * var(--gap-unit)) calc(1.5 * var(--gap-unit));
+    background-color: var(--color-gray-00);
+
+    color: var(--color-text-bright-2);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .years a.selected {
+    border-color: var(--color-text-link-dark);
+    color: var(--color-text-link-dark);
+    font-weight: 600;
+  }
+
+  .years a:hover {
+    border-color: var(--color-text-link);
+    color: var(--color-text-link);
+  }
+</style>

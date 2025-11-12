@@ -1,0 +1,154 @@
+---
+import { join } from "node:path";
+
+import type { CollectionEntry } from "astro:content";
+
+import categoryMap from "@/data/categoryMap";
+import fixPath from "@/utils/fixPath";
+
+import PostListItem from "./PostListItem.astro";
+import YearFilter from "./YearFilter.astro";
+
+interface Props {
+  availableYears?: number[];
+  categoryId?: string;
+  isRecent?: boolean;
+  posts: CollectionEntry<"blogPost">[];
+  selectedYear?: number;
+  showMorePostsLink?: boolean;
+  showYearFilter?: boolean;
+}
+
+const {
+  availableYears,
+  categoryId = "",
+  isRecent = false,
+  posts,
+  selectedYear,
+  showMorePostsLink = false,
+  showYearFilter = false,
+} = Astro.props;
+
+const when = (() => {
+  if (isRecent || !selectedYear) {
+    return "최근";
+  } else if (selectedYear) {
+    return `${selectedYear}년`;
+  } else {
+    return null;
+  }
+})();
+const categoryLabel = categoryMap.get(categoryId)?.label ?? "???";
+const hideCategory = !!categoryId;
+---
+
+<section class="post-list">
+  <h2 class="title">
+    {when}{when && categoryId ? " " : null}{
+      categoryId ? (
+        <a href={fixPath(join("/category/", categoryId))}>‘{categoryLabel}’</a>
+      ) : null
+    }{when || categoryLabel ? "에는" : null} 뭐라고 썼나
+  </h2>
+
+  {
+    showYearFilter ? (
+      <YearFilter
+        availableYears={availableYears}
+        categoryId={categoryId}
+        selectedYear={selectedYear}
+      />
+    ) : null
+  }
+
+  <div class="list">
+    {
+      posts.length > 0 ? (
+        posts.map((entry) => (
+          <PostListItem entry={entry} hideCategory={hideCategory} />
+        ))
+      ) : (
+        <div class="empty">아무것도 안 썼습니다.</div>
+      )
+    }
+  </div>
+
+  {
+    showYearFilter ? (
+      <YearFilter
+        availableYears={availableYears}
+        categoryId={categoryId}
+        selectedYear={selectedYear}
+      />
+    ) : null
+  }
+
+  {
+    showMorePostsLink ? (
+      <div class="more">
+        <a
+          href={fixPath(categoryId ? join("/category/", categoryId) : "/post")}
+        >
+          {categoryId ? `‘${categoryLabel}’ 분류의` : null}
+          {isRecent ? "최근" : null} 글 더 보기 →
+        </a>
+      </div>
+    ) : null
+  }
+</section>
+
+<style>
+  .title {
+    margin: 0;
+
+    line-height: 1.4;
+    font-size: var(--text-section-heading);
+    font-weight: var(--font-weight-sans-bold);
+  }
+
+  .title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .title a:hover {
+    text-decoration: underline;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-column);
+
+    margin-top: calc(3 * var(--gap-unit));
+  }
+
+  .empty {
+    color: var(--color-text-bright-2);
+  }
+
+  .more {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: var(--gap-column);
+
+    color: var(--color-text-bright-1);
+    font-size: 0.8125rem; /* 13px */
+  }
+
+  @media (min-width: 600px) {
+    .more {
+      font-size: 0.875rem; /* 14px */
+    }
+  }
+
+  .more a {
+    display: block;
+
+    color: inherit;
+    text-decoration: none;
+  }
+  .more a:hover {
+    text-decoration: underline;
+  }
+</style>

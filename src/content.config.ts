@@ -1,0 +1,60 @@
+import { defineCollection, z } from "astro:content";
+import { file, glob } from "astro/loaders";
+
+const datehour = z.string().regex(/\d{4,}-\d{2}-\d{2}T\d{2}\+09/);
+
+const keywordLayer = z.union([
+  z.array(z.literal("__EMPTY")).length(1),
+  z.array(z.string()),
+]);
+
+const blogPost = defineCollection({
+  loader: glob({
+    pattern: ["**/*.md", "**/*.mdx"],
+    base: "src/data/blog-post/post",
+  }),
+
+  schema: ({ image }) =>
+    z.object({
+      category: z.string(),
+
+      slug: z.string(),
+
+      thumbnail: z.optional(image()),
+      thumbnailAlt: z.optional(z.string()),
+
+      title: z.string(),
+      description: z.string(),
+
+      date: datehour,
+      revisions: z.optional(
+        z.array(
+          z.object({
+            date: datehour,
+            message: z.string(),
+          }),
+        ),
+      ),
+
+      keywords: z.object({
+        main: keywordLayer,
+        sub: keywordLayer,
+        misc: keywordLayer,
+      }),
+
+      noindex: z.boolean(),
+    }),
+});
+
+const category = defineCollection({
+  loader: file("src/data/blog-post/metadata/category.json"),
+  schema: z.array(
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      description: z.string(),
+    }),
+  ),
+});
+
+export const collections = { blogPost, category };

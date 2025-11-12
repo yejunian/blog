@@ -1,0 +1,52 @@
+:root {
+  /* --breakpoint-md: 600px; */
+  /* --breakpoint-lg: 744px; */
+  --content-width-max: 744px;
+
+  --gap-unit: 8px;
+  --gap-section: calc(7.5 * var(--gap-unit));
+  --gap-column: calc(2 * var(--gap-unit));
+
+  --height-header: 52px;
+
+  --text-section-heading: 1.5rem; /* 24px */
+  --text-category-name: 1.125rem; /* 18px */
+  --text-category-name-md: 1.25rem; /* 20px */
+  --text-list-item-title: 1rem; /* 16px */
+  --text-list-item-title-md: 1.125rem; /* 18px */
+
+  /* 1rem의 1.125배수의 근삿값 */
+  --text-post-h1: 1.6rem; /* 25.6px */
+  --text-post-h2: 1.425rem; /* 22.8px */
+  --text-post-h3: 1.26875rem; /* 20.3px */
+  --text-post-h4: 1.125rem; /* 18px */
+  --text-post-h5: 1rem; /* 16px */
+  --text-post-h6: 0.8875rem; /* 14.2px, 사용하지 않음 */
+
+  /* 1rem의 1.1875배수의 근삿값 */
+  --text-post-h1-md: 2rem; /* 32px */
+  --text-post-h2-md: 1.68125rem; /* 26.9px */
+  --text-post-h3-md: 1.4125rem; /* 22.6px */
+  --text-post-h4-md: 1.1875rem; /* 19px */
+  --text-post-h5-md: 1rem; /* 16px */
+  --text-post-h6-md: 0.8875rem; /* 14.2px, 사용하지 않음 */
+
+  --column-width-1-of-4: calc(
+    (min(100%, var(--content-width-max)) + var(--gap-column)) / 4 -
+      var(--gap-column)
+  );
+  --column-width-1-of-6: calc(
+    (min(100%, var(--content-width-max)) + var(--gap-column)) / 6 -
+      var(--gap-column)
+  );
+  --column-width-2-of-6: calc(
+    (min(100%, var(--content-width-max)) + var(--gap-column)) / 3 -
+      var(--gap-column)
+  );
+}
+
+@media (min-width: 600px) {
+  :root {
+    --gap-column: calc(3 * var(--gap-unit));
+  }
+}

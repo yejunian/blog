@@ -1,0 +1,179 @@
+---
+import { join } from "node:path";
+
+import type { CollectionEntry } from "astro:content";
+
+import thumbnailFallback from "@/assets/thumbnail-fallback.png";
+import categoryMap from "@/data/categoryMap";
+import fixPath from "@/utils/fixPath";
+
+export interface Props {
+  entry: CollectionEntry<"blogPost">;
+  hideCategory?: boolean;
+}
+
+const { entry, hideCategory = false } = Astro.props;
+
+const datePath = entry.data.date.trim().split("T")[0].replaceAll("-", "/");
+const path = join("post", datePath, entry.data.slug, "./");
+
+const formattedDate = entry.data.date
+  .trim()
+  .replace(/^(\d{4,})-0?(\d+)-0?(\d+).*$/, "$1년 $2월 $3일");
+
+const categoryLabel = categoryMap.get(entry.data.category)?.label;
+
+const invalidKeywords = new Set(["", "__EMPTY"]);
+const mainKeywords = entry.data.keywords.main.filter(
+  (value) => !invalidKeywords.has(value),
+);
+---
+
+<article class="item">
+  <div class="text">
+    <h3 class="title">
+      <a class="text-ellipsis" href={fixPath(path ?? "/404")}>
+        {entry.data.title}
+      </a>
+    </h3>
+
+    <div class="description secondary">{entry.data.description}</div>
+
+    <div class="metadata secondary">
+      <div>{formattedDate}</div>
+      {!hideCategory && <div>{categoryLabel}</div>}
+      {
+        mainKeywords.length > 0 && (
+          <div class="keywords">{mainKeywords.join(", ")}</div>
+        )
+      }
+    </div>
+  </div>
+
+  {
+    entry.data.thumbnail ? (
+      <img
+        class="thumbnail"
+        src={entry.data.thumbnail.src}
+        alt={entry.data.thumbnailAlt ?? ""}
+        width={entry.data.thumbnail.width}
+        height={entry.data.thumbnail.height}
+      />
+    ) : (
+      <img
+        class="thumbnail"
+        src={thumbnailFallback.src}
+        alt=""
+        width={thumbnailFallback.width}
+        height={thumbnailFallback.height}
+      />
+    )
+  }
+</article>
+
+<style>
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-column);
+
+    width: 100%;
+  }
+
+  .item a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .item a:hover {
+    text-decoration: underline;
+  }
+
+  .text {
+    flex: 1 1;
+  }
+
+  .title {
+    margin: 0;
+
+    line-height: 1.4;
+    font-size: var(--text-list-item-title);
+  }
+
+  @media (min-width: 600px) {
+    .title {
+      font-size: var(--text-list-item-title-md);
+    }
+  }
+
+  .title a {
+    --text-ellipsis-lines: 2;
+  }
+
+  .description {
+    --text-ellipsis-lines: 2;
+  }
+
+  .metadata {
+    display: flex;
+  }
+
+  .metadata > *::before {
+    content: "·";
+
+    margin: 0 calc(0.5 * var(--gap-unit));
+
+    color: var(--color-line-bright);
+  }
+
+  @media (min-width: 600px) {
+    .metadata > *::before {
+      margin: 0 calc(0.75 * var(--gap-unit));
+    }
+  }
+
+  .metadata > *:first-child::before {
+    content: none;
+  }
+
+  .keywords {
+    --text-ellipsis-lines: 1;
+
+    flex: 1 1;
+  }
+
+  .thumbnail {
+    --size-sm: max(96px, var(--column-width-1-of-4));
+
+    display: block;
+
+    aspect-ratio: 1 / 1;
+    width: var(--size-sm);
+    height: auto;
+
+    object-fit: cover;
+  }
+
+  @media (min-width: 600px) {
+    .thumbnail {
+      width: min(216px, var(--column-width-2-of-6));
+      height: 113.4px;
+    }
+  }
+
+  .secondary {
+    margin: calc(0.5 * var(--gap-unit)) 0 0;
+
+    line-height: 1.4;
+    color: var(--color-text-bright-2);
+    font-size: 0.8125rem; /* 13px */
+  }
+
+  @media (min-width: 600px) {
+    .secondary {
+      margin: var(--gap-unit) 0 0;
+
+      font-size: 0.875rem; /* 14px */
+    }
+  }
+</style>

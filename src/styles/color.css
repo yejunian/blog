@@ -1,0 +1,39 @@
+:root {
+  /* TODO: 흰색~검정 사이를 100~900으로 재정의 */
+  --color-gray-00: #fff;
+  --color-gray-005: #f3f4f5;
+  --color-gray-01: #e9e9ec;
+  --color-gray-02: #d4d5da;
+  --color-gray-03: #c0c2ca;
+  --color-gray-04: #aeb1ba;
+  --color-gray-05: #9ea0ac;
+  --color-gray-06: #8e919f;
+  --color-gray-07: #7f8292;
+  --color-gray-08: #717584;
+  --color-gray-09: #646876;
+  --color-gray-10: #585b68;
+  --color-gray-11: #4d4f5a;
+  --color-gray-12: #41434d;
+  --color-gray-13: #35373e;
+  --color-gray-14: #282a2f;
+  --color-gray-15: #191a1e;
+  --color-gray-16: #000;
+
+  --color-bg-base: var(--color-gray-00);
+  --color-bg-code-inline: var(--color-gray-01);
+  --color-bg-mark: #fbeaa4;
+  --color-bg-summary-hover: var(--color-gray-01);
+  --color-bg-table-head: var(--color-gray-01);
+  --color-bg-table-zebra: var(--color-gray-005);
+  --color-image-placeholder: var(--color-gray-03);
+
+  --color-text: var(--color-gray-15);
+  --color-text-bright-1: var(--color-gray-11);
+  --color-text-bright-2: var(--color-gray-08);
+  --color-text-link: #0934e0;
+  --color-text-link-dark: #082dbf;
+
+  --color-line-bright: var(--color-gray-03);
+  --color-line-base: var(--color-gray-07);
+  --color-line-dark: var(--color-gray-11);
+}

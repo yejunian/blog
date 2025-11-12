@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+
+import PostListLayout from "@/layouts/PostListLayout.astro";
+
+const sortedPosts = (await getCollection("blogPost")).toSorted((a, b) => {
+  if (b.data.date < a.data.date) {
+    return -1;
+  } else if (b.data.date > a.data.date) {
+    return 1;
+  } else {
+    return 0;
+  }
+});
+
+const recentPosts = sortedPosts.slice(0, 10);
+
+const availableYears = Array.from(
+  sortedPosts.reduce<Set<number>>((acc, { data: { date } }) => {
+    return acc.add(parseInt(date, 10));
+  }, new Set()),
+);
+---
+
+<PostListLayout
+  pageMetadata={{ title: "최근에 쓴 글" }}
+  showCategoryList
+  showPostList
+  isRecentPostList
+  posts={recentPosts}
+  showYearFilter
+  availableYears={availableYears}
+/>

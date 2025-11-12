@@ -1,0 +1,26 @@
+---
+interface Props {
+  term: string;
+}
+---
+
+<div class="giscus"></div>
+
+<script
+  is:inline
+  src="https://giscus.app/client.js"
+  data-repo="yejunian/blog-post"
+  data-repo-id="R_kgDOIHuXOg"
+  data-category="Comments"
+  data-category-id="DIC_kwDOIHuXOs4CSTDL"
+  data-mapping="specific"
+  data-term={Astro.props.term}
+  data-strict="1"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="light"
+  data-lang="ko"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async></script>

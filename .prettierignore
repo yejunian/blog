@@ -1,7 +1,8 @@
-/.cache/**/*
-/public/**/*
+src-old/
+
+.astro/
+dist/
+pnpm-lock.yaml
 
 /src/blog-post/**/*
-/src/gatsby-types.d.ts
-
 **/*.svg

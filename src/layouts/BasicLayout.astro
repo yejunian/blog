@@ -1,0 +1,31 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import type { PageMetadata } from "@/types/PageMetadata";
+
+interface Props {
+  pageMetadata?: Partial<PageMetadata>;
+}
+
+const { pageMetadata } = Astro.props;
+---
+
+<RootLayout pageMetadata={pageMetadata}><slot /></RootLayout>
+
+<style is:global>
+  main {
+    margin-top: calc(0.5 * var(--gap-unit));
+    margin-bottom: var(--gap-section);
+  }
+
+  main > * {
+    margin: var(--gap-section) var(--gap-column);
+  }
+
+  main > :first-child {
+    margin-top: calc(1.5 * var(--gap-column));
+  }
+
+  main > :last-child {
+    margin-bottom: 0;
+  }
+</style>

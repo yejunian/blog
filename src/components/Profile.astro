@@ -1,0 +1,81 @@
+---
+import authorImage from "@/assets/author.svg";
+---
+
+<section class="profile">
+  <div class="title-row">
+    <h1 class="title">
+      <img
+        class="logo"
+        alt="yejunian"
+        src={authorImage.src}
+        width={authorImage.width}
+        height={authorImage.height}
+      />
+    </h1>
+
+    <div class="more">
+      <a href="https://github.com/yejunian">GitHub</a>
+    </div>
+  </div>
+
+  <p class="description">
+    컴퓨터공학, 웹 프론트엔드를 중심으로 이것저것 공부하고 있습니다.
+  </p>
+</section>
+
+<style>
+  .title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    line-height: 1;
+  }
+
+  .title {
+    margin: 0;
+
+    font-size: 1.5rem; /* 24px */
+    font-weight: var(--font-weight-sans-regular);
+  }
+
+  @media (min-width: 600px) {
+    .title {
+      font-size: 1.75rem; /* 28px */
+    }
+  }
+
+  .logo {
+    display: block;
+    object-fit: contain;
+  }
+
+  .more {
+    color: var(--color-gray-08);
+    font-size: 0.8125rem; /* 13px */
+  }
+
+  @media (min-width: 600px) {
+    .more {
+      font-size: 0.875rem; /* 14px */
+    }
+  }
+
+  .more a {
+    color: inherit;
+  }
+
+  .description {
+    margin: calc(2 * var(--gap-unit)) 0 0;
+
+    line-height: 1.6;
+    font-size: 0.875rem; /* 14px */
+  }
+
+  @media (min-width: 600px) {
+    .description {
+      font-size: 1rem; /* 16px */
+    }
+  }
+</style>

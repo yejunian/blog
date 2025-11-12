@@ -1,0 +1,69 @@
+---
+import { join } from "node:path";
+
+import fixPath from "@/utils/fixPath";
+
+interface Props {
+  categoryId: string;
+  label: string;
+  description: string;
+}
+
+const { categoryId, label, description } = Astro.props;
+---
+
+<div class="item">
+  <dt>
+    <a href={fixPath(categoryId ? join("/category/", categoryId) : "/post")}>
+      {label}
+    </a>
+  </dt>
+
+  <dd>{description}</dd>
+</div>
+
+<style>
+  .item {
+    cursor: pointer;
+  }
+
+  .item > :last-child {
+    margin-bottom: 0;
+  }
+
+  dt {
+    margin: 0 0 calc(0.5 * var(--gap-unit));
+    font-size: var(--text-category-name);
+    font-weight: var(--font-weight-sans-bold);
+  }
+
+  @media (min-width: 600px) {
+    dt {
+      font-size: var(--text-category-name-md);
+    }
+  }
+
+  a {
+    display: block;
+
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  dd {
+    margin: calc(0.5 * var(--gap-unit)) 0;
+
+    line-height: 1.6;
+    font-size: 0.875rem; /* 14px */
+  }
+
+  @media (min-width: 600px) {
+    dd {
+      font-size: 1rem; /* 16px */
+    }
+  }
+</style>

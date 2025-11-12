@@ -1,23 +1,14 @@
 {
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+
   "compilerOptions": {
-    "target": "esnext",
-    "lib": ["dom", "esnext"],
-    "jsx": "react",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "typeRoots": ["./node_modules/@types", "./src/global.d.ts"]
-  },
-  "include": [
-    "./src/**/*",
-    "./src/blog-post/**/*",
-    "./gatsby-browser.*",
-    "./gatsby-config.*",
-    "./gatsby-node.*",
-    "./gatsby-ssr.*",
-    "./plugins/**/*"
-  ]
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }

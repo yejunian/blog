@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import BasicLayout from "@/layouts/BasicLayout.astro";
+import CategoryList from "@/components/CategoryList.astro";
+import PostList from "@/components/PostList.astro";
+import type { PageMetadata } from "@/types/PageMetadata";
+
+interface Props {
+  pageMetadata?: Partial<PageMetadata>;
+
+  showPostList?: boolean;
+  showCategoryList?: boolean;
+
+  categoryId?: string;
+
+  isRecentPostList?: boolean;
+  posts?: CollectionEntry<"blogPost">[];
+  showMorePostsLink?: boolean;
+  showYearFilter?: boolean;
+  availableYears?: number[];
+  selectedYear?: number;
+
+  categoryListHeading?: string;
+}
+
+const {
+  pageMetadata,
+
+  showPostList,
+  showCategoryList,
+
+  categoryId = "",
+
+  isRecentPostList = false,
+  posts = [],
+  showMorePostsLink = false,
+  showYearFilter = false,
+  availableYears = [],
+  selectedYear,
+
+  categoryListHeading,
+} = Astro.props;
+---
+
+<BasicLayout pageMetadata={pageMetadata}>
+  {
+    showPostList && posts ? (
+      <PostList
+        availableYears={availableYears}
+        categoryId={categoryId}
+        isRecent={isRecentPostList}
+        posts={posts}
+        selectedYear={selectedYear}
+        showMorePostsLink={showMorePostsLink}
+        showYearFilter={showYearFilter}
+      />
+    ) : null
+  }
+
+  {showPostList && posts && showCategoryList ? <hr /> : null}
+
+  {
+    showCategoryList ? (
+      <CategoryList heading={categoryListHeading} categoryId={categoryId} />
+    ) : null
+  }
+</BasicLayout>
+
+<style is:global>
+  main {
+    margin-top: calc(0.5 * var(--gap-unit));
+    margin-bottom: var(--gap-section);
+  }
+
+  main > * {
+    margin: var(--gap-section) var(--gap-column);
+  }
+
+  main > :first-child {
+    margin-top: calc(1.5 * var(--gap-column));
+  }
+
+  main > :last-child {
+    margin-bottom: 0;
+  }
+</style>
